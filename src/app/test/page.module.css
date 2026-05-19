@@ -203,6 +203,7 @@
 .empEdit{ width: 80px; }
 
 .statusActive, .statusLeave{
+    display: inline-block;
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 12px;

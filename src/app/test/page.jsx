@@ -1,6 +1,36 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import c from './page.module.css';
+import baseApi from '@/api/baseApi';
 
 export default function page(){
+
+    const [employees, setEmployees]=useState([]);
+
+    useEffect(()=> {
+        // 1. api 요청해서 받기
+        const getEmployee=async()=> {
+            const response=await baseApi.get('/api/v1/employees');
+            console.log(response.data.data);
+
+            // 2. useState에 넣기
+            setEmployees(response.data.data);
+
+            // 3. useState에 있는 데이터 렌더링 시키기
+
+
+        }
+
+        getEmployee();
+
+    }, []);
+
+    const statusStyles = {
+        '재직중': c.statusActive,
+        '휴직중': c.statusLeave,
+        '퇴사': c.statusRetire
+    };
     
     return(
         <div className={c.wrap}>
@@ -75,54 +105,21 @@ export default function page(){
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>EMP-001</td>
-                                <td className={c.empName}>김철수</td>
-                                <td>인사팀</td>
-                                <td>팀장</td>
-                                <td>2019.03.02</td>
-                                <td>010-1234-5678</td>
-                                <td>kim@company.com</td>
-                                <td><span className={c.statusActive}>재직중</span></td>
-                                <td><button className={c.edit_btn}>수정</button></td>
-                            </tr>
-                            <tr>
-                                <td>NO</td>
-                                <td>사원번호</td>
-                                <td className={c.empName}>성명</td>
-                                <td>부서</td>
-                                <td>직급</td>
-                                <td>입사일</td>
-                                <td>연락처</td>
-                                <td>이메일</td>
-                                <td><span className={c.statusLeave}>휴직중</span></td>
-                                <td><button className={c.edit_btn}>수정</button></td>
-                            </tr>
-                            <tr>
-                                <td>NO</td>
-                                <td>사원번호</td>
-                                <td className={c.empName}>성명</td>
-                                <td>부서</td>
-                                <td>직급</td>
-                                <td>입사일</td>
-                                <td>연락처</td>
-                                <td>이메일</td>
-                                <td><span className={c.statusActive}>재직중</span></td>
-                                <td><button className={c.edit_btn}>수정</button></td>
-                            </tr>
-                            <tr>
-                                <td>NO</td>
-                                <td>사원번호</td>
-                                <td className={c.empName}>성명</td>
-                                <td>부서</td>
-                                <td>직급</td>
-                                <td>입사일</td>
-                                <td>연락처</td>
-                                <td>이메일</td>
-                                <td><span className={c.statusActive}>재직중</span></td>
-                                <td><button className={c.edit_btn}>수정</button></td>
-                            </tr>
+                            {employees.map((item, index)=> (
+                                <tr>
+                                    <td>{index+1}</td>
+                                    <td>{item.employeeNo}</td>
+                                    <td className={c.empName}>{item.name}</td>
+                                    <td>부서</td>
+                                    <td>직급</td>
+                                    <td>입사일</td>
+                                    <td>연락처</td>
+                                    <td>이메일</td>
+                                    {/* <td><span className={statusStyles[item.status]}>재직중</span></td> */}
+                                    <td><span className={c.statusActive}>재직중</span></td>
+                                    <td><button className={c.edit_btn}>수정</button></td>
+                                </tr>
+                            ))}
                         </tbody>
                         <tfoot>
                             <tr className={c.tableFooterRow}>
