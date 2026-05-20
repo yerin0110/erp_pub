@@ -103,12 +103,11 @@
 .continer{
     display: flex; 
     width: 100%;
-    height: 840px;
 }
 
 .headerMenu{
     width: 210px;
-    height: 100%;
+    height: 840px;
     background-color: #142a41;
     color: #999;
     font-size: 14px;
@@ -222,7 +221,7 @@
 }
 
 .addBtn{
-    background-color:#1c4164;
+    background-color:#074c8b;
     color: white;
     font-weight: 500;
 }
@@ -248,6 +247,7 @@
     background-color: white;
     border-collapse: separate;
     border-spacing: 0;
+    border: 1px solid #ecf0f5;
     border-radius: 7px;
     overflow: hidden;
     table-layout: fixed;
@@ -255,10 +255,10 @@
     color: #555;
 }
 
-.empTable th, .empTable td{
-    padding: 10px;
+.empTable th, .empTable td {
+    padding: 12px 10px;
     text-align: center;
-    border-bottom: 1px solid #d3dae4;
+    border-bottom: 1px solid #ecf0f5;
 }
 
 .empTable th{
@@ -309,40 +309,8 @@
     cursor: pointer;
 }
 
-.empTable tfoot td{
-    border: 1px solid #d3dae4;
-    border-top: none;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-    box-sizing: border-box;
-}
-
 .tableFooterInner{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    text-align: center;
-}
-
-.totalCount{
-    font-size: 13px;
-}
-
-.pageChange{
-    display: flex;
-    gap: 5px;
-    font-size: 12px;
-    border-radius: 5px;
-    margin-left: auto;
-}
-
-.pageBtn{
     border: 1px solid #d3dae4;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.activePage{
-    background-color: #1c4164;
-    color: white;
 }

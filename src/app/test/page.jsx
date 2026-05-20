@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import c from './page.module.css';
 import baseApi from '@/api/baseApi';
+import Nav from '@/component/common/Nav';
 
 export default function page(){
 
@@ -26,14 +27,15 @@ export default function page(){
 
     }, []);
 
-    const statusStyles = {
-        '재직중': c.statusActive,
-        '휴직중': c.statusLeave,
-        '퇴사': c.statusRetire
-    };
+    // const statusStyles = {
+    //     '재직중': c.statusActive,
+    //     '휴직중': c.statusLeave,
+    //     '퇴사': c.statusRetire
+    // };
     
     return(
         <div className={c.wrap}>
+
             <nav className={c.topBar}>
                 <div className={c.topBarL}>
                     <div className={c.logo}>
@@ -59,7 +61,9 @@ export default function page(){
                     <img src="/images/Log out.png" alt='' />
                 </div>
             </nav>
+
             <div className={c.continer}>
+
                 <header>
                     <div className={c.headerMenu}>
                         <ul>
@@ -68,7 +72,7 @@ export default function page(){
                                 <p>인사정보</p>
                             </li>
                             <li className={c.menuClick}><span></span>인사정보등록</li>
-                            <li><span></span>사원영수/인사기록카드</li>
+                            <li><span></span>사원명수/인사기록카드</li>
                             <li><span></span>인사발령등록</li>
                         </ul>
                         <ul>
@@ -88,7 +92,56 @@ export default function page(){
                         </ul>
                     </div>
                 </header>
+
                 <div className={c.main}>
+
+                    <div className={c.section}>
+                        <img src="/images/House.png" alt="" />
+                        <span>&gt;</span>
+                        <span>인사관리</span>
+                        <span>&gt;</span>
+                        <span>인사정보</span>
+                        <span>&gt;</span>
+                        <span className={c.now_section}>인사정보등록</span>
+                    </div>
+                    <div className={c.pageHeader}>
+                        <div className={c.titleBox}>
+                            <h3 className={c.title}>인사정보등록</h3>
+                            <p className={c.subTitle}>직원의 인사정보를 등록하고 관리합니다.</p>
+                        </div>
+                        <div className={c.btnBox}>
+                            <button className={c.downloadBtn}>
+                                <img src="/images/Download.png" alt="" />
+                                PDF 다운로드
+                            </button>
+                            <button className={c.addBtn}>
+                                <img src="/images/Plus.png" alt="" />
+                                신규 등록
+                            </button>
+                        </div>
+                    </div>
+                    <div className={c.searchBox}>
+                        <div className={c.searchTitle}>
+                            <img src="/images/Search.png" alt="" />
+                            검색조건
+                        </div>
+                        <div className={c.search}>
+                            <span>사원번호</span>
+                            <input type="text" placeholder='전체' />
+                            <span>부서</span>
+                            <select name="" id="">
+                                <option value="">인사팀</option>
+                                <option value="">경영지원팀</option>
+                                <option value="">개발팀</option>
+                                <option value="">영업팀</option>
+                            </select>
+                            <span>직급</span>
+
+                            <span>재직상태</span>
+
+                        </div>
+                    </div>
+                    
                     <table className={c.empTable}>
                         <thead>
                             <tr>
@@ -106,7 +159,7 @@ export default function page(){
                         </thead>
                         <tbody>
                             {employees.map((item, index)=> (
-                                <tr>
+                                <tr key={item.employeeId}>
                                     <td>{index+1}</td>
                                     <td>{item.employeeNo}</td>
                                     <td className={c.empName}>{item.name}</td>
@@ -122,11 +175,10 @@ export default function page(){
                             ))}
                         </tbody>
                         <tfoot>
-                            <tr className={c.tableFooterRow}>
+                            <tr className={c.tableFooter}>
                                 <td colSpan={10}>
                                     <div className={c.tableFooterInner}>
-                                        <div className={c.totalCount}>총 4건</div>
-                                        
+                                        <div className={c.totalCount}>총 {employees.length}건</div>
                                         <div className={c.pageChange}>
                                             <button className={c.pageBtn}>&lt;</button>
                                             <button className={`${c.pageBtn} ${c.activePage}`}>1</button>
@@ -134,7 +186,6 @@ export default function page(){
                                             <button className={c.pageBtn}>3</button>
                                             <button className={c.pageBtn}>&gt;</button>
                                         </div>
-                                        
                                         <div className={c.emptySpace}></div>
                                     </div>
                                 </td>
