@@ -7,13 +7,13 @@
 
 .topBar{
     width: 100%;
-    height: 60px;
+    height: 56px;
     padding: 0 20px;
     box-sizing: border-box;
-    background-color: #074c8b;
+    background-color: #1b3a68;
     display: flex;
     justify-content: space-between;
-    color: lightblue;
+    color: #93c5fd;
     align-items: center;
     text-align: center;
 }
@@ -34,6 +34,7 @@
     width: 150px;
     display: flex;
     gap: 10px;
+    font-size: 16px;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -46,14 +47,15 @@
 
 .topMenu li{
     width: 100px;
-    height: 60px;
+    height: 56px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 14px;
 }
 
 .action{
-    background-color: #0a64b8;
+    background-color: #2d5f9e;
     font-weight: bold;
     color: white;
 }
@@ -61,7 +63,7 @@
 .line1{
     width: 1px;
     height: 20px;
-    border-right: 1px solid lightblue;
+    border-right: 1px solid #3b5f9a;
 }
 
 .loginInfo{
@@ -76,12 +78,12 @@
     height: 30px;
     text-align: center;
     border-radius: 50%;
-    background-color: #1c78ce;
+    background-color: #3b82f6;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
     margin-right: 10px;
 }
@@ -90,14 +92,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    color: white;
+    font-size: 13px;
+    color: #cbd5e1;
 }
 
 .line2{
     width: 1px;
     height: 15px;
-    border-right: 1px solid white;
+    border-right: 1px solid #cbd5e1;
 }
 
 .continer{
@@ -109,38 +111,40 @@
 .headerMenu{
     width: 210px;
     height: 100%;
-    background-color: #142a41;
+    background-color: #1e293b;
     color: #999;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .headerMenu li{
     width: inherit;
-    height: 40px;
+    height: 36px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .headerMenu span{
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: #999;
+    background-color: #475569;
 }
 
 .headerMenu li:not(.menuTitle){
     padding: 0 0 0 30px;
+    display: flex; 
+    gap: 8px;
 }
 
 .menuTitle{
     display: flex;
-    gap: 10px;
+    gap: 6px;
     padding: 0 20px;
-    color: #4b95db;
+    font-size: 12px;
+    color: #60a5fa;
     font-weight: bold;
-    background-color: #031a31;
+    background-color: #162032;
 }
 
 .menuTitle img{
@@ -149,39 +153,39 @@
 }
 
 .menuBorder{
-    border-top: 0.12rem solid #1c4164;
+    border-top: 1px solid #293b50;
     box-sizing: border-box;
 }
 
 .menuClick{
     color: white;
-    font-weight: 500;
-    background-color: #1f3e5f;
+    font-weight: 900;
+    background-color: #2a3f5c;
 }
 
 .menuClick span{
-    background-color: #1c78ce;
+    background-color: #3b8cf6;
 }
 
 .main{
     flex: 1;
     padding: 20px;
-    background-color: #ecf0f5;
+    background-color: #f1f5f9;
 }
 
 .section{
     display: flex;
-    gap: 10px;
+    gap: 6px;
     align-items: center;
     text-align: center;
     font-size: 12px;
-    margin-bottom: 15px;
-    color: #888;
+    margin-bottom: 16px;
+    color: #6b7280;
 }
 
 .now_section{
-    color: #1c78ce;
-    font-weight: bold;
+    color: #2563eb;
+    font-weight: 500;
 }
 
 .pageHeader{
@@ -193,36 +197,39 @@
 .title{
     font-size: 20px;
     font-weight: bold;
+    color: #111827;
+    margin-bottom: 4px;
 }
 
 .subTitle{
     font-size: 13px;
-    color: #666;
-    margin-bottom: 15px;
+    color: #6b7280;
+    margin-bottom: 16px;
 }
 
 .btnBox{
     display: flex;
-    gap: 7px;
+    gap: 8px;
 }
 
 .downloadBtn, .addBtn{
     display: flex;
-    gap: 3px;
+    gap: 6px;
     align-items: center;
     text-align: center;
-    padding: 7px 12px;
+    padding: 9px 14px;
     border-radius: 7px;
     font-size: 13px;
+    cursor: pointer;
 }
 
 .downloadBtn{
     background-color: white;
-    border: 1px solid #d3dae4;
+    border: 1px solid #d1d5db;
 }
 
 .addBtn{
-    background-color:#1c4164;
+    background-color:#1b3a6b;
     color: white;
     font-weight: 500;
 }
@@ -230,17 +237,72 @@
 .searchBox{
     font-size: 13px;
     background-color: white;
-    border: 1px solid #d3dae4;
-    padding: 15px;
+    border: 1px solid #e5e7eb;
+    padding: 16px;
     border-radius: 7px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .searchTitle{
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
     text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: #1b3a6b;
+    margin-bottom: 12px;
+}
+
+.search{
+    display: flex;
+    gap: 16px;
+}
+
+.search div{
+    height: 34px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+}
+
+.search input, .search select{
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    padding: 5px 10px;
+    color: #888;
+}
+
+.search input{
+    width: 150px;
+}
+
+.searchBtnBox{
+    display: flex;
+    gap: 20px;
+}
+
+.searchBtn, .resetBtn{
+    height: 100%;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    text-align: center;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.searchBtn{
+    background-color: #1b3a6b;
+    color: white;
+    padding: 9px 20px;
+}
+
+.resetBtn{
+    border: 1px solid #d1d5db;
+    color: #6b7280;
+    padding: 9px 16px;
 }
 
 .empTable{
@@ -251,25 +313,29 @@
     border-radius: 7px;
     overflow: hidden;
     table-layout: fixed;
-    font-size: 14px;
-    color: #555;
+    font-size: 13px;
+    color: #374151;
 }
 
 .empTable th, .empTable td{
     padding: 10px;
     text-align: center;
-    border-bottom: 1px solid #d3dae4;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .empTable th{
-    background-color: #ecf0f5;
+    background-color: #f1f5f9;
+    font-size: 12px;
 }
 
-.number{ width: 50px; }
+.number{
+    width: 50px;
+    color: #6b7280;
+}
 .empName{
     width: 90px;
     color: black;
-    font-weight: bold;
+    font-weight: 900;
 }
 .empNumber{ width: 100px; }
 .empTeam{ width: 110px; }
@@ -282,35 +348,36 @@
 
 .statusActive, .statusLeave{
     display: inline-block;
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
     display: inline-block;
 }
 
 .statusActive{
-    background-color: #e2f7e2;
-    color: #089708;
+    background-color: #dcfce7;
+    color: #16a34a;
+    font-size: 11px;
+    font-weight: 900;
 }
 
 .statusLeave{
     background-color: #f8f4b5;
-    color: #df960e;
+    color: #d97706;
+    font-size: 12px;
 }
 
 .edit_btn{
-    background-color: aliceblue;
+    background-color: #eff6ff;
     padding: 5px 7px;
     border-radius: 5px;
     font-size: 12px;
     font-weight: bold;
-    color: dodgerblue;
+    color: #2563eb;
     cursor: pointer;
 }
 
 .empTable tfoot td{
-    border: 1px solid #d3dae4;
+    border: 1px solid #e5e7eb;
     border-top: none;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
@@ -337,12 +404,15 @@
 }
 
 .pageBtn{
-    border: 1px solid #d3dae4;
+    border: 1px solid #e5e7eb;
     padding: 5px 10px;
     border-radius: 5px;
+    cursor: pointer;
+    color: #6b7280;
 }
 
 .activePage{
-    background-color: #1c4164;
+    background-color: #1b3a6b;
     color: white;
+    font-weight: 900;
 }

@@ -1,0 +1,67 @@
+.wrap{
+    width: 1440px;
+    height: 900px;
+    margin: 0 auto;
+    font-family: 'Noto Sans Kr';
+}
+
+.section{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 16px;
+    color: #6b7280;
+}
+
+.now_section{
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.pageHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.subTitle{
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 16px;
+}
+
+.btnBox{
+    display: flex;
+    gap: 8px;
+}
+
+.downloadBtn, .addBtn{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    text-align: center;
+    padding: 9px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.downloadBtn{
+    background-color: white;
+    border: 1px solid #d1d5db;
+}
+
+.addBtn{
+    background-color:#1b3a6b;
+    color: white;
+    font-weight: 500;
+}

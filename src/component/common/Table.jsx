@@ -27,38 +27,57 @@ export default function Table({columns}){
     
     return(
         <>
-            <div className={c.pageHeader}>
-                <div className={c.titleBox}>
-                    <h3 className={c.title}>인사정보등록</h3>
-                    <p className={c.subTitle}>직원의 인사정보를 등록하고 관리합니다.</p>
-                </div>
-                <div className={c.btnBox}>
-                    <button className={c.downloadBtn}>
-                        <img src="/images/Download.png" alt="" />
-                        PDF 다운로드
-                    </button>
-                    <button className={c.addBtn}>
-                        <img src="/images/Plus.png" alt="" />
-                        신규 등록
-                    </button>
-                </div>
-            </div>
             <div className={c.searchBox}>
                 <div className={c.searchTitle}>
                     <img src="/images/Search.png" alt="" />
                     검색조건
                 </div>
                 <div className={c.search}>
-                    <span>사원번호</span>
-                    <input type="text" placeholder='전체' />
-                    <span>부서</span>
-                    <select name="" id="">
-                        <option value=""></option>
-                    </select>
-                    <span>직급</span>
+                    <div>
+                        <span>사원번호</span>
+                        <input type="text" placeholder='전체' />
+                    </div>
+                    
+                    <div>
+                        <span>부서</span>
+                        <select name="" id="">
+                            <option value="">인사팀</option>
+                            <option value="">경영지원팀</option>
+                            <option value="">개발팀</option>
+                            <option value="">영업팀</option>
+                        </select>
+                    </div>
 
-                    <span>재직상태</span>
+                    <div>
+                        <span>직급</span>
+                        <select name="" id="">
+                            <option value="">인사팀</option>
+                            <option value="">경영지원팀</option>
+                            <option value="">개발팀</option>
+                            <option value="">영업팀</option>
+                        </select>
+                    </div>
 
+                    <div>
+                        <span>재직상태</span>
+                        <select name="" id="">
+                            <option value="">인사팀</option>
+                            <option value="">경영지원팀</option>
+                            <option value="">개발팀</option>
+                            <option value="">영업팀</option>
+                        </select>
+                    </div>
+
+                    <div className={c.searchBtnBox}>
+                        <button className={c.searchBtn}>
+                            <img src="/images/Search-white.png" alt="" />
+                            조회
+                        </button>
+                        <button className={c.resetBtn}>
+                            <img src="/images/Rotate Ccw.png" alt="" />
+                            초기화
+                        </button>
+                    </div>
                 </div>
             </div>
             
