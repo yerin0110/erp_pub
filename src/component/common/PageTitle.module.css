@@ -15,6 +15,11 @@
     color: #6b7280;
 }
 
+.section span{
+    display: flex;
+    gap: 6px;
+}
+
 .now_section{
     color: #2563eb;
     font-weight: 500;

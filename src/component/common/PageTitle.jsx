@@ -1,16 +1,23 @@
 import c from './PageTitle.module.css';
 
-export default function PageTitle({ location= [], title, subTitle }){
+export default function PageTitle(
+    { location= [], title, subTitle, downloadBtnImg, downloadBtnText, addBtnImg, addBtnText }){
     return(
         <>
             <div className={c.section}>
                 <img src="/images/House.png" alt="" />
-                <span>&gt;</span>
-                <span>인사관리</span>
-                <span>&gt;</span>
-                <span>인사정보</span>
-                <span>&gt;</span>
-                <span className={c.now_section}>인사정보등록</span>
+                {location?.map((loc, index) => {
+                    const isLast = index === location.length - 1;
+                    
+                    return (
+                        <span key={index}>
+                            <span>&gt;</span>
+                            <span className={isLast ? c.now_section : ""}>
+                                {loc}
+                            </span>
+                        </span>
+                    );
+                })}
             </div>
             
             <div className={c.pageHeader}>
@@ -20,12 +27,12 @@ export default function PageTitle({ location= [], title, subTitle }){
                 </div>
                 <div className={c.btnBox}>
                     <button className={c.downloadBtn}>
-                        <img src="/images/Download.png" alt="" />
-                        PDF 다운로드
+                        <img src={downloadBtnImg} alt="" />
+                        {downloadBtnText}
                     </button>
                     <button className={c.addBtn}>
-                        <img src="/images/Plus.png" alt="" />
-                        신규 등록
+                        <img src={addBtnImg} alt="" />
+                        {addBtnText}
                     </button>
                 </div>
             </div>

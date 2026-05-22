@@ -26,61 +26,7 @@ export default function Table({columns}){
     }, []);
     
     return(
-        <>
-            <div className={c.searchBox}>
-                <div className={c.searchTitle}>
-                    <img src="/images/Search.png" alt="" />
-                    검색조건
-                </div>
-                <div className={c.search}>
-                    <div>
-                        <span>사원번호</span>
-                        <input type="text" placeholder='전체' />
-                    </div>
-                    
-                    <div>
-                        <span>부서</span>
-                        <select name="" id="">
-                            <option value="">인사팀</option>
-                            <option value="">경영지원팀</option>
-                            <option value="">개발팀</option>
-                            <option value="">영업팀</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <span>직급</span>
-                        <select name="" id="">
-                            <option value="">인사팀</option>
-                            <option value="">경영지원팀</option>
-                            <option value="">개발팀</option>
-                            <option value="">영업팀</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <span>재직상태</span>
-                        <select name="" id="">
-                            <option value="">인사팀</option>
-                            <option value="">경영지원팀</option>
-                            <option value="">개발팀</option>
-                            <option value="">영업팀</option>
-                        </select>
-                    </div>
-
-                    <div className={c.searchBtnBox}>
-                        <button className={c.searchBtn}>
-                            <img src="/images/Search-white.png" alt="" />
-                            조회
-                        </button>
-                        <button className={c.resetBtn}>
-                            <img src="/images/Rotate Ccw.png" alt="" />
-                            초기화
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
+        <>  
             <table className={c.empTable}>
                 <thead>
                     <tr>

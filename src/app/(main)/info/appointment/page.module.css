@@ -2,7 +2,7 @@
     width: 1440px;
     height: 900px;
     margin: 0 auto;
-    font-family: 'Noto Sans Kr';
+    font-family: 'Noto Sans KR';
 }
 
 .continer{
@@ -72,6 +72,7 @@
     box-sizing: border-box;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
+    cursor: pointer;
 }
 
 .imgBox img{
@@ -82,7 +83,6 @@
 .search input, .search select{
     height: 100%;
     border: 1px solid #d1d5db;
-    border-radius: 6px;
     padding: 5px 10px;
     color: #888;
 }
@@ -93,6 +93,10 @@
     border-radius: 0;
     border-left: none;
     text-align: center;
+}
+
+.search select{
+    border-radius: 6px;
 }
 
 .searchDate input{
@@ -112,6 +116,11 @@
     border-bottom: 1px solid #d1d5db;
     text-align: center;
     line-height: 38px;
+}
+
+.searchDate input:last-of-type{
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .searchBtnBox{
@@ -138,4 +147,340 @@
     border: 1px solid #d1d5db;
     color: #6b7280;
     padding: 9px 16px;
+}
+
+.inputForm{
+    height: 434px;
+    margin-bottom: 16px;
+}
+
+.formHeader{
+    display: flex;
+    justify-content: space-between;
+    height: 46px;
+    background-color: #e5e7eb;
+    padding: 10.5px 20px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.formTitle, .userInfo{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+}
+
+.formTitle{
+    color: #1b3a6b;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.userInfo{
+    display: flex;
+    color: #2563eb;
+    padding: 5px 12px;
+    background-color: #eff6ff;
+    font-size: 12px;
+    font-weight: 900;
+    border-radius: 999px;
+}
+
+.formInput{
+    height: 388px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 20px;
+}
+
+.formInputBox{
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.formType, .formDate, .formNum, .formReason{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.formInput p{
+    color: #374151;
+    font-weight: 900;
+}
+
+.formInput b{
+    color: #ef4444;
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+.formType div{
+    display: flex;
+}
+
+.formInput button, .formInput input, .formNumAuto{
+    height: 36px;
+    font-size: 13px;
+}
+
+.formInput input, .formNum>div{
+    border-radius: 6px;
+}
+
+.formType div>button{
+    background-color: white;
+    padding: 10px 16px;
+    color: #6b7280;
+    font-weight: 400;
+    border: 1px solid #d1d5db;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.formType div>button.click{
+    background-color: #1b3a6b;
+    font-weight: 900;
+    color: white;
+}
+
+.formType div>button:first-child{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.formType div>button:last-child{
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.formType div>button ~ button {
+    border-left: none;
+}
+
+.formDate{
+    width: 180px;
+}
+
+.formDate input{
+    border: 1px solid #d1d5db;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.formNumAuto{
+    width: 160px;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    color: #9ca3af;
+}
+
+.formReason input{
+    width: 260px;
+    border: 1px solid #d1d5db;
+    padding: 10px 12px;
+}
+
+.formEdit{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.formEditBefore, .formEditAfter{
+    width: 543px;
+    /* height: 124px; */
+    padding: 16px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.formEditBefore{
+    background-color: #fff7f7;
+    border: 1px solid #fecaca;
+}
+
+.beforeTitle, .afterTitle{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.beforeTitle p, .afterTitle p{
+    width: 60px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+}
+
+.beforeTitle p{
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.hr{
+    width: 443px;
+    height: 1px;
+}
+
+.hrBefore{
+    border: 1px solid #fecaca;
+}
+
+.beforeInput, .afterInput{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.beforeInput>div, .afterInput div{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.beforeInput>div span, .afterInput>div span{
+    color: #6b7280;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.beforeInput>div>div{
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.beforeInput>div>div{
+    color: #374151;
+    font-weight: 500;
+    border: 1px solid #fecaca;
+    background-color: white;
+}
+
+.beforeInput>div>div img{
+    margin-left: auto;
+}
+
+.formEditAfter{
+    background-color: #f0f7ff;
+    border: 1px solid #bfdbfe;
+}
+
+.afterTitle p{
+    color: #1d4ed8;
+    background-color: #dbeafe;
+}
+
+.hrAfter{
+    border: 1px solid #bfdbfe;
+}
+
+.afterInput select{
+    height: 36px;
+    background-color: white;
+    padding: 0 12px;
+    border: 1px solid #2563eb;
+    border-radius: 6px;
+    color: #1d4ed8;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.note{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.noteTitle{
+    color: #374151;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.note textarea{
+    width: 100%;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 13px;
+    padding: 10px 12px;
+}
+
+.noteBtnBox{
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.cancleBtn, .saveBtn{
+    border-radius: 6px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 13px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.cancleBtn{
+    color: #374151;
+    font-weight: 500;
+    border: 1px solid #d1d5db;
+}
+
+.saveBtn{
+    font-weight: 700;
+    background-color: #1b3a6b;
+    color: white;
+}
+
+.table{
+    background-color: #e5e7eb;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.tableTitleBox{
+    height: 46px;
+    display: flex;
+    justify-content: space-between;
+    padding: 11.5px 20px;
+    align-items: center;
+}
+
+.tableTitle{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: #1b3a6b;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.tableLenght{
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 900;
+    background-color: #eff6ff;
+    border-radius: 999px;
+    padding: 4px 12px;
 }

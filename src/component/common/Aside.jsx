@@ -5,15 +5,15 @@ export default function Aside({dummy}){
 //    const dummy=[
 //        {
 //            titleInfo: { iconPath: '/images/User.png', titleName: '인사정보' },
-//            submenuList: ['인사정보등록', '사원명수', '인사발령등록']
+//            submenuList: ['인사정보등록', '사원명수/인사기록카드', '인사발령등록']
 //        },
 //        {
 //            titleInfo: { iconPath: '/images/User.png', titleName: '인사정보' },
-//            submenuList: ['인사정보등록', '사원명수', '인사발령등록']
+//            submenuList: ['인사정보등록', '사원명수/인사기록카드', '인사발령등록']
 //        },
 //        {
 //            titleInfo: { iconPath: '/images/User.png', titleName: '인사정보' },
-//            submenuList: ['인사정보등록', '사원명수', '인사발령등록']
+//            submenuList: ['인사정보등록', '사원명수/인사기록카드', '인사발령등록']
 //        }
 //    ]
 

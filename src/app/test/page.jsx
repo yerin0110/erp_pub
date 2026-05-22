@@ -145,20 +145,18 @@ export default function page(){
                             <div>
                                 <span>직급</span>
                                 <select name="" id="">
-                                    <option value="">인사팀</option>
-                                    <option value="">경영지원팀</option>
-                                    <option value="">개발팀</option>
-                                    <option value="">영업팀</option>
+                                    <option value="">팀장</option>
+                                    <option value="">과장</option>
+                                    <option value="">대리</option>
+                                    <option value="">사원</option>
                                 </select>
                             </div>
 
                             <div>
                                 <span>재직상태</span>
                                 <select name="" id="">
-                                    <option value="">인사팀</option>
-                                    <option value="">경영지원팀</option>
-                                    <option value="">개발팀</option>
-                                    <option value="">영업팀</option>
+                                    <option value="">재직중</option>
+                                    <option value="">휴직중</option>
                                 </select>
                             </div>
 
