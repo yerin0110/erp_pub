@@ -17,23 +17,422 @@
     background-color: #f1f5f9;
 }
 
-.applyBox{
-    font-size: 13px;
-    background-color: white;
-    border: 1px solid #e5e7eb;
-    padding: 16px;
-    border-radius: 7px;
-    margin-bottom: 16px;
+.applyTitle{
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8fafc;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 14.5px 20px;
 }
 
-.applyTitle{
+.title{
     display: flex;
     gap: 8px;
     align-items: center;
     text-align: center;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 700;
     color: #1b3a6b;
+}
+
+.necessaryInput{
+    display: flex;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.necessary{
+    color: #ef4444;
+}
+
+.necessaryInput p{
+    color: #9ca3af;
+}
+
+.applyContent{
+    font-size: 13px;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    padding: 20px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    margin-bottom: 16px;
+}
+
+.applyInfoBox:first-child{
+    padding-top: 0;
+}
+
+.applyInfoBox{
+    padding: 18px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.infoTitle{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+    color: #1b3a6b;
+    font-weight: 700;
     margin-bottom: 12px;
 }
 
+.infoTitle span{
+    display: block;
+    width: 3px;
+    height: 14px;
+    background-color: #1b3a6b;
+}
+
+.infoUser{
+    display: flex;
+    gap: 12px;
+}
+
+.applyInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.applyInfo span{
+    font-weight: 900;
+    color: #374151;
+}
+
+.applyLock{
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.applyNumLock{ width: 150px; }
+.applyNameLock{ width: 130px; }
+.applyTeamLock{ width: 140px; }
+.applyRankLock{ width: 110px; }
+.applyDateLock{ width: 150px; }
+
+.infoTitle div{
+    display: flex;
+    gap: 4px;
+}
+
+.eventChoiceBox{
+    display: flex;
+}
+
+.eventChoiceBtn{
+    height: 38px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    text-align: center;
+    color: #6b7280;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 12px 18px;
+    box-sizing: border-box;
+    border: 1px solid #d1d5db;
+    border-right: none;
+    cursor: pointer;
+}
+
+.eventChoiceBtn:first-child{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.eventChoiceBtn:last-child{
+    border-right: 1px solid #d1d5db;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.choice{
+    background-color: #1b3a6b;
+    color: white;
+    font-weight: 900;
+}
+
+.give{
+    width: fit-content;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+    background-color: #eff6ff;
+    padding: 8px 14px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    margin-top: 12px;
+    color: #374151;
+    font-weight: 400;
+}
+
+.money{
+    font-weight: 700;
+    color: #1b3a6b;
+}
+
+.applyInfo span{
+    display: flex;
+    gap: 4px;
+}
+
+.applyInfo input, .applyInfo select, .accountUser{
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+}
+
+.applyInfo input{
+    color: #9ca3af;
+    padding: 10px 12px;
+    box-sizing: border-box;
+}
+
+.applyInfo select{
+    padding: 0 12px;
+}
+
+.name{ width: 180px; }
+.relaton{ width: 140px; }
+.date{ width: 160px; }
+.place{ width: 240px; }
+
+.bank{ width: 160px; }
+.account{ width: 240px; }
+.accountUser{
+    width: 140px;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    box-sizing: border-box;
+}
+
+.accountCheck{
+    width: fit-content;
+    height: 36px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+    padding: 10px 16px;
+    box-sizing: border-box;
+    background-color: #f0fbf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 6px;
+    font-weight: 900;
+    color: #16a34a;
+    position: absolute;
+    top: 50%;
+    right: 40%;
+    transform: translateY(-50%);
+}
+
+.position{
+    position: relative;
+}
+
+.attach{
+    margin-top: 18px;
+}
+
+.fiileUpload{
+    height: 80px;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 23px 0;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+
+.attachText p{
+    font-weight: 400;
+    color: #6b7280;
+}
+
+.attachText span{
+    font-size: 11px;
+    font-weight: 400;
+    color: #9ca3af;
+}
+
+.uploadBtn{
+    height: 28px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    text-align: center;
+    padding: 6px 16px;
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.attachFile{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    margin-bottom: 18px;
+}
+
+.file{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.fileName p{
+    color: #111827;
+    font-weight: 500;
+}
+
+.fileName span{
+    font-size: 11px;
+    font-weight: 400;
+    color: #9ca3af;
+}
+
+.delBtn{
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #ef4444;
+    cursor: pointer;
+}
+
+
+.note{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.noteTitle{
+    color: #374151;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.note textarea{
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 13px;
+    padding: 10px 12px;
+}
+
+.noteBtnBox{
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.cancleBtn, .saveBtn{
+    border-radius: 6px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 13px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.cancleBtn{
+    color: #374151;
+    font-weight: 500;
+    border: 1px solid #d1d5db;
+}
+
+.saveBtn{
+    font-weight: 700;
+    background-color: #1b3a6b;
+    color: white;
+}
+
+
+.table{
+    background-color: #e5e7eb;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.tableTitleBox{
+    height: 46px;
+    display: flex;
+    justify-content: space-between;
+    padding: 11.5px 20px;
+    align-items: center;
+}
+
+.tableTitle{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: #1b3a6b;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.tableSearch{
+    height: 30px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+}
+
+.tableSearch select{
+    width: 63px;
+    height: 100%;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #374151;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+.tableLenght{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 900;
+    background-color: #eff6ff;
+    border-radius: 999px;
+    padding: 4px 12px;
+    box-sizing: border-box;
+}

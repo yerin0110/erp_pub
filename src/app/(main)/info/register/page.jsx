@@ -5,9 +5,23 @@ import Nav from '@/component/common/Nav';
 import Aside from '@/component/common/Aside';
 import Table from '@/component/common/Table';
 import PageTitle from '@/component/common/PageTitle';
+import { useState } from 'react';
+import baseApi from '@/api/baseApi';
 
-export default function page(){
-    
+export default function Page(){
+
+    const [keyword, setKeyword]=useState();
+
+    const getEmployees=async()=> {
+        const res=await baseApi.get('/api/v1/employees', {
+            params: {
+                keyword: keyword || '',
+                page: 1
+            }
+        });
+        console.log(res.data.data);
+    }
+
     return(
         <div className={c.wrap}>
 
@@ -54,7 +68,9 @@ export default function page(){
                         <div className={c.search}>
                             <div>
                                 <span>사원번호</span>
-                                <input type="text" placeholder='전체' />
+                                <input type="text" placeholder='전체'
+                                    onChange={(e)=> setKeyword(e.target.value)}
+                                />
                             </div>
                             
                             <div>
@@ -70,25 +86,25 @@ export default function page(){
                             <div>
                                 <span>직급</span>
                                 <select name="" id="">
-                                    <option value="">인사팀</option>
-                                    <option value="">경영지원팀</option>
-                                    <option value="">개발팀</option>
-                                    <option value="">영업팀</option>
+                                    <option value="">과장</option>
+                                    <option value="">팀장</option>
+                                    <option value="">대리</option>
+                                    <option value="">사원</option>
                                 </select>
                             </div>
 
                             <div>
                                 <span>재직상태</span>
                                 <select name="" id="">
-                                    <option value="">인사팀</option>
-                                    <option value="">경영지원팀</option>
-                                    <option value="">개발팀</option>
-                                    <option value="">영업팀</option>
+                                    <option value="">재직중</option>
+                                    <option value="">휴직중</option>
                                 </select>
                             </div>
 
                             <div className={c.searchBtnBox}>
-                                <button className={c.searchBtn}>
+                                <button className={c.searchBtn}
+                                    onClick={()=> getEmployees()}
+                                >
                                     <img src="/images/Search-white.png" alt="" />
                                     조회
                                 </button>
