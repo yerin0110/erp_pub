@@ -1,0 +1,295 @@
+.wrap{
+    width: 1440px;
+    height: 900px;
+    margin: 0 auto;
+    font-family: 'Noto Sans KR';
+}
+
+.continer{
+    display: flex; 
+    width: 100%;
+    height: 840px;
+}
+
+.content{
+    width: 660px;
+    background: linear-gradient(to left, #0f2547, #1e40af);
+    position: relative;
+}
+
+.contentBox, .loginBox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contentBox{
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+}
+
+.intro1, .intro2{ width: 532px; }
+
+.intro1{ 
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.shield{
+    height: 30px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #93c5fd;
+    background-color: rgba(225, 225, 225, 9.41%);
+    padding: 7px 16px;
+    border-radius: 20px;
+}
+
+.introTitle{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.introTitle h2 {
+    font-size: 38px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.introTitle span{
+    color: #60a5fa;
+}
+
+.introTitle p{
+    font-size: 15px;
+    font-weight: 500;
+    color: #bfdbfe;
+}
+
+.introText{
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.text h3{
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+}
+
+.text p{
+    font-size: 12px;
+    color: #93c5fd;
+}
+
+.introText span{
+    display: block;
+    width: 1px;
+    height: 44px;
+    background-color: rgba(225, 225, 225, 14.51%);
+}
+
+.intro2{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.introduce{
+    width: 100%;
+    height: 66px;
+    background-color: rgba(225, 225, 225, 7.06%);
+    border: 1px solid rgba(225, 225, 225, 12.55%);
+    border-radius: 10px;
+    padding: 14px 18px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.imgBox{
+    background-color: rgba(225, 225, 225, 8.24%);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.introduceText{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.introduceText p{
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+
+.introduceText span{
+    font-size: 12px;
+    color: #dfdbfe;
+}
+
+.login{
+    flex: 1;
+    position: relative;
+}
+
+.loginBox{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.loginText{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.loginText p{
+    font-size: 30px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.loginText span{
+    font-size: 15px;
+    color: #6b7280;
+}
+
+.loginInputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.loginInput{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.loginInput label{
+    font-size: 15px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.inputBox{
+    width: 400px;
+    height: 50px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.inputBox img{
+    width: 18px;
+    height: 18px;
+}
+
+.inputBox input{
+    width: 100%;
+    outline: none;
+    font-size: 14px;
+}
+
+.find{
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginStatus{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.loginStatus input{
+    width: 16px;
+    height: 16px;
+}
+
+.loginStatus label{
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.find span{
+    font-size: 13px;
+    font-weight: 500;
+    color: #2563eb;
+    cursor: pointer;
+}
+
+.btnBox{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.loginBtn, .kakaoLoginBtn{
+    cursor: pointer;
+}
+
+.loginBtn{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    background-color: #1e3a5f;
+    border-radius: 10px;
+    padding: 16px 0;
+}
+
+.orBox{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+.orBox span{
+    display: block;
+    flex: 1;
+    height: 1px;
+    background-color: #e5e7eb;
+}
+
+.signUp{
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.signUp label{
+    color: #6b7280;
+}
+
+.signUp span{
+    font-weight: 600;
+    color: #2563eb;
+    cursor: pointer;
+}
