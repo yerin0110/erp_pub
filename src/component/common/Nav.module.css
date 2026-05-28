@@ -28,6 +28,7 @@
 .topBarL img, .topBarR img{
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .logo{
@@ -52,6 +53,7 @@
     align-items: center;
     justify-content: center;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .action{

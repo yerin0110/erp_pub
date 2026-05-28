@@ -9,7 +9,7 @@ export default function Nav(){
                     <p>인사관리시스템</p>
                 </div>
                 <ul className={c.topMenu}>
-                    <li className={c.action}>인사관리</li>
+                    <li>인사관리</li>
                     <li>근태관리</li>
                     <li>급여관리</li>
                     <li>일용직관리</li>

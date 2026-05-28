@@ -1,9 +1,20 @@
 'use client';
 
+import { useState } from 'react';
 import c from './page.module.css';
 import Nav from '@/component/common/Nav';
+import baseApi from '@/api/baseApi';
 
-export default function page(){
+export default function Page(){
+
+    const [loginInfo, setLoginInfo]=useState();
+
+    const goLogin=async()=>{
+        const res=await baseApi.post('/api/v1/employees/login', loginInfo);
+        
+        localStorage.setItem('키 값', '넣을 값 ');
+        const 로컬스토리지꺼낸데이터=localStorage.getItem('키 값');
+    }
     
     return(
         <div className={c.wrap}>
@@ -86,6 +97,7 @@ export default function page(){
                                     <img src="/images/Mail.png" alt="" />
                                     <input type="text"
                                         placeholder='이메일 주소를 입력하세요'
+                                        onChange={(e)=> setLoginInfo(prev=> ({...prev, email: e.target.value}))}
                                     />
                                 </div>
                             </div>
@@ -95,6 +107,7 @@ export default function page(){
                                     <img src="/images/Lock.png" alt="" />
                                     <input type="password"
                                         placeholder='비밀번호를 입력하세요'
+                                        onChange={(e)=> setLoginInfo(prev=> ({...prev, password: e.target.value}))}
                                     />
                                 </div>
                             </div>
@@ -110,7 +123,7 @@ export default function page(){
                         </div>
 
                         <div className={c.btnBox}>
-                            <button className={c.loginBtn}>
+                            <button className={c.loginBtn} onClick={()=> goLogin()}>
                                 <img src="/images/Log In.png" alt="" />
                                 로그인
                             </button>

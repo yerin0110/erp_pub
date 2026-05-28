@@ -17,7 +17,7 @@
     position: relative;
 }
 
-.contentBox, .loginBox{
+.contentBox, .signupBox{
     position: absolute;
     top: 50%;
     left: 50%;
@@ -76,30 +76,6 @@
     color: #bfdbfe;
 }
 
-.introText{
-    display: flex;
-    gap: 32px;
-    align-items: center;
-}
-
-.text h3{
-    font-size: 26px;
-    font-weight: 700;
-    color: white;
-}
-
-.text p{
-    font-size: 12px;
-    color: #93c5fd;
-}
-
-.introText span{
-    display: block;
-    width: 1px;
-    height: 44px;
-    background-color: rgba(225, 225, 225, 14.51%);
-}
-
 .intro2{
     display: flex;
     flex-direction: column;
@@ -108,38 +84,49 @@
 
 .introduce{
     width: 100%;
-    height: 66px;
+    height: 56px;
     background-color: rgba(225, 225, 225, 7.06%);
-    border: 1px solid rgba(225, 225, 225, 12.55%);
     border-radius: 10px;
     padding: 14px 18px;
     box-sizing: border-box;
     display: flex;
-    gap: 14px;
+    gap: 12px;
     align-items: center;
 }
 
 .imgBox{
-    background-color: rgba(225, 225, 225, 8.24%);
+    background-color: rgba(34, 197, 94, 10.2%);
     padding: 10px;
     border-radius: 8px;
 }
 
-.introduceText{
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.introduceText p{
-    font-size: 14px;
-    font-weight: 600;
+.introduce p{
+    font-size: 13px;
+    font-weight: 500;
     color: white;
 }
 
-.introduceText span{
-    font-size: 12px;
-    color: #dfdbfe;
+.intro3{
+    cursor: pointer;
+}
+
+.introduceText{
+    height: 46px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(225, 225, 225, 7.06%);
+    border: 1px solid rgba(225, 225, 225, 14.51%);
+    border-radius: 12px;
+    padding: 14px 0;
+    box-sizing: border-box;
+}
+
+.introduceText p{
+    font-size: 13px;
+    font-weight: 600;
+    color: #fcd34d;
 }
 
 .login{
@@ -147,10 +134,11 @@
     position: relative;
 }
 
-.loginBox{
+.signupBox{
+    width: 560px;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 24px;
 }
 
 .loginText{
@@ -170,9 +158,9 @@
     color: #6b7280;
 }
 
-.loginInputBox{
-    display: flex;
-    flex-direction: column;
+.signupInputBox{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 14px;
 }
 
@@ -183,13 +171,12 @@
 }
 
 .loginInput label{
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 500;
     color: #374151;
 }
 
 .inputBox{
-    width: 400px;
     height: 50px;
     background-color: white;
     border: 1px solid #d1d5db;
@@ -206,34 +193,44 @@
     height: 18px;
 }
 
-.inputBox input{
+.inputBox input, .signupBox select{
     width: 100%;
     outline: none;
     font-size: 14px;
 }
 
-.find{
-    display: flex;
-    justify-content: space-between;
-}
-
-.loginStatus{
+.signupStatus{
     display: flex;
     gap: 6px;
     align-items: center;
+    font-size: 12px;
+    color: #9ca3af;
 }
 
-.loginStatus input{
-    width: 16px;
-    height: 16px;
+.agreeBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-sizing: border-box;
 }
 
-.loginStatus label{
+.agree{
+    display: flex;
+    gap: 8px;
     font-size: 13px;
-    color: #6b7280;
+    color: #374151;
 }
 
-.find span{
+.agree input{
+    width: 18px;
+    height: 18px;
+}
+
+.agreeBox span{
     font-size: 13px;
     font-weight: 500;
     color: #2563eb;
@@ -244,9 +241,6 @@
     display: flex;
     gap: 10px;
     flex-direction: column;
-}
-.loginBtn, .kakaoLoginBtn{
-    cursor: pointer;
 }
 
 .loginBtn{
@@ -262,21 +256,7 @@
     border-radius: 10px;
     padding: 16px 0;
     box-sizing: border-box;
-}
-
-.orBox{
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    font-size: 13px;
-    color: #9ca3af;
-}
-
-.orBox span{
-    display: block;
-    flex: 1;
-    height: 1px;
-    background-color: #e5e7eb;
+    cursor: pointer;
 }
 
 .signUp{
