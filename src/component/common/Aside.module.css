@@ -27,6 +27,11 @@
     align-items: center;
 }
 
+.headerMenu li img{
+    width: 13px;
+    height: 13px;
+}
+
 .headerMenu span{
     width: 5px;
     height: 5px;

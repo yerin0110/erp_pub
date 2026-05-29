@@ -1,14 +1,14 @@
 'use client';
 
 import c from './page.module.css';
-import Nav from '@/component/common/Nav';
+import NavHome from '@/component/common/NavHome';
 
 export default function page(){
     
     return(
         <div className={c.wrap}>
 
-            <Nav />
+            <NavHome />
 
             <div className={c.continer}>
                 <div className={c.content}>
