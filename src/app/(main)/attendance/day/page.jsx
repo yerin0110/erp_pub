@@ -4,9 +4,16 @@ import c from './page.module.css';
 import Nav from '@/component/common/Nav';
 import Aside from '@/component/common/Aside';
 import PageTitle from '@/component/common/PageTitle';
-import { Calendar, CalendarCheck, FilePen, Search } from 'lucide-react';
+import { AlarmClock, BookOpen, Calendar, CalendarCheck, CheckCheck, FilePen, ListChecks, LogOut, Plane, RotateCcw, Save, Search, ShieldCheck, UsersRound, X } from 'lucide-react';
+import { useState } from 'react';
 
-export default function page(){
+export default function Page(){
+
+    const [isOn, setIsOn] = useState(false);
+
+    const toggleHandler = () => {
+        setIsOn(!isOn);
+    }
     
     return(
         <div className={c.wrap}>
@@ -111,11 +118,118 @@ export default function page(){
                                 </div>
                                 <span>7월 1일</span>
                             </div>
-                            .{c.registerBox}
+                            <div className={c.registerBox}>
+                                <div className={c.memberChoice}>
+                                    <label>사원선택<span className={c.necessary}>*</span></label>
+                                    <input type="text"
+                                        placeholder='사원선택'
+                                    />
+                                </div>
+                                <div className={c.type}>
+                                    <label>근태 유형<span className={c.necessary}>*</span></label>
+                                    <div className={c.typeBox}>
+                                        <button className={c.type1}>
+                                            <CheckCheck size={12} color="#ffffff" />출근
+                                        </button>
+                                        <button className={c.type2}>
+                                            <AlarmClock size={12} color="#ea580c" />지각
+                                        </button>
+                                        <button className={c.type3}>
+                                            <LogOut size={12} color="#6b7280" />조퇴
+                                        </button>
+                                        <button className={c.type4}>
+                                            <X size={12} color="#e11d48" />결근
+                                        </button>
+                                        <button className={c.type5}>
+                                            <CalendarCheck size={12} color="#16a34a" />연차
+                                        </button>
+                                        <button className={c.type6}>
+                                            <Calendar size={12} color="#0284c7" />반차
+                                        </button>
+                                        <button className={c.type7}>
+                                            <Plane size={12} color="#7c3aed" />출장
+                                        </button>
+                                        <button className={c.type8}>
+                                            <BookOpen size={12} color="#6b7280" />교육
+                                        </button>
+                                        <button className={c.type9}>
+                                            <ShieldCheck size={12} color="#6b7280" />공가
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className={c.time}>
+                                    <div className={c.timeBox}>
+                                        <label>출근 시간</label>
+                                        <input type="time" />
+                                    </div>
+                                    <div className={c.timeBox}>
+                                        <label>퇴근 시간</label>
+                                        <input type="time" />
+                                    </div>
+                                </div>
+                                <div className={c.over}>
+                                    <div className={c.overTitle}>
+                                        <label>초과근무&#40;OT&#41;</label>
+                                        <div className={c.switchContainer}>
+                                            <button 
+                                                type="button"
+                                                className={`${c.switchBody} ${isOn ? c.switchOn : ''}`}
+                                                onClick={toggleHandler}
+                                            >
+                                                <div className={`${c.switchBall} ${isOn ? c.ballOn : ''}`} />
+                                            </button>
+                                            <span className={c.switchLabel}>적용</span> 
+                                        </div>
+                                    </div>
+                                    <div className={c.overBox}>
+                                        <input type="time" />~<input type="time" />
+                                        <div className={c.hour}>2.5h</div>
+                                    </div>
+                                </div>
+                                <div className={c.note}>
+                                    <label>비고</label>
+                                    <textarea name="" id="" placeholder='특이사항을 입력하세요'></textarea>
+                                </div>
+                                <div className={c.btnBox}>
+                                    <button className={c.resetBtn}>
+                                        <RotateCcw size={12} color="#6b7280" />취소
+                                    </button>
+                                    <button className={c.saveBtn}>
+                                        <Save size={12} color="#ffffff" />저장
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
                         <div className={c.listBox}>
-                            
+                            <div className={c.table}>
+                                <div className={c.tableTitleBox}>
+                                    <div className={c.tableTitle}>
+                                        <ListChecks size={15} color="#1b3a6b" />
+                                        2025.07.01 근태 목록
+                                    </div>
+                                    <div className={c.tableSearch}>
+                                        <div className={c.tableLenght}>총 {10}명</div>
+                                        <div className={c.totalRegister}>
+                                            <UsersRound size={12} color="#16a34a" />일괄등록
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* <Table 
+                                    columns={[
+                                        '사원번호',
+                                        '성명',
+                                        '부서',
+                                        '직급',
+                                        '근태유형',
+                                        '출근시간',
+                                        '퇴근시간',
+                                        'OT',
+                                        '비고',
+                                        '관리'
+                                    ]}
+                                /> */}
+                            </div>
                         </div>
                     </div>
                 </div>
