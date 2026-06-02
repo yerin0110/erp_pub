@@ -59,7 +59,7 @@ export default function Table({columns}){
                             <td>이메일</td>
                             {/* <td><span className={statusStyles[item.status]}>재직중</span></td> */}
                             <td><span className={c.statusActive}>재직중</span></td>
-                            <td><button className={c.edit_btn}>수정</button></td>
+                            <td><button className={c.editBtn}>수정</button></td>
                         </tr>
                     ))}
                 </tbody>

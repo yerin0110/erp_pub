@@ -4,7 +4,7 @@ import c from './page.module.css';
 import Nav from '@/component/common/Nav';
 import Aside from '@/component/common/Aside';
 import PageTitle from '@/component/common/PageTitle';
-import { AlarmClock, BookOpen, Calendar, CalendarCheck, CheckCheck, FilePen, ListChecks, LogOut, Plane, RotateCcw, Save, Search, ShieldCheck, UsersRound, X } from 'lucide-react';
+import { AlarmClock, BookOpen, Calendar, CalendarCheck, CheckCheck, FilePen, ListChecks, LogOut, Plane, RotateCcw, Save, Search, ShieldCheck, SquareCheck, UsersRound, X } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Page(){
@@ -215,20 +215,33 @@ export default function Page(){
                                         </div>
                                     </div>
                                 </div>
-                                {/* <Table 
-                                    columns={[
-                                        '사원번호',
-                                        '성명',
-                                        '부서',
-                                        '직급',
-                                        '근태유형',
-                                        '출근시간',
-                                        '퇴근시간',
-                                        'OT',
-                                        '비고',
-                                        '관리'
-                                    ]}
-                                /> */}
+                                
+                                <table className={c.workTable}>
+                                    <thead>
+                                        <tr>
+                                            <th><SquareCheck size={16} color="#1b3a6b" /></th>
+                                            <th>사원번호</th> <th>성명</th> <th>부서</th>
+                                            <th>직급</th> <th>근태유형</th> <th>출근시간</th>
+                                            <th>퇴근시간</th> <th>OT</th> <th>비고</th> <th>관리</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="checkbox" /></td>
+                                            <td>EMP-001</td> <td>김철수</td> <td>인사팀</td>
+                                            <td>팀장</td> <td><div><span></span>출근</div></td>
+                                            <td>09:02</td> <td>18:05</td> <td>-</td> <td>-</td>
+                                            <td>
+                                                <button className={c.editBtn}>수정</button>
+                                                <button className={c.delBtn}>삭제</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>

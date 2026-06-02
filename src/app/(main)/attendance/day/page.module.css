@@ -124,6 +124,7 @@
 .nameBox input{
     width: 63px;
     font-size: 13px;
+    outline: none;
 }
 
 .searhResult{
@@ -462,7 +463,7 @@
 }
 
 .table{
-    background-color: #e5e7eb;
+    background-color: #f8fafc;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
@@ -473,6 +474,7 @@
     justify-content: space-between;
     padding: 11.5px 20px;
     align-items: center;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .tableTitle{
@@ -517,4 +519,92 @@
     font-size: 12px;
     font-weight: 900;
     color: #16a34a;
+}
+
+.workTable{
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+}
+
+.workTable tr{
+    height: 38px;
+}
+
+.workTable thead{
+    background-color: #f1f5f9;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 12px;
+    font-weight: 900;
+    color: #6b7280;
+}
+
+.workTable th:nth-child(1){ width: 40px; }
+.workTable th:nth-child(2){ width: 90px; }
+.workTable th:nth-child(3){ width: 70px; }
+.workTable th:nth-child(4){ width: 90px; }
+.workTable th:nth-child(5){ width: 80px; }
+.workTable th:nth-child(6){ width: 80px;}
+.workTable th:nth-child(7){ width: 80px; }
+.workTable th:nth-child(8){ width: 80px; }
+.workTable th:nth-child(9){ width: 60px; }
+.workTable th:nth-child(10){ width: auto; }
+.workTable th:nth-child(11){ width: 90px;}
+
+.workTable tbody{
+    background-color: white;
+    font-size: 12px;
+    color: #374151;
+}
+
+.workTable td:nth-child(3){
+    font-weight: 900;
+    color: #111827;
+}
+
+.workTable div{
+    width: fit-content;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    text-align: center;
+    padding: 3px 10px;
+    background-color: #f0f7ff;
+    align-items: center;
+    text-align: center;
+    font-weight: 900;
+    color: #2563eb;
+    border-radius: 999px;
+}
+
+.workTable span{
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background-color: #2563eb;
+}
+
+.workTable td:nth-child(11){
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.editBtn, .delBtn{
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.editBtn{
+    background-color: #eff6ff;
+    color: #2563eb;
+}
+
+.delBtn{
+    background-color: #fff1f2;
+    color: #e11d48;
 }

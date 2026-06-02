@@ -138,7 +138,7 @@
 .type7{ background-color: #cbd5e1; }
 
 .table{
-    background-color: #e5e7eb;
+    background-color: #f8fafc;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
@@ -149,6 +149,7 @@
     justify-content: space-between;
     padding: 11.5px 20px;
     align-items: center;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .tableTitle{
@@ -158,4 +159,149 @@
     color: #1b3a6b;
     font-size: 14px;
     font-weight: 700;
+}
+
+.total{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.total span{
+    display: block;
+    width: 1px;
+    height: 14px;
+    background-color: #e5e7eb;
+}
+
+.totalWork, .targetMember{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.totalWork span, .targetMember span{
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+}
+
+.totalWork span{ background-color: #64748b; }
+.targetMember span{ background-color: #3b82f6; }
+
+.workTable{
+    width: 100%;
+    table-layout: fixed;
+    font-size: 11px;
+    font-weight: 900;
+    color: #6b7280;
+    text-align: center;
+}
+
+.workTable tr{
+    height: 38px;
+}
+
+.workTable tbody tr:nth-child(1){
+    background-color: white;
+}
+
+.workTable th{
+    width: 26px;
+    line-height: 38px;
+    background-color: #f1f5f9;
+    border-right: 1px solid #e5e7eb;
+}
+
+.thName, .thTeam{
+    width: 72px !important;
+    font-weight: 900;
+}
+
+.workTable th:nth-child(9), .workTable th:nth-child(10),
+.workTable th:nth-child(16), .workTable th:nth-child(17),
+.workTable th:nth-child(23), .workTable th:nth-child(24),
+.workTable th:nth-child(30), .workTable th:nth-child(31),
+.workTable td:nth-child(9), .workTable td:nth-child(10),
+.workTable td:nth-child(16), .workTable td:nth-child(17),
+.workTable td:nth-child(23), .workTable td:nth-child(24),
+.workTable td:nth-child(30), .workTable td:nth-child(31){
+    background-color: #e8edf2;
+    color: #94a3b8;
+}
+
+.thWork, .thLate, .thDayoff, .thAbsence{
+    width: 38px !important;
+    font-weight: 900;
+}
+
+.thWork, .work{
+    background-color: #eff6ff !important;
+    border-right: 1px solid #bfdbfe !important;
+    color: #1d4ed8 !important;
+}
+
+.thLate, .late{
+    background-color: #fff7ed !important;
+    border-right: 1px solid #fed7aa !important;
+    color: #ea680c !important;
+}
+
+.thDayoff, .dayoff{
+    background-color: #f0fdf4 !important;
+    border-right: 1px solid #bbf7d0 !important;
+    color: #16a34a !important;
+}
+
+.thAbsence, .absence{
+    background-color: #fff1f2 !important;
+    border-right: 1px solid #fecaca !important;
+    color: #e11d48 !important;
+}
+
+.workTable th:last-child {
+    width: auto !important;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.workTable td{
+    border-right: 1px solid #e5e7eb;
+    font-size: 9px;
+    font-weight: 400;
+    color: #94a3b8;
+}
+
+.name{
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    color: #111827 !important;
+}
+
+.team{
+    font-size: 11px !important;
+    color: #374151 !important;
+}
+
+.work{
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.late{
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.dayoff{
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.absence{
+    font-size: 11px !important;
+    font-weight: 700 !important;
 }

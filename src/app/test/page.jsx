@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import c from './page.module.css';
 import baseApi from '@/api/baseApi';
 
-export default function page(){
+export default function Page(){
 
     const [employees, setEmployees]=useState([]);
 

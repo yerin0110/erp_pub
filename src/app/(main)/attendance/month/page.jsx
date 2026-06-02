@@ -4,8 +4,7 @@ import c from './page.module.css';
 import Nav from '@/component/common/Nav';
 import Aside from '@/component/common/Aside';
 import PageTitle from '@/component/common/PageTitle';
-import { Calendar, CalendarCheck, Search } from 'lucide-react';
-import Table from '@/component/common/Table';
+import { Calendar, Search, Table } from 'lucide-react';
 
 export default function Page(){
     
@@ -88,7 +87,7 @@ export default function Page(){
                                 <span className={c.type5}></span>출장
                             </div>
                             <div>
-                                <span className={c.type6}></span>결군
+                                <span className={c.type6}></span>결근
                             </div>
                             <div>
                                 <span className={c.type7}></span>휴일
@@ -102,12 +101,67 @@ export default function Page(){
                                 <Table size={14} color="#1b3a6b" />
                                 2025년 7월 근태현황
                             </div>
-                            <div className={c.tableSearch}>
-                                <div className={c.totalWork}>총 근무일{10}일</div>
-                                <div className={c.targetMember}>대상 인원 {5}명</div>
+                            <div className={c.total}>
+                                <div className={c.totalWork}><span></span>총 근무일{10}일</div>
+                                <span></span>
+                                <div className={c.targetMember}><span></span>대상 인원 {5}명</div>
                             </div>
                         </div>
                         
+                        <table className={c.workTable}>
+                            <thead>
+                                <tr>
+                                    <th className={c.thName}>성명</th>
+                                    <th className={c.thTeam}>부서</th>
+                                    <th>1</th> <th>2</th> <th>3</th> <th>4</th> <th>5</th>
+                                    <th>6</th> <th>7</th> <th>8</th> <th>9</th> <th>10</th>
+                                    <th>11</th> <th>12</th> <th>13</th> <th>14</th> <th>15</th>
+                                    <th>16</th> <th>17</th> <th>18</th> <th>19</th> <th>20</th>
+                                    <th>21</th> <th>22</th> <th>23</th> <th>24</th> <th>25</th>
+                                    <th>26</th> <th>27</th> <th>28</th> <th>29</th> <th>30</th>
+                                    <th>31</th>
+                                    <th className={c.thWork}>출근</th>
+                                    <th className={c.thLate}>지각</th>
+                                    <th className={c.thDayoff}>연차</th>
+                                    <th className={c.thAbsence}>결근</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td className={c.name}>김철수</td>
+                                    <td className={c.team}>인사팀</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td>
+                                    <td className={c.work}>20</td>
+                                    <td className={c.late}>1</td>
+                                    <td className={c.dayoff}>1</td>
+                                    <td className={c.absence}>0</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td className={c.name}>이영희</td>
+                                    <td className={c.team}>경영지원팀</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                                    <td>출</td>
+                                    <td className={c.work}>19</td>
+                                    <td className={c.late}>1</td>
+                                    <td className={c.dayoff}>2</td>
+                                    <td className={c.absence}>0</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
