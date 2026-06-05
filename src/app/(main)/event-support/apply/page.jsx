@@ -5,6 +5,7 @@ import Nav from '@/component/common/Nav';
 import Aside from '@/component/common/Aside';
 import PageTitle from '@/component/common/PageTitle';
 import Table from '@/component/common/Table';
+import { Calendar, Check, Gift, Hash, X } from 'lucide-react';
 
 export default function page(){
     
@@ -308,6 +309,88 @@ export default function page(){
                                 '관리'
                             ]}
                         /> */}
+                    </div>
+                </div>
+            </div>
+
+            <div className={c.modalView}>
+                <div className={c.titleBox}>
+                    <div className={c.modalTitle}>
+                        <Gift size={17} color="#60a5fa" />
+                        <div>
+                            <p>경조비 신청 상세</p>
+                            <span>Welfare Benefit Detail</span>
+                        </div>
+                    </div>
+                    <div className={c.btnBox}>
+                        <div className={c.status}>검토중</div>
+                        <div className={c.closeBtn}><X size={14} color="#ffffff" /></div>
+                    </div>
+                </div>
+
+                <div className={c.detailBox}>
+                    <div className={c.statusBox}>
+                        <div className={c.apply}>
+                            <div className={c.applyNum}>
+                                <Hash size={12} color="#9ca3af" />신청번호: WEL-2025-07-001
+                            </div>
+                            <div className={c.applyDate}>
+                                <Calendar size={16} color="#9ca3af" />신청일: 2025.07.01
+                            </div>
+                        </div>
+                        <div className={c.state}>
+                            <div>
+                                <Check size={11} color="#ffffff"
+                                    style={{backgroundColor:'#1b3a6b',
+                                            width:'20px', height:'20px',
+                                            padding:'4.5px', borderRadius:'999px'}}
+                                />
+                                신청완료
+                            </div>
+                            <span></span>
+                            <div>
+                                <div className={c.cricle}>
+                                    <div className={c.miniCricle}></div>
+                                </div>검토중
+                            </div>
+                            <span></span>
+                            <div>
+                                <div className={c.cricleBasic}>
+                                    <div className={c.miniCricleBasic}></div>
+                                </div>승인
+                            </div>
+                            <span></span>
+                            <div>
+                                <div className={c.cricleBasic}>
+                                    <div className={c.miniCricleBasic}></div>
+                                </div>지급완료
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={c.detail}>
+                        <div className={c.detailInfo}>
+                            <div className={c.detailTitle}>
+                                <span></span>경조정보
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>경조구분</th>
+                                    <td><span>본인결혼</span>경조비 지급 규정 3조 1항</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div className={c.detailInfo}>
+                            <div className={c.detailTitle}>
+                                <span></span>지급 정보
+                            </div>
+                            <table>
+                                <tr>
+                                    <th>지급금액</th>
+                                    <td><span>500,000원</span>(오십만원정)</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

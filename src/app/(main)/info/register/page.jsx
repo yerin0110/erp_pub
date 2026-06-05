@@ -7,6 +7,7 @@ import Table from '@/component/common/Table';
 import PageTitle from '@/component/common/PageTitle';
 import { useState } from 'react';
 import baseApi from '@/api/baseApi';
+import { Save, Search, UserPlus, X } from 'lucide-react';
 
 export default function Page(){
 
@@ -130,12 +131,159 @@ export default function Page(){
                             '관리'
                         ]}
                     />
-
                 </div>
             </div>
 
             <div className={c.modalView}>
-                
+                <div className={c.modalTitle}>
+                    <div className={c.title}>
+                        <UserPlus size={18} color="#60a5fa" />인사정보등록
+                    </div>
+                    <div className={c.closeBtn}><X size={16} color="#ffffff" /></div>
+                </div>
+                <div className={c.inputBox}>
+                    <div className={c.input}>
+                        <div className={c.inputTitle}>
+                            <span></span><p>기본정보</p>
+                        </div>
+                        <div className={c.basic}>
+                            <div>
+                                <label>사원번호<span className={c.necessary}>*</span></label>
+                                <div className={c.auto}>자동생성</div>
+                            </div>
+                            <div>
+                                <label>성명<span className={c.necessary}>*</span></label>
+                                <input type="text"
+                                    placeholder='성명'
+                                />
+                            </div>
+                            <div>
+                                <label>부서<span className={c.necessary}>*</span></label>
+                                <select name="" id="">
+                                    <option value="인사팀">인사팀</option>
+                                    <option value="경영지원팀">경영지원팀</option>
+                                    <option value="개발팀">개발팀</option>
+                                    <option value="영업팀">영업팀</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>직급<span className={c.necessary}>*</span></label>
+                                <select name="" id="">
+                                    <option value="팀장">팀장</option>
+                                    <option value="과장">과장</option>
+                                    <option value="대리">대리</option>
+                                    <option value="사원">사원</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>입사일<span className={c.necessary}>*</span></label>
+                                <input type="date" />
+                            </div>
+                            <div>
+                                <label>재직상태<span className={c.necessary}>*</span></label>
+                                <ul className={c.status}>
+                                    <li className={c.statusBtn}>
+                                        <input type="radio" />재직중
+                                    </li>
+                                    <li className={c.statusBtn}>
+                                        <input type="radio" />휴직중
+                                    </li>
+                                    <li className={c.statusBtn}>
+                                        <input type="radio" />퇴직
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className={c.input}>
+                        <div className={c.inputTitle}>
+                            <span></span><p>연락처</p>
+                        </div>
+                        <div className={c.phone}>
+                            <div>
+                                <label>휴대폰<span className={c.necessary}>*</span></label>
+                                <input type="text"
+                                    placeholder='010-0000-0000'
+                                />
+                            </div>
+                            <div>
+                                <label>이메일</label>
+                                <input type="text"
+                                    placeholder='example@company.com'
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={c.input}>
+                        <div className={c.inputTitle}>
+                            <span></span><p>주소</p>
+                        </div>
+                        <div className={c.address}>
+                            <div>
+                                <label>우편번호</label>
+                                <div className={c.postNumBox}>
+                                    <div className={c.postNum}>우편번호</div>
+                                    <button className={c.addressBtn}>
+                                        <Search size={13} color="#ffffff" />주소검색
+                                    </button>
+                                </div>
+                            </div>
+                            <div>
+                                <label>도로명주소</label>
+                                <div className={c.auto}>주소검색 후 자동입력</div>
+                            </div>
+                            <div>
+                                <label>도로명주소</label>
+                                <input type="text"
+                                    placeholder='상세주소를 입력하세요'
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className={c.input}>
+                        <div className={c.inputTitle}>
+                            <span></span><p>비상연락처</p>
+                        </div>
+                        <div className={c.emergency}>
+                            <div>
+                                <label>성명</label>
+                                <input type="text"
+                                    placeholder='비상연락자 성명'
+                                />
+                            </div>
+                            <div>
+                                <label>관계<span className={c.necessary}>*</span></label>
+                                <select name="" id="">
+                                    <option value="관계선택">관계선택</option>
+                                    <option value="부">부</option>
+                                    <option value="모">모</option>
+                                    <option value="조부">조부</option>
+                                    <option value="조모">조모</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label>연락처</label>
+                                <input type="text"
+                                    placeholder='010-0000-0000'
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={c.modalFooter}>
+                    <p><span className={c.necessary}>*</span>필수 입력 항목입니다.</p>
+                    <div className={c.btnBox}>
+                        <button className={c.cancelBtn}>
+                            <X size={14} color="#6b7280" />취소
+                        </button>
+                        <button className={c.saveBtn}>
+                            <Save size={14} color="#ffffff" />저장
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     )
