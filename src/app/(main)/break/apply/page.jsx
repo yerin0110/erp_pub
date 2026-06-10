@@ -3,11 +3,22 @@
 import c from './page.module.css';
 import Nav from '@/component/common/Nav';
 import Aside from '@/component/common/Aside';
+import Calendar from '@/component/common/Calendar';
 import PageTitle from '@/component/common/PageTitle';
-import { Calendar, CalendarCheck, CalendarPlus, Clock, HeartPulse, Info, MoonStar, ShieldCheck, Star, Sun } from 'lucide-react';
+import { CalendarCheck, CalendarPlus, ChevronLeft, ChevronRight, Clock, HeartPulse, Info, MoonStar, Paperclip, SendHorizontal, ShieldCheck, Star, Sun, Upload, UserRound, X } from 'lucide-react';
+import { useState } from 'react';
+import StateCard from '@/component/common/StateCard';
 
-export default function page(){
-    
+export default function Page(){
+    const [currentDate, setCurrentDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(null);
+
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    const handlePrevMonth = () => setCurrentDate(new Date(year, month - 1, 1));
+    const handleNextMonth = () => setCurrentDate(new Date(year, month + 1, 1));
+
     return(
         <div className={c.wrap}>
 
@@ -47,26 +58,31 @@ export default function page(){
                     />
 
                     <div className={c.state}>
-                        <div className={c.total}>
-                            <span>총 부여일수</span>
-                            <p>14일</p>
-                        </div>
-                        <div className={c.use}>
-                            <span>사용일수</span>
-                            <p>11일</p>
-                        </div>
-                        <div className={c.remain}>
-                            <span>잔여일수</span>
-                            <p>3일</p>
-                        </div>
-                        <div className={c.wait}>
-                            <span>승인대기</span>
-                            <p>1건</p>
-                        </div>
-                        <div className={c.transfer}>
-                            <span>이월일수</span>
-                            <p>0일</p>
-                        </div>
+                        <StateCard 
+                            c={c} title="총 부여일수" value="14일" 
+                            bg="#1b3a6b" titleColor="#93c5fd"
+                            valueColor="white" borderColor='none'
+                        />
+                        <StateCard 
+                            c={c} title="사용일수" value="11일" 
+                            bg="white" titleColor="#9ca3af" valueColor="#374151" 
+                            borderColor="#e5e7eb"
+                        />
+                        <StateCard 
+                            c={c} title="잔여일수" value="3일" 
+                            bg="#f0fdf4" titleColor="#16a34a" valueColor="#15803d"  
+                            borderColor="#bbf7d0"
+                        />
+                        <StateCard 
+                            c={c} title="승인대기" value="1건" 
+                            bg="#fffbeb" titleColor="#d97706" valueColor="#92400e" 
+                            borderColor="#fde68a"
+                        />
+                        <StateCard 
+                            c={c} title="이월일수" value="0일" 
+                            bg="#eff6ff" titleColor="#3b82f6" valueColor="#1e40af" 
+                            borderColor="#bfdbfe"
+                        />
                     </div>
 
                     <div className={c.apply}>
@@ -134,7 +150,62 @@ export default function page(){
 
                                 <div className={c.applyInfo}>
                                     <label>휴가 기간<span className={c.necessary}>*</span></label>
+                                    <div className={c.dateBox}>
+                                        <div className={c.date}>
+                                            <label className={c.start}>시작일</label>
+                                            <input type="date" />
+                                        </div>
+                                        ~
+                                        <div className={c.date}>
+                                            <label className={c.start}>종료일</label>
+                                            <input type="date" />
+                                        </div>
+                                    </div>
+                                    <div className={c.notice}>
+                                        <Clock size={13} color="#2563eb" />
+                                        <p className={c.choiceDay}>신청 일수: 1일 (평일 기준)</p>
+                                    </div>
+                                </div>
 
+                                <div className={c.line}></div>
+
+                                <div className={c.applyInfo}>
+                                    <label>업무 대리자 <span className={c.optional}>선택사항</span></label>
+                                    <div className={c.agent}>
+                                        <input type="text" 
+                                            placeholder='대리자를 선택하세요'
+                                        />
+                                        <UserRound size={13} color="#9ca3af" />
+                                    </div>
+                                </div>
+
+                                <div className={c.line}></div>
+
+                                <div className={c.applyInfo}>
+                                    <label>휴가 사유 <span className={c.necessary}>*</span></label>
+                                    <textarea name="" id="" placeholder='휴가 사유를 입력하세요'></textarea>
+                                </div>
+
+                                <div className={c.applyInfo}>
+                                    <label>첨부파일 <span className={c.optional}>선택사항 · 최대 3개</span></label>
+                                    <div className={c.fileBox}>
+                                        <Paperclip size={14} color="#9ca3af" />
+                                        파일을 끌어다 놓거나
+                                        <button className={c.choiceBtn}>
+                                            <Upload size={11} color="#374151" /> 선택
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className={c.line}></div>
+
+                                <div className={c.btnBox}>
+                                    <button className={c.cancelBtn}>
+                                        <X size={13} color="#6b7280" />취소
+                                    </button>
+                                    <button className={c.applyBtn}>
+                                        <SendHorizontal size={13} color="#ffffff" />신청하기
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -143,13 +214,24 @@ export default function page(){
                             <div className={c.calendarBox}>
                                 <div className={c.applyTitle}>
                                     <div className={c.titleBox}>
-                                        <Calendar size={15} color="#1b3a6b" />
-                                        2025년 7월
+                                        <CalendarPlus size={15} color="#1b3a6b" />
+                                        휴가신청
                                     </div>
-                                    
+                                    <div className={c.arrowBox}>
+                                        <button className={c.prevBtn} onClick={handlePrevMonth}>
+                                            <ChevronLeft size={12} color="#374151" />
+                                        </button>
+                                        <button className={c.nextBtn} onClick={handleNextMonth}>
+                                            <ChevronRight size={12} color="#374151" />
+                                        </button>
+                                    </div>
                                 </div>
                                 <div className={c.calendar}>
-                                    달력이지롱
+                                    <Calendar
+                                        currentDate={currentDate} 
+                                        selectedDate={selectedDate}
+                                        onDateSelect={setSelectedDate}
+                                    />
                                 </div>
                             </div>
 
@@ -159,7 +241,7 @@ export default function page(){
                                         <Clock size={15} color="#1b3a6b" />
                                         나의 신청 이력
                                     </div>
-                                    
+                                    <div className={c.tableLenght}>총 {5}건</div>
                                 </div>
                                 <div className={c.history}>
                                     신청이력이지롱

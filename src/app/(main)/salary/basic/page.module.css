@@ -16,3 +16,174 @@
     padding: 20px;
     background-color: #f1f5f9;
 }
+
+.state{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.search{
+    height: 62px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px 20px;
+    box-sizing: border-box;
+    margin: 16px 0;
+}
+
+.searchBox{
+    height: 34px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.dateBox, .teamBox, .nameSearch, .searchBtnBox, .tableBtn{
+    height: 100%;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 13px;
+    color: #374151;
+}
+
+.dateBox span, .teamBox span, .tableBtn{
+    font-weight: 900;
+}
+
+.dateBox input{
+    width: 120px;
+    height: 100%;
+    display: flex;
+    gap: 8px;
+    padding: 9px;
+    box-sizing: border-box;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+.teamBox select{
+    width: 160px;
+    height: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.nameSearch{
+    height: 34px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    padding: 5px 10px;
+}
+
+.nameSearch input{
+    width: 63px;
+    outline: none;
+}
+
+.searchBtnBox{
+    display: flex;
+    gap: 20px;
+}
+
+.searchBtn, .resetBtn, .tableBtn{
+    height: 34px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    text-align: center;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.searchBtn, .tableBtn{
+    background-color: #1b3a6b;
+    color: white;
+    padding: 9px 20px;
+}
+
+.resetBtn{
+    border: 1px solid #d1d5db;
+    color: #6b7280;
+    padding: 9px 16px;
+}
+
+.table{ 
+    background-color: #f8fafc;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.tableTitleBox{
+    height: 46px;
+    display: flex;
+    justify-content: space-between;
+    padding: 11.5px 20px;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tableTitle{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: #1b3a6b;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.total{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.tableLenght{
+    display: flex;
+    align-items: center;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 900;
+    background-color: #eff6ff;
+    border-radius: 999px;
+    padding: 4px 12px;
+    box-sizing: border-box;
+}
+
+.total span{
+    display: block;
+    width: 1px;
+    height: 14px;
+    background-color: #e5e7eb;
+}
+
+.basicPay, .payList, .account{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.basicPay span, .payList span, .account span{
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+}
+
+.basicPay span{ background-color: #dbeafe; }
+.payList span{ background-color: #fef9c3; }
+.account span{ background-color: #d1fae5; }

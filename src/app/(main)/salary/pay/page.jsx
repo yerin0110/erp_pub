@@ -4,9 +4,9 @@ import c from './page.module.css';
 import Nav from '@/component/common/Nav';
 import Aside from '@/component/common/Aside';
 import PageTitle from '@/component/common/PageTitle';
-import Table from '@/component/common/Table';
-import { Calendar, Info, RotateCcw, Search, Table as TableIcon } from 'lucide-react';
 import StateCard from '@/component/common/StateCard';
+import { Calendar, RotateCcw, Search, Table as TableIcon } from 'lucide-react';
+import Table from '@/component/common/Table';
 
 export default function page(){
     
@@ -21,16 +21,12 @@ export default function page(){
                     dummy={
                         [
                             {
-                                titleInfo: { iconPath: '/images/Clock-blue.png', titleName: '근태관리' },
-                                submenuList: ['일일근태등록', '월근태현황']
+                                titleInfo: { iconPath: '/images/Banknote-3.png', titleName: '급여관리' },
+                                submenuList: ['급여기본정보관리', '급여지급', '기본수당외수당관리', '급여계산', '급여조회']
                             },
                             {
-                                titleInfo: { iconPath: '/images/Plane.png', titleName: '출장관리' },
-                                submenuList: ['출장신청', '출장정산', '출장사용현황']
-                            },
-                            {
-                                titleInfo: { iconPath: '/images/Calendar.png', titleName: '휴가관리' },
-                                submenuList: ['휴가일수설정', '휴가일수계산', '휴가일수신청', '휴가사용현황']
+                                titleInfo: { iconPath: '/images/Shield Check-blue.png', titleName: '4대보험관리' },
+                                submenuList: ['4대보험요율표설정', '국민연금관리', '건강보험관리', '고용보험관리', '4대보험취득/상실']
                             }
                         ]
                     }
@@ -39,53 +35,48 @@ export default function page(){
                 <div className={c.main}>
 
                     <PageTitle 
-                        location={['근태관리', '휴가관리', '휴가일수설정']} 
-                        title="휴가일수설정" 
-                        subTitle="연도별 휴가 정책 및 직급별 기준 일수를 설정합니다."
-                        // downloadBtnImg="/images/Download.png"
-                        // downloadBtnText="PDF 다운로드"
+                        location={['급여관리', '급여지급']} 
+                        title="급여지급" 
+                        subTitle="월별 직원 급여 지급 내역을 관리하고 확정합니다."
+                        downloadBtnImg="/images/Download.png"
+                        downloadBtnText="PDF 다운로드"
                         addBtnImg="/images/Save.png"
                         addBtnText="설정저장"
                     />
 
-                    
                     <div className={c.state}>
                         <StateCard 
-                            title="대상 인원" value="8명" 
-                            bg="#1b3a6b" titleColor="#93c5fd"
-                            valueColor="white" borderColor='none'
+                            title="지급합계" value="28,640,000원" 
+                            bg="linear-gradient(135deg, #2d5f9e 0%, #1b3a6b 100%)"
+                            titleColor="#93c5fd" valueColor="white" borderColor='none'
+                            subColor='#60a5fa' subcontent='전월 대비 +240,000원'
                         />
                         <StateCard 
-                            title="평균 부여일수" value="16.1일" 
+                            title="공제합계" value="4,700,000원" 
                             bg="white" titleColor="#9ca3af" valueColor="#374151" 
-                            borderColor="#e5e7eb"
+                            borderColor="#e5e7eb" subColor='#e11d48'
+                            subcontent='전월 대비 +34,000원'
                         />
                         <StateCard 
-                            title="평균 사용일수" value="10.4일" 
-                            bg="#eff6ff" titleColor="#3b82f6" valueColor="#1e40af" 
-                            borderColor="#bfdbfe"
-                        />
-                        <StateCard 
-                            title="평균 잔여일수" value="5.6일" 
+                            title="실지급합계" value="24,512,000원" 
                             bg="#f0fdf4" titleColor="#16a34a" valueColor="#15803d"  
-                            borderColor="#bbf7d0"
+                            borderColor="#bbf7d0" subColor='#16a34a'
+                            subcontent='대상인원 8명'
                         />
                         <StateCard 
-                            title="잔여 3일 이하" value="3명" 
-                            bg="#fff1f2" titleColor="#e11d48" valueColor="#be123c" 
-                            borderColor="#fecaca"
-                        />
-                        <StateCard 
-                            title="휴가 미사용" value="0명" 
-                            bg="#fffbeb" titleColor="#d97706" valueColor="#92400e" 
-                            borderColor="#fde68a"
+                            title="지급상태"
+                            bg="#fffbeb"  titleColor="#d97706"
+                            undecideColor='#fef9c3' undecideTextColor='#ca8a04'
+                            undecide='미확정 8건' decideColor='#dcfce7'
+                            decideTextColor='#16a34a' decide='확정 0건'
+                            borderColor="#fde68a"  subColor='#9ca3af'
+                            subcontent='2025년 7월분'
                         />
                     </div>
 
                     <div className={c.search}>
                         <div className={c.searchBox}>
                             <div className={c.dateBox}>
-                                <span>기준연도</span>
                                 <div>
                                     <button className={c.beforeBtn}>&lt;</button>
                                     <div className={c.dateInput}>
@@ -97,16 +88,6 @@ export default function page(){
                             </div>
                             <div className={c.teamBox}>
                                 <span>부서</span>
-                                <select name="" id="">
-                                    <option value="전체부서">전체부서</option>
-                                    <option value="인사팀">인사팀</option>
-                                    <option value="경영지원팀">경영지원팀</option>
-                                    <option value="개발팀">개발팀</option>
-                                    <option value="영업팀">영업팀</option>
-                                </select>
-                            </div>
-                            <div className={c.teamBox}>
-                                <span>정렬</span>
                                 <select name="" id="">
                                     <option value="전체부서">전체부서</option>
                                     <option value="인사팀">인사팀</option>
@@ -129,9 +110,11 @@ export default function page(){
                                     초기화
                                 </button>
                             </div>
-                            <div className={c.notice}>
-                                <Info size={13} color="#e11d48" />잔여 3일 이하 경고
-                            </div>
+                        </div>
+                        <div className={c.notice}>
+                            <div className={c.basicPay}><span></span>지급항목</div>
+                            <div className={c.payList}><span></span>공제항목</div>
+                            <div className={c.account}><span></span>실지급</div>
                         </div>
                     </div>
 
@@ -143,10 +126,9 @@ export default function page(){
                             </div>
                             <div className={c.total}>
                                 <div className={c.tableLenght}>총 {8}명</div>
-                                <div className={c.useDays}><span></span>사용일수</div>
-                                <span></span>
-                                <div className={c.remainDays}><span></span>잔여일수</div>
-                                <div className={c.low3days}><span></span>3일 이하 경고</div>
+                                <div className={c.selectAll}>
+                                    <input type="checkbox" /> 전체선택
+                                </div>
                             </div>
                         </div>
 
@@ -167,23 +149,8 @@ export default function page(){
                                 '상태'
                             ]}
                         />
-
-                        {/* <thead>
-                            <tr>
-                                <th>사원번호</th> <th>성명</th> <th>부서</th> <th>직급</th> 
-                                <th>총 부여</th> <th>연차 <span>사용</span></th>
-                                <th>반차 <span>사용</span></th> <th>병가 <span>사용</span></th> 
-                                <th>특별휴가 <span>사용</span></th> <th>기타 <span>사용</span></th>
-                                <th>총 사용</th> <th>잔여일수</th> <th>사용률</th> 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-
-                            </tr>
-                        </tbody> */}
                     </div>
-
+                    
                 </div>    
             </div>
         </div>

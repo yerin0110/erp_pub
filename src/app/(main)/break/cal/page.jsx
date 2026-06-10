@@ -5,6 +5,7 @@ import Nav from '@/component/common/Nav';
 import Aside from '@/component/common/Aside';
 import PageTitle from '@/component/common/PageTitle';
 import { Calculator, RotateCcw, Search } from 'lucide-react';
+import Table from '@/component/common/Table';
 
 export default function page(){
     

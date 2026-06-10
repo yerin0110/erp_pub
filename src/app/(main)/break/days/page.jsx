@@ -5,7 +5,7 @@ import Nav from '@/component/common/Nav';
 import Aside from '@/component/common/Aside';
 import PageTitle from '@/component/common/PageTitle';
 import { Calendar, Copy, Info, Layers, Plus, Star, TrendingUp } from 'lucide-react';
-import BreakRow from '@/component/BreakTable';
+import BreakRow from '@/component/common/BreakTable';
 
 export default function page(){
     

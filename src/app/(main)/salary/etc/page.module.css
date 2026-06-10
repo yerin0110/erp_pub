@@ -1,0 +1,376 @@
+.wrap{
+    width: 1440px;
+    height: 900px;
+    margin: 0 auto;
+    font-family: 'Noto Sans KR';
+}
+
+.continer{
+    display: flex; 
+    width: 100%;
+    height: 840px;
+}
+
+.main{
+    flex: 1;
+    padding: 20px;
+    background-color: #f1f5f9;
+}
+
+.state{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.setUP{
+    margin-top: 16px;
+    width: 100%;
+    display: flex;
+    gap: 12px;
+}
+
+.payList{
+    width: 340px;
+}
+
+.payListTitle{
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8fafc;
+    border: 1px solid #e5e7eb;
+    padding: 12px 16px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.titleBox{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1b3a6b;
+}
+
+.totalLenght{
+    display: flex;
+    align-items: center;
+    color: #2563eb;
+    font-size: 12px;
+    font-weight: 900;
+    background-color: #eff6ff;
+    border-radius: 999px;
+    padding: 4px 12px;
+    box-sizing: border-box;
+}
+
+.listCard{
+    display: flex;
+    flex-direction: column;
+}
+
+.setting{
+    width: 100%;
+}
+
+.settingTitle{
+    height: 46px;
+    background-color: #eff6ff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid #bfdbfe;
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 20px;
+}
+
+.titleBox{
+    display: flex;
+    gap: 10px;
+}
+
+.imgBox{
+    background-color: #dbeafe;
+    border-radius: 8px;
+    padding: 9px;
+}
+
+.titleText p{
+    font-size: 14px;
+    font-weight: 700;
+    color: #1d4ed8;
+}
+
+.titleText span{
+    font-size: 10px;
+    font-weight: 400;
+    color: #93c5fd;
+}
+
+.active{
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.activeText{
+    padding: 4px 12px;
+    background-color: #dcfce7;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #16a34a;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.activeText span{
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background-color: #16a34a;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* 기본 체크박스 숨기기 */
+.checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* 배경 슬라이더 (기본 꺼짐 상태: 연한 회색) */
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e7eb;
+    border-radius: 999px;
+    transition: background-color 0.2s ease;
+}
+
+/* 칩 (내부 동그라미) 기본 설정 */
+.slider::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* 켜짐(On) 상태일 때 배경색 변화 (원하시는 색상으로 변경 가능) */
+.checkbox:checked + .slider {
+    background-color: #1B3A6B;
+}
+
+/* 켜짐(On) 상태일 때 칩 이동 (36px - 16px - 2px = 18px 이동) */
+.checkbox:checked + .slider::before {
+    transform: translateX(16px);
+}
+
+.settingInput{
+    background-color: white;
+    border: 1px solid #2563eb;
+    border-top: none;
+    padding: 18px 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.settingInputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.inputTitle{
+    font-size: 13px;
+    font-weight: 700;
+    color: #1b3a6b;
+    display: flex;
+    gap: 11px;
+    align-items: center;
+}
+
+.inputTitle span{
+    display: block;
+    width: 3px;
+    height: 13px;
+    background-color: #1b3a6b;
+    border-radius: 999px;
+}
+
+.inputContent{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.inputBox label{
+    font-size: 12px;
+    font-weight: 900;
+    color: #374151;
+    display: flex;
+    gap: 4px;
+}
+
+.necessary{ color: #ef4444; }
+
+.inputBox input{
+    font-size: 13px;
+    font-weight: 500;
+    color: #111827;
+}
+
+.inputBox input, .code, .autoReflect{
+    height: 34px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.payName{ border: 1px solid #2563eb !important; }
+.inputBox input, .code, .autoReflect{ border: 1px solid #d1d5db; }
+
+.code{
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.calBtn, .taxBtn{
+    display: flex;
+}
+
+.calBtn button, .taxBtn button{
+    width: 100%;
+    height: 34px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+.time, .tax{
+    font-weight:900 !important;
+    color: white !important;
+    background-color: #1b3a6b;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.day{
+    border-top: 1px solid #d1d5db;
+    border-bottom: 1px solid #d1d5db;
+}
+
+.fixed, .taxFree{
+    border: 1px solid #d1d5db;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.unitCost{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.unitCost input{
+    flex-grow: 1;
+    width: 0;
+}
+
+.autoReflect{
+    background-color: #f9fafb;
+    font-size: 12px;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.line{
+    width: 100%;
+    height: 1px;
+    background-color: #f1f5f9;
+}
+
+.applyRank{
+    display: flex;
+    gap: 6px;
+}
+
+.applyRank button{
+    height: 27px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 12px;
+}
+
+.applyRank span{
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+}
+
+.executive{
+    background-color: #f1f5f9;
+    border: 1px solid #e5e7eb;
+    font-weight: 500;
+    color: #9ca3af;
+}
+
+.executive span{ background-color: #d1d5db; }
+
+.rank{
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    font-weight: 900;
+    color: #1d4ed8;
+}
+
+.rank span{ background-color: #2563eb; }
+
+.limit{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+

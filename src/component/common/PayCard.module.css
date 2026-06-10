@@ -1,0 +1,53 @@
+.payCard{
+    padding: 9.5px 16px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.listBox{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.imgBox{
+    padding: 9px;
+    border-radius: 8px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.contentTitle{
+    font-size: 13px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.active{
+    font-size: 10px;
+    font-weight: 900;
+    color: #16a34a;
+    padding: 2px 8px;
+    background-color: #dcfce7;
+    border-radius: 999px;
+    margin-left: 6px;
+}
+
+.contentTitle p{
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.tax{
+    background-color: #fef9c3;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 900;
+    color: #ca8a04;
+}

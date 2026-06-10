@@ -18,10 +18,10 @@
 }
 
 .state{
+    width: 100%;
     display: flex;
-    gap: 10px;
     justify-content: space-between;
-    margin-bottom: 16px;
+    gap: 10px;
 }
 
 .search{
@@ -34,7 +34,7 @@
     border-radius: 8px;
     padding: 14px 20px;
     box-sizing: border-box;
-    margin-bottom: 16px;
+    margin: 16px 0;
 }
 
 .searchBox{
@@ -45,6 +45,7 @@
 }
 
 .dateBox, .teamBox, .nameSearch, .searchBtnBox{
+    height: 100%;
     display: flex;
     gap: 8px;
     align-items: center;
@@ -76,7 +77,7 @@
 }
 
 .dateInput{
-    width: 110px;
+    width: 130px;
     display: flex;
     gap: 8px;
     padding: 10px 20px;
@@ -151,18 +152,37 @@
 }
 
 .notice{
-    height: 27px;
     display: flex;
-    gap: 8px;
+    gap: 12px;
     align-items: center;
-    padding: 6px 12px;
-    background-color: #fff1f2;
-    border: 1px solid #fecaca;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 900;
-    color: #e11d48;
 }
+
+
+.notice span{
+    display: block;
+    width: 1px;
+    height: 14px;
+    background-color: #e5e7eb;
+}
+
+.basicPay, .payList, .account{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.basicPay span, .payList span, .account span{
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+}
+
+.basicPay span{ background-color: #dbeafe; }
+.payList span{ background-color: #fee2e2; }
+.account span{ background-color: #dcfce7; }
 
 .table{ 
     background-color: #f8fafc;
@@ -206,70 +226,16 @@
     box-sizing: border-box;
 }
 
-.total span{
-    display: block;
-    width: 1px;
-    height: 14px;
-    background-color: #e5e7eb;
-}
-
-.useDays, .remainDays, .low3days{
+.selectAll{
+    height: 30px;
     display: flex;
     gap: 5px;
     align-items: center;
-    font-size: 12px;
+    background-color: #f1f5f9;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 0 12px;
+    font-size: 11px;
     font-weight: 500;
     color: #374151;
 }
-
-.useDays span, .remainDays span, .low3days span{
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-}
-
-.useDays span{ background-color: #dbeafe; }
-.remainDays span{ background-color: #bbf7d0; }
-.low3days span{ background-color: #fecaca; }
-
-
-/* .table thead{
-    background-color: #f1f5f9;
-    font-size: 12px;
-    font-weight: 900;
-    color: #6b7280;
-}
-
-.table th{
-    height: 40px;
-    text-align: center;
-}
-
-.table th:nth-child(1){ width: 90px; }
-.table th:nth-child(2){ width: 72px; }
-.table th:nth-child(3){ width: 100px; }
-.table th:nth-child(4){ width: 70px; }
-.table th:nth-child(5){ width: 90px; }
-.table th:nth-child(6){ width: 86px; }
-.table th:nth-child(7){ width: 70px; }
-.table th:nth-child(8){ width: 70px; }
-.table th:nth-child(9){ width: 80px; }
-.table th:nth-child(10){ width: 60px; }
-.table th:nth-child(11){ width: 90px; }
-.table th:nth-child(12){ width: auto; }
-.table th:nth-child(13){ width: 80px; }
-
-.table th:nth-child(6), .table th:nth-child(7),
-.table th:nth-child(8), .table th:nth-child(9),
-.table th:nth-child(10){
-    font-size: 11px;
-}
-
-.table th:nth-child(6) span, .table th:nth-child(7) span,
-.table th:nth-child(8) span, .table th:nth-child(9) span,
-.table th:nth-child(10) span{
-    display: flex;
-    flex-direction: column;
-    font-size: 10px;
-    font-weight: 400;
-} */
