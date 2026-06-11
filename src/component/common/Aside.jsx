@@ -1,39 +1,41 @@
-import c from './Aside.module.css';
+import c from "./Aside.module.css";
 
-export default function Aside({dummy}){
+export default function Aside({ dummy }) {
+  //    const dummy=[
+  //        {
+  //            titleInfo: { iconPath: '/images/User.png', titleName: '인사정보' },
+  //            submenuList: ['인사정보등록', '사원명수/인사기록카드', '인사발령등록']
+  //        },
+  //        {
+  //            titleInfo: { iconPath: '/images/User.png', titleName: '인사정보' },
+  //            submenuList: ['인사정보등록', '사원명수/인사기록카드', '인사발령등록']
+  //        },
+  //        {
+  //            titleInfo: { iconPath: '/images/User.png', titleName: '인사정보' },
+  //            submenuList: ['인사정보등록', '사원명수/인사기록카드', '인사발령등록']
+  //        }
+  //    ]
 
-//    const dummy=[
-//        {
-//            titleInfo: { iconPath: '/images/User.png', titleName: '인사정보' },
-//            submenuList: ['인사정보등록', '사원명수/인사기록카드', '인사발령등록']
-//        },
-//        {
-//            titleInfo: { iconPath: '/images/User.png', titleName: '인사정보' },
-//            submenuList: ['인사정보등록', '사원명수/인사기록카드', '인사발령등록']
-//        },
-//        {
-//            titleInfo: { iconPath: '/images/User.png', titleName: '인사정보' },
-//            submenuList: ['인사정보등록', '사원명수/인사기록카드', '인사발령등록']
-//        }
-//    ]
+  return (
+    <header>
+      <div className={c.headerMenu}>
+        {dummy.map((item, idx) => (
+          <ul key={idx}>
+            <li className={c.menuTitle}>
+              <img src={item.titleInfo.iconPath} alt="" />
+              <p>{item.titleInfo.titleName}</p>
+            </li>
 
-    return(
-        <header>
-            <div className={c.headerMenu}>
-                {dummy.map((item, idx)=>
-                    <ul key={idx}>
-                        <li className={c.menuTitle}>
-                            <img src={item.titleInfo.iconPath} alt="" />
-                            <p>{item.titleInfo.titleName}</p>
-                        </li>
+            {item.submenuList.map((subItem, subIdx) => (
+              <li key={subIdx} style={{ cursor: "pointer" }}>
+                <span></span>
+                {subItem}
+              </li>
+            ))}
+          </ul>
+        ))}
 
-                        {item.submenuList.map((subItem, subIdx)=> (
-                            <li key={subIdx}><span></span>{subItem}</li>
-                        ))}
-                    </ul>
-                )}
-                
-                {/* <ul>
+        {/* <ul>
                     <li className={c.menuTitle}>
                         <img src="/images/User.png" alt="" />
                         <p>인사정보</p>
@@ -57,8 +59,7 @@ export default function Aside({dummy}){
                     </li>
                     <li><span></span>증명서발급</li>
                 </ul> */}
-
-            </div>
-        </header>
-    )
+      </div>
+    </header>
+  );
 }

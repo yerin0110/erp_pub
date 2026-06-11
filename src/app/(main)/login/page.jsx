@@ -14,9 +14,34 @@ export default function Page() {
     try {
       const res = await baseApi.post("/api/v1/employees/login", loginInfo);
 
+      const { employeeNo, departmentName, name, email, position, expireIn } =
+        res.data.data;
+
       const token = res.data.data.accessToken;
       if (token) {
         localStorage.setItem("accessToken", res.data.data.accessToken);
+
+        // if (user) {
+        //   localStorage.setItem("employeeNo", res.data.data.employeeNo);
+        //   localStorage.setItem("departmentName", res.data.data.departmentName);
+        //   localStorage.setItem("name", res.data.data.name);
+        //   localStorage.setItem("email", res.data.data.email);
+        //   localStorage.setItem("position", res.data.data.position);
+        //   localStorage.setItem("expireIn", res.data.data.expireIn);
+        // }
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            employeeNo,
+            departmentName,
+            name,
+            email,
+            position,
+            expireIn,
+          }),
+        );
+
         router.push("/info/register");
       } else {
         alert("로그인 실패");

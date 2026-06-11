@@ -1,76 +1,77 @@
-.wrap{
-    width: 1440px;
-    height: 900px;
-    margin: 0 auto;
-    font-family: 'Noto Sans Kr';
+.wrap {
+  width: 1440px;
+  height: 900px;
+  margin: 0 auto;
+  font-family: "Noto Sans Kr";
 }
 
-.continer{
-    display: flex; 
-    width: 100%;
-    height: 840px;
+.continer {
+  display: flex;
+  width: 100%;
+  height: 840px;
 }
 
-.headerMenu{
-    width: 210px;
-    height: 100%;
-    background-color: #1e293b;
-    color: #999;
-    font-size: 13px;
+.headerMenu {
+  width: 210px;
+  height: 100%;
+  background-color: #1e293b;
+  color: #999;
+  font-size: 13px;
 }
 
-.headerMenu li{
-    width: inherit;
-    height: 36px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
+.headerMenu li {
+  width: inherit;
+  height: 36px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  /* cursor: pointer; */
 }
 
-.headerMenu li img{
-    width: 13px;
-    height: 13px;
+.headerMenu li img {
+  width: 13px;
+  height: 13px;
 }
 
-.headerMenu span{
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: #475569;
+.headerMenu span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #475569;
 }
 
-.headerMenu li:not(.menuTitle){
-    padding: 0 0 0 30px;
-    display: flex; 
-    gap: 8px;
+.headerMenu li:not(.menuTitle) {
+  padding: 0 0 0 30px;
+  display: flex;
+  gap: 8px;
 }
 
-.menuTitle{
-    display: flex;
-    gap: 6px;
-    padding: 0 20px;
-    font-size: 12px;
-    color: #60a5fa;
-    font-weight: bold;
-    background-color: #162032;
+.menuTitle {
+  display: flex;
+  gap: 6px;
+  padding: 0 20px;
+  font-size: 12px;
+  color: #60a5fa;
+  font-weight: bold;
+  background-color: #162032;
 }
 
-.menuTitle img{
-    width: 13px;
-    height: 13px;
+.menuTitle img {
+  width: 13px;
+  height: 13px;
 }
 
-.menuBorder{
-    border-top: 1px solid #293b50;
-    box-sizing: border-box;
+.menuBorder {
+  border-top: 1px solid #293b50;
+  box-sizing: border-box;
 }
 
-.menuClick{
-    color: white;
-    font-weight: 900;
-    background-color: #2a3f5c;
+.menuClick {
+  color: white;
+  font-weight: 900;
+  background-color: #2a3f5c;
 }
 
-.menuClick span{
-    background-color: #3b8cf6;
+.menuClick span {
+  background-color: #3b8cf6;
 }
