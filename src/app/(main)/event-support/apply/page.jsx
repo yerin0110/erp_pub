@@ -8,8 +8,6 @@ import { useEffect, useState } from "react";
 import baseApi from "@/api/baseApi";
 import Table from "@/component/common/Table";
 import { Calendar, Check, Gift, Hash, X } from "lucide-react";
-import { useEffect, useState } from "react";
-import baseApi from "@/api/baseApi";
 
 export default function Page() {
   const [applyInfo, setApplyInfo] = useState();
