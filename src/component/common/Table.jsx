@@ -52,16 +52,15 @@ export default function Table({ columns, employees = [], tableList = [] }) {
             ))}
 
           {tableList.map((item, index) => (
-            <tr key={item.employeeId}>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{item.applicationDate}</td>
               <td className={c.empName}>{item.eventType}</td>
-              <td>{item.targetname}</td>
+              <td>{item.targetName}</td>
               <td>{item.familyRelation}</td>
-              <td>{item.applicationDate}</td>
+              <td>{item.eventDate}</td>
               <td>{item.requestedAmount}</td>
               <td>{item.accountNumber}</td>
-              {/* <td><span className={statusStyles[item.status]}>재직중</span></td> */}
               <td>
                 <span className={c.statusActive}>검토중</span>
               </td>

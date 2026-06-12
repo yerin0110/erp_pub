@@ -39,9 +39,27 @@ export default function Page() {
     console.log("res >>> ", res);
   };
 
+  // 함수 -> 경조비 신청현황 리스트 조회
+  const 경조비신청리스트조회 = async () => {
+    const token = localStorage.getItem("accessToken");
+
+    const res = await baseApi.get("/api/v1/support", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    console.log(res.data.data);
+    setEventAppliedList(res.data.data);
+  };
+
+  useEffect(() => {
+    // 경조비 신청현황 조회
+    경조비신청리스트조회();
+  }, []);
+
   useEffect(() => {
     // 로컬스토리지에 있는 데이터 가져오기
-
     const user = JSON.parse(localStorage.getItem("user"));
 
     const 사원번호 = user.employeeNo;
@@ -83,37 +101,37 @@ export default function Page() {
     //   return;
     // }
 
-    // 1. 경조구분 확인하기
+    // // 1. 경조구분 확인하기
     if (!eventType) {
       alert("경조구분은 필수 항목 입니다");
       return;
     }
 
-    // 2. 대상자 성명 확인하기
+    // // 2. 대상자 성명 확인하기
     if (!eventTargetInfo.targetName) {
       alert("대상자 성명은 필수 항목입니다");
       return;
     }
 
-    // 3. 관계 확인하기
+    // // 3. 관계 확인하기
     if (!eventTargetInfo.familyRelation) {
       alert("관계는 필수 항목입니다");
       return;
     }
 
-    // 4. 경조일 확인하기
+    // // 4. 경조일 확인하기
     if (!eventTargetInfo.applicationDate) {
       alert("경조일은 필수 항목입니다");
       return;
     }
 
-    // 5. 은행 확인하기
+    // // 5. 은행 확인하기
     if (!eventTargetInfo.bankName) {
       alert("은행이름은 필수 항목입니다");
       return;
     }
 
-    // 6. 계좌번호 확인하기
+    // // 6. 계좌번호 확인하기
     if (!eventTargetInfo.accountNumder) {
       alert("계좌번호는 필수 항목입니다");
       return;
@@ -121,15 +139,15 @@ export default function Page() {
 
     if (
       !(
-        10 <= eventTargetInfo.accountNumder.lenght &&
-        eventTargetInfo.accountNumder.lenght <= 12
+        10 <= eventTargetInfo.accountNumder.length &&
+        eventTargetInfo.accountNumder.length <= 12
       )
     ) {
       alert("올바른 계좌번호가 아닙니다");
       return;
     }
 
-    // 7. 예금주 확인하기
+    // // 7. 예금주 확인하기
     if (!eventTargetInfo.accountHolder) {
       alert("예금주는 필수 항목입니다");
       return;
@@ -543,8 +561,9 @@ export default function Page() {
 
                     <button
                       className={c.saveBtn}
-                      onClick={() => {
-                        경조사비신청하기();
+                      onClick={async () => {
+                        await 경조사비신청하기();
+                        await 경조비신청리스트조회();
                       }}
                     >
                       <img src="/images/Send Horizontal.png" alt="" />
@@ -573,7 +592,9 @@ export default function Page() {
                   <option value="부모회갑">부모회갑</option>
                   <option value="기타">기타</option>
                 </select>
-                <div className={c.tableLenght}>총 {10}건</div>
+                <div className={c.tableLenght}>
+                  총 {eventAppliedList.length}건
+                </div>
               </div>
             </div>
             <Table
