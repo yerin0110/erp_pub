@@ -141,6 +141,23 @@ export default function Page() {
                   <input
                     type="text"
                     placeholder="이메일 주소를 입력하세요"
+                    onKeyDown={(e) => {
+                      console.log(e.key);
+                      if (e.key === "Enter") {
+                        // 로그인
+                        if (!loginInfo?.email) {
+                          alert("이메일을 입력해주세요");
+                          return;
+                        }
+
+                        if (!loginInfo?.password) {
+                          alert("비밀번호를 입력해주세요");
+                          return;
+                        }
+
+                        goLogin();
+                      }
+                    }}
                     onChange={(e) =>
                       setLoginInfo((prev) => ({
                         ...prev,
@@ -157,6 +174,23 @@ export default function Page() {
                   <input
                     type="password"
                     placeholder="비밀번호를 입력하세요"
+                    onKeyDown={(e) => {
+                      console.log(e.key);
+                      if (e.key === "Enter") {
+                        // 로그인
+                        if (!loginInfo?.email) {
+                          alert("이메일을 입력해주세요");
+                          return;
+                        }
+
+                        if (!loginInfo?.password) {
+                          alert("비밀번호를 입력해주세요");
+                          return;
+                        }
+
+                        goLogin();
+                      }
+                    }}
                     onChange={(e) =>
                       setLoginInfo((prev) => ({
                         ...prev,

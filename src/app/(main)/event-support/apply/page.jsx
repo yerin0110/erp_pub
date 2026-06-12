@@ -7,6 +7,7 @@ import PageTitle from "@/component/common/PageTitle";
 import Table from "@/component/common/Table";
 import { Calendar, Check, Gift, Hash, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import baseApi from "@/api/baseApi";
 
 export default function Page() {
   const [applyInfo, setApplyInfo] = useState();
@@ -22,13 +23,6 @@ export default function Page() {
   // const [place, setPlace] = useState("");
   // const [bank, setBank] = useState("");
   // const [account, setAccount] = useState("");
-
-  const info = () => {
-    if (!name || !relation || !date || !bank || !account) {
-      alert("필수정보 입력 및 선택 바람");
-      return;
-    }
-  };
 
   useEffect(() => {
     // 로컬스토리지에 있는 데이터 가져오기
@@ -53,6 +47,98 @@ export default function Page() {
       applyDate: 신청날짜,
     });
   }, []);
+
+  const 경조사비신청하기 = async () => {
+    const token = localStorage.getItem("accessToken");
+
+    // if (
+    //   !eventType ||
+    //   !eventTargetInfo.targetName ||
+    //   !eventTargetInfo.familyRelation ||
+    //   !eventTargetInfo.applicationDate ||
+    //   !eventTargetInfo.bankName ||
+    //   !eventTargetInfo.accountNumder ||
+    //   !eventTargetInfo.accountHolder
+    // ) {
+    //   alert("필수 항목을 모두 입력해주세요");
+    //   return;
+    // }
+
+    // 1. 경조구분 확인하기
+    if (!eventType) {
+      alert("경조구분은 필수 항목 입니다");
+      return;
+    }
+
+    // 2. 대상자 성명 확인하기
+    if (!eventTargetInfo.targetName) {
+      alert("대상자 성명은 필수 항목입니다");
+      return;
+    }
+
+    // 3. 관계 확인하기
+    if (!eventTargetInfo.familyRelation) {
+      alert("관계는 필수 항목입니다");
+      return;
+    }
+
+    // 4. 경조일 확인하기
+    if (!eventTargetInfo.applicationDate) {
+      alert("경조일은 필수 항목입니다");
+      return;
+    }
+
+    // 5. 은행 확인하기
+    if (!eventTargetInfo.bankName) {
+      alert("은행이름은 필수 항목입니다");
+      return;
+    }
+
+    // 6. 계좌번호 확인하기
+    if (!eventTargetInfo.accountNumder) {
+      alert("계좌번호는 필수 항목입니다");
+      return;
+    }
+
+    if (
+      !(
+        10 <= eventTargetInfo.accountNumder.lenght &&
+        eventTargetInfo.accountNumder.lenght <= 12
+      )
+    ) {
+      alert("올바른 계좌번호가 아닙니다");
+      return;
+    }
+
+    // 7. 예금주 확인하기
+    if (!eventTargetInfo.accountHolder) {
+      alert("예금주는 필수 항목입니다");
+      return;
+    }
+
+    const res = await baseApi.post(
+      "/api/v1/support",
+      {
+        eventType: eventType,
+        familyRelation: eventTargetInfo.familyRelation,
+        targetName: eventTargetInfo.targetName,
+        applicationDate: "2026-06-12",
+        eventDate: eventTargetInfo.applicationDate,
+        requestedAmount: 50000,
+        eventLocation: eventTargetInfo.eventLocation,
+        bankName: eventTargetInfo.bankName,
+        accountNumber: eventTargetInfo.accountNumder,
+        accountHolder: eventTargetInfo.accountHolder,
+        approvalStatus: "확인",
+        memo: "메모",
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+  };
 
   return (
     <div className={c.wrap}>
@@ -438,8 +524,7 @@ export default function Page() {
                     <button
                       className={c.saveBtn}
                       onClick={() => {
-                        console.log("eventType: ", eventType);
-                        console.log(eventTargetInfo);
+                        경조사비신청하기();
                       }}
                     >
                       <img src="/images/Send Horizontal.png" alt="" />
@@ -471,20 +556,20 @@ export default function Page() {
                 <div className={c.tableLenght}>총 {10}건</div>
               </div>
             </div>
-            {/* <Table 
-                columns={[
-                    'NO',
-                    '신청일',
-                    '경조구분',
-                    '대상자',
-                    '관계',
-                    '경조일',
-                    '지급금액',
-                    '지급계좌',
-                    '처리상태',
-                    '관리'
-                ]}
-            /> */}
+            <Table
+              columns={[
+                "NO",
+                "신청일",
+                "경조구분",
+                "대상자",
+                "관계",
+                "경조일",
+                "지급금액",
+                "지급계좌",
+                "처리상태",
+                "관리",
+              ]}
+            />
           </div>
         </div>
       </div>
