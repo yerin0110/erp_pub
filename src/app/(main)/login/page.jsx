@@ -48,6 +48,7 @@ export default function Page() {
       }
     } catch (e) {
       console.error("네트워크 실패", e);
+      alert("로그인 실패");
     } finally {
     }
   };
@@ -142,9 +143,8 @@ export default function Page() {
                     type="text"
                     placeholder="이메일 주소를 입력하세요"
                     onKeyDown={(e) => {
-                      console.log(e.key);
                       if (e.key === "Enter") {
-                        // 로그인
+                        // 로그인 처리
                         if (!loginInfo?.email) {
                           alert("이메일을 입력해주세요");
                           return;
@@ -175,9 +175,8 @@ export default function Page() {
                     type="password"
                     placeholder="비밀번호를 입력하세요"
                     onKeyDown={(e) => {
-                      console.log(e.key);
                       if (e.key === "Enter") {
-                        // 로그인
+                        // 로그인 처리
                         if (!loginInfo?.email) {
                           alert("이메일을 입력해주세요");
                           return;

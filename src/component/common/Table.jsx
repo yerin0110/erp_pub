@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import baseApi from "@/api/baseApi";
 import c from "./Table.module.css";
 
-export default function Table({ columns, employees = [] }) {
+export default function Table({ columns, employees = [], tableList = [] }) {
+  console.log("tableList >> ", tableList);
   return (
     <>
       <table className={c.empTable}>
@@ -29,19 +30,40 @@ export default function Table({ columns, employees = [] }) {
           </tr>
         </thead>
         <tbody>
-          {employees.map((item, index) => (
+          {employees.length > 0 &&
+            employees.map((item, index) => (
+              <tr key={item.employeeId}>
+                <td>{index + 1}</td>
+                <td>{item.employeeNo}</td>
+                <td className={c.empName}>{item.name}</td>
+                <td>부서</td>
+                <td>직급</td>
+                <td>입사일</td>
+                <td>연락처</td>
+                <td>이메일</td>
+                {/* <td><span className={statusStyles[item.status]}>재직중</span></td> */}
+                <td>
+                  <span className={c.statusActive}>재직중</span>
+                </td>
+                <td>
+                  <button className={c.editBtn}>수정</button>
+                </td>
+              </tr>
+            ))}
+
+          {tableList.map((item, index) => (
             <tr key={item.employeeId}>
               <td>{index + 1}</td>
-              <td>{item.employeeNo}</td>
-              <td className={c.empName}>{item.name}</td>
-              <td>부서</td>
-              <td>직급</td>
-              <td>입사일</td>
-              <td>연락처</td>
-              <td>이메일</td>
+              <td>{item.applicationDate}</td>
+              <td className={c.empName}>{item.eventType}</td>
+              <td>{item.targetname}</td>
+              <td>{item.familyRelation}</td>
+              <td>{item.applicationDate}</td>
+              <td>{item.requestedAmount}</td>
+              <td>{item.accountNumber}</td>
               {/* <td><span className={statusStyles[item.status]}>재직중</span></td> */}
               <td>
-                <span className={c.statusActive}>재직중</span>
+                <span className={c.statusActive}>검토중</span>
               </td>
               <td>
                 <button className={c.editBtn}>수정</button>

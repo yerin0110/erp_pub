@@ -4,6 +4,8 @@ import c from "./page.module.css";
 import Nav from "@/component/common/Nav";
 import Aside from "@/component/common/Aside";
 import PageTitle from "@/component/common/PageTitle";
+import { useEffect, useState } from "react";
+import baseApi from "@/api/baseApi";
 import Table from "@/component/common/Table";
 import { Calendar, Check, Gift, Hash, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -11,6 +13,9 @@ import baseApi from "@/api/baseApi";
 
 export default function Page() {
   const [applyInfo, setApplyInfo] = useState();
+
+  // 경조사 조회
+  const [eventAppliedList, setEventAppliedList] = useState([]);
 
   // 경조사 구분
   const [eventType, seteventType] = useState("본인결혼");
@@ -24,8 +29,21 @@ export default function Page() {
   // const [bank, setBank] = useState("");
   // const [account, setAccount] = useState("");
 
+  const 경조사비리스트조회 = async () => {
+    const token = localStorage.getItem("accessToken");
+    const res = await baseApi.get("/api/v1/support", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    setEventAppliedList(res?.data?.data);
+    console.log("res >>> ", res);
+  };
+
   useEffect(() => {
     // 로컬스토리지에 있는 데이터 가져오기
+
     const user = JSON.parse(localStorage.getItem("user"));
 
     const 사원번호 = user.employeeNo;
@@ -37,6 +55,7 @@ export default function Page() {
     const 신청월 = new Date().getMonth() + 1;
     const 신청일 = new Date().getDate();
 
+    // 2026.06.12
     const 신청날짜 = `${신청연도}.${신청월}.${신청일}`;
 
     setApplyInfo({
@@ -46,6 +65,8 @@ export default function Page() {
       position: 직급,
       applyDate: 신청날짜,
     });
+
+    경조사비리스트조회();
   }, []);
 
   const 경조사비신청하기 = async () => {
@@ -521,6 +542,7 @@ export default function Page() {
                       <img src="/images/X.png" alt="" />
                       취소
                     </button>
+
                     <button
                       className={c.saveBtn}
                       onClick={() => {
@@ -557,6 +579,7 @@ export default function Page() {
               </div>
             </div>
             <Table
+              tableList={eventAppliedList || []}
               columns={[
                 "NO",
                 "신청일",
