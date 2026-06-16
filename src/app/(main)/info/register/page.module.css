@@ -1,330 +1,347 @@
-.wrap{
-    width: 1440px;
-    height: 900px;
-    margin: 0 auto;
-    font-family: 'Noto Sans Kr';
-    position: relative;
+.wrap {
+  width: 1440px;
+  height: 900px;
+  margin: 0 auto;
+  font-family: "Noto Sans Kr";
+  position: relative;
 }
 
-.continer{
-    display: flex; 
-    width: 100%;
-    height: 840px;
+.continer {
+  display: flex;
+  width: 100%;
+  height: 840px;
 }
 
-.main{
-    flex: 1;
-    padding: 20px;
-    background-color: #f1f5f9;
+.main {
+  flex: 1;
+  padding: 20px;
+  background-color: #f1f5f9;
 }
 
-
-.searchBox{
-    font-size: 13px;
-    background-color: white;
-    border: 1px solid #e5e7eb;
-    padding: 16px;
-    border-radius: 7px;
-    margin-bottom: 16px;
+.searchBox {
+  font-size: 13px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+  border-radius: 7px;
+  margin-bottom: 16px;
 }
 
-.searchTitle{
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    text-align: center;
-    font-size: 13px;
-    font-weight: bold;
-    color: #1b3a6b;
-    margin-bottom: 12px;
+.searchTitle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #1b3a6b;
+  margin-bottom: 12px;
 }
 
-.search{
-    display: flex;
-    gap: 16px;
+.search {
+  display: flex;
+  gap: 16px;
 }
 
-.search div{
-    height: 34px;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    text-align: center;
+.search div {
+  height: 34px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
 }
 
-.search input, .search select{
-    border: 1px solid #d1d5db;
-    border-radius: 7px;
-    padding: 5px 10px;
-    color: #888;
+.search input,
+.search select {
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  padding: 5px 10px;
+  color: #888;
 }
 
-.search input{
-    width: 150px;
+.search input {
+  width: 150px;
 }
 
-.searchBtnBox{
-    display: flex;
-    gap: 20px;
+.searchBtnBox {
+  display: flex;
+  gap: 20px;
 }
 
-.searchBtn, .resetBtn{
-    height: 100%;
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    text-align: center;
-    border-radius: 7px;
-    cursor: pointer;
+.searchBtn,
+.resetBtn {
+  height: 100%;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  text-align: center;
+  border-radius: 7px;
+  cursor: pointer;
 }
 
-.searchBtn{
-    background-color: #1b3a6b;
-    color: white;
-    padding: 9px 20px;
+.searchBtn {
+  background-color: #1b3a6b;
+  color: white;
+  padding: 9px 20px;
 }
 
-.resetBtn{
-    border: 1px solid #d1d5db;
-    color: #6b7280;
-    padding: 9px 16px;
+.resetBtn {
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+  padding: 9px 16px;
 }
 
-.modalView{
-    width: 600px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+.modalView {
+  width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.modalTitle{
-    height: 56px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1b3a6b;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    padding: 18px 20px;
-    box-sizing: border-box;
+.modalTitle {
+  height: 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b3a6b;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 18px 20px;
+  box-sizing: border-box;
 }
 
-.title{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 700;
-    color: white;
+.title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
 }
 
-.closeBtn{
-    width: 32px;
-    height: 32px;
-    background-color: #2d5f9e;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  background-color: #2d5f9e;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.inputBox{
-    background-color: white;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.inputBox {
+  background-color: white;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.input{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.inputTitle{
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 8px;
-    box-sizing: border-box;
-    font-size: 14px;
-    font-weight: 700;
-    color: #1b3a6b;
-    display: flex;
-    gap: 8px;
-    align-items: center;
+.inputTitle {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1b3a6b;
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-.inputTitle span{
-    display: block;
-    width: 3px;
-    height: 16px;
-    border-radius: 999px;
-    background-color: #1b3a6b;
+.inputTitle span {
+  display: block;
+  width: 3px;
+  height: 16px;
+  border-radius: 999px;
+  background-color: #1b3a6b;
 }
 
-.basic, .phone{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+.basic,
+.phone {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
-.basic div, .phone div, .address div, .emergency div{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+.basic div,
+.phone div,
+.address div,
+.emergency div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.input label{
-    display: flex;
-    gap: 4px;
-    font-size: 13px;
-    font-weight: 700;
+.input label {
+  display: flex;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
 }
 
-.necessary{
-    color: #ef4444;
+.necessary {
+  color: #ef4444;
 }
 
-.auto, .status, .postNum{
-    height: 36px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 13px;
-    padding: 10px 12px;
-    box-sizing: border-box;
+.auto,
+.status,
+.postNum {
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  padding: 0 12px;
+  box-sizing: border-box;
 }
 
-.auto, .postNum{
-    background-color: #f9fafb;
-    color: #9ca3af;
+.auto,
+.postNum {
+  background-color: #f9fafb;
+  color: #9ca3af;
 }
 
-.input input, .input select{
-    height: 36px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 13px;
-    color: #111827;
-    outline: none;
-    transition: border-color 0.15s ease;
+.input input,
+.input select {
+  height: 36px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.15s ease;
 }
 
-.input input:focus, .input select:focus {
-    border-color: #2563eb;
+.input input:focus,
+.input select:focus {
+  border-color: #2563eb;
 }
 
-.input input{ padding: 10px 12px; }
-.input select{ padding: 0 12px; }
-
-.status{
-    display: flex;
-    border-radius: 6px;
-    color: #6b7280;
-    gap: 16px;
+.input input {
+  padding: 10px 12px;
+}
+.input select {
+  padding: 0 12px;
 }
 
-.statusBtn{
-    display: flex;
-    align-items: center;
-    gap: 6px;
+.status {
+  display: flex;
+  border-radius: 6px;
+  color: #6b7280;
+  gap: 16px;
 }
 
-.statusBtn input{
-    width: 16px;
-    height: 16px;
+.statusBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.address{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.statusBtn input {
+  width: 16px;
+  height: 16px;
 }
 
-.postNumBox{
-    display: flex !important;
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.postNum{
-    width: 160px;
+.postNumBox {
+  display: flex !important;
 }
 
-.addressBtn{
-    height: 36px;
-    background-color: #1b3a6b;
-    border-radius: 6px;
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    font-size: 13px;
-    font-weight: 500;
-    color: white;
-    padding: 10px 14px;
-    cursor: pointer;
+.postNum {
+  width: 160px;
 }
 
-.postNumBox{
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 8px !important;
-    align-items: center;
+.addressBtn {
+  height: 36px;
+  background-color: #1b3a6b;
+  border-radius: 6px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+  padding: 10px 14px;
+  cursor: pointer;
 }
 
-.emergency{
-    display: flex;
-    gap: 12px;
+.postNumBox {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 8px !important;
+  align-items: center;
 }
 
-.emergency div:nth-child(2){
-    width: 140px;
+.emergency {
+  display: flex;
+  gap: 12px;
 }
 
-.modalFooter{
-    height: 56px;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    background-color: #f8fafc;
-    border: 1px solid #e5e7eb;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.emergency div:nth-child(2) {
+  width: 140px;
 }
 
-.modalFooter p{
-    display: flex;
-    gap: 5px;
-    font-size: 12px;
-    color: #9ca3af;
+.modalFooter {
+  height: 56px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  background-color: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.btnBox{
-    display: flex;
-    gap: 8px;
+.modalFooter p {
+  display: flex;
+  gap: 5px;
+  font-size: 12px;
+  color: #9ca3af;
 }
 
-.cancelBtn, .saveBtn{
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    padding: 9.5px 20px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
+.btnBox {
+  display: flex;
+  gap: 8px;
 }
 
-.cancelBtn{
-    background-color: white;
-    border: 1px solid #d1d5db;
-    color: #374151;
+.cancelBtn,
+.saveBtn {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 9.5px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.saveBtn{
-    background-color: #1b3a6b;
-    color: white;
+.cancelBtn {
+  background-color: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.saveBtn {
+  background-color: #1b3a6b;
+  color: white;
 }

@@ -11,14 +11,20 @@ import {
   Bookmark,
   Calendar,
   Clock,
+  Info,
   Layers,
   MoonStar,
+  Plus,
+  Save,
   Star,
+  Trash2,
   TrendingUp,
   Users,
+  X,
 } from "lucide-react";
 import PayCard from "@/component/common/PayCard";
 import { useState } from "react";
+import Table from "@/component/common/Table";
 
 export default function Page({ isOn: externalIsOn, handleToggle }) {
   const [internalIsOn, setInternalIsOn] = useState(true);
@@ -201,177 +207,234 @@ export default function Page({ isOn: externalIsOn, handleToggle }) {
             </div>
 
             <div className={c.setting}>
-              <div className={c.settingTitle}>
-                <div className={c.titleBox}>
-                  <div className={c.imgBox}>
-                    <MoonStar size={15} color="#2563eb" />
+              <div className={c.settingBox}>
+                <div className={c.settingTitle}>
+                  <div className={c.titleBox}>
+                    <div className={c.imgBox}>
+                      <MoonStar size={15} color="#2563eb" />
+                    </div>
+                    <div className={c.titleText}>
+                      야근 수당 상세 설정
+                      <span>Overtime Allowance</span>
+                    </div>
                   </div>
-                  <div className={c.titleText}>
-                    <p>야근 수당 상세 설정</p>
-                    <span>Overtime Allowance</span>
+                  <div className={c.active}>
+                    <div className={c.activeText}>
+                      <span></span>활성
+                    </div>
+                    <label className={c.switch}>
+                      <input
+                        type="checkbox"
+                        checked={isChecked}
+                        onChange={onToggle}
+                        className={c.checkbox}
+                      />
+                      <span className={c.slider}></span>
+                    </label>
                   </div>
                 </div>
-                <div className={c.active}>
-                  <div className={c.activeText}>
-                    <span></span>활성
+                <div className={c.settingInput}>
+                  <div className={c.settingInputBox}>
+                    <div className={c.inputTitle}>
+                      <span></span>
+                      <p>기본 설정</p>
+                    </div>
+                    <div className={c.inputContent}>
+                      <div className={c.inputBox}>
+                        <label htmlFor="">수당명</label>
+                        <input type="text" className={c.payName} />
+                      </div>
+                      <div className={c.inputBox}>
+                        <label htmlFor="">수당 코드</label>
+                        <div className={c.code}>OT001</div>
+                      </div>
+                    </div>
+                    <div className={c.inputContent}>
+                      <div className={c.inputBox}>
+                        <label htmlFor="">
+                          계산 방식<span className={c.necessary}>*</span>
+                        </label>
+                        <div className={c.calBtn}>
+                          <button className={c.time}>
+                            <Clock size={12} color="#ffffff" />
+                            시간당
+                          </button>
+                          <button className={c.day}>
+                            <Calendar size={12} color="#6b7280" />
+                            일당
+                          </button>
+                          <button className={c.fixed}>
+                            <Bookmark size={12} color="#6b7280" />
+                            고정금액
+                          </button>
+                        </div>
+                      </div>
+                      <div className={c.inputBox}>
+                        <label htmlFor="">
+                          시간당 단가<span className={c.necessary}>*</span>
+                        </label>
+                        <div className={c.unitCost}>
+                          <input type="text" />원 / 시간
+                        </div>
+                      </div>
+                    </div>
+                    <div className={c.inputContent}>
+                      <div className={c.inputBox}>
+                        <label htmlFor="">
+                          과세 여부<span className={c.necessary}>*</span>
+                        </label>
+                        <div className={c.taxBtn}>
+                          <button className={c.tax}>
+                            <Clock size={12} color="#ffffff" />
+                            과세
+                          </button>
+                          <button className={c.taxFree}>
+                            <Calendar size={12} color="#6b7280" />
+                            비과세
+                          </button>
+                        </div>
+                      </div>
+                      <div className={c.inputBox}>
+                        <label htmlFor="">수당 코드</label>
+                        <div className={c.autoReflect}>
+                          근태 데이터 연동
+                          <label className={c.switch}>
+                            <input
+                              type="checkbox"
+                              checked={linkIsOn}
+                              onChange={onLinkToggle}
+                              className={c.checkbox}
+                            />
+                            <span className={c.slider}></span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <label className={c.switch}>
-                    <input
-                      type="checkbox"
-                      checked={isChecked}
-                      onChange={onToggle}
-                      className={c.checkbox}
-                    />
-                    <span className={c.slider}></span>
-                  </label>
+
+                  <div className={c.line}></div>
+
+                  <div className={c.settingInputBox}>
+                    <div className={c.inputTitle}>
+                      <span></span>
+                      <p>적용 직급 범위</p>
+                    </div>
+                    <div className={c.applyRank}>
+                      <button className={c.executive}>
+                        <span></span>임원
+                      </button>
+                      <button className={c.rank}>
+                        <span></span>부장
+                      </button>
+                      <button className={c.rank}>
+                        <span></span>차장
+                      </button>
+                      <button className={c.rank}>
+                        <span></span>과장
+                      </button>
+                      <button className={c.rank}>
+                        <span></span>대리
+                      </button>
+                      <button className={c.rank}>
+                        <span></span>사원
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className={c.line}></div>
+
+                  <div className={c.settingInputBox}>
+                    <div className={c.inputTitle}>
+                      <span></span>
+                      <p>한도 및 조건 설정</p>
+                    </div>
+                    <div className={c.limit}>
+                      <div className={c.inputBox}>
+                        <label htmlFor="">월 최대 시간</label>
+                        <div className={c.unitCost}>
+                          <input type="text" />
+                          시간
+                        </div>
+                      </div>
+                      <div className={c.inputBox}>
+                        <label htmlFor="">최소 인정 시간</label>
+                        <div className={c.unitCost}>
+                          <input type="text" />
+                          시간
+                        </div>
+                      </div>
+                      <div className={c.inputBox}>
+                        <label htmlFor="">계산 단위</label>
+                        <div className={c.cal}>
+                          <select name="" id="">
+                            <option value="30분 단위">30분 단위</option>
+                            <option value="30분 단위">30분 단위</option>
+                            <option value="30분 단위">30분 단위</option>
+                            <option value="30분 단위">30분 단위</option>
+                            <option value="30분 단위">30분 단위</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={c.infoBox}>
+                      <Info size={12} color="#d97706" />월 최대 52시간 이상 입력
+                      시 경고 알림이 발송됩니다.
+                    </div>
+                  </div>
+
+                  <div className={c.line}></div>
+
+                  <div className={c.btnBox}>
+                    <button className={c.delBtn}>
+                      <Trash2 size={13} color="#e11d48" />
+                      삭제
+                    </button>
+                    <button className={c.cancelBtn}>
+                      <X size={13} color="#6b7280" />
+                      취소
+                    </button>
+                    <button className={c.saveBtn}>
+                      <Save size={13} color="#ffffff" />
+                      저장
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div className={c.settingInput}>
-                <div className={c.settingInputBox}>
-                  <div className={c.inputTitle}>
-                    <span></span>
-                    <p>기본 설정</p>
-                  </div>
-                  <div className={c.inputContent}>
-                    <div className={c.inputBox}>
-                      <label htmlFor="">수당명</label>
-                      <input type="text" className={c.payName} />
-                    </div>
-                    <div className={c.inputBox}>
-                      <label htmlFor="">수당 코드</label>
-                      <div className={c.code}>OT001</div>
-                    </div>
-                  </div>
-                  <div className={c.inputContent}>
-                    <div className={c.inputBox}>
-                      <label htmlFor="">
-                        계산 방식<span className={c.necessary}>*</span>
-                      </label>
-                      <div className={c.calBtn}>
-                        <button className={c.time}>
-                          <Clock size={12} color="#ffffff" />
-                          시간당
-                        </button>
-                        <button className={c.day}>
-                          <Calendar size={12} color="#6b7280" />
-                          일당
-                        </button>
-                        <button className={c.fixed}>
-                          <Bookmark size={12} color="#6b7280" />
-                          고정금액
-                        </button>
-                      </div>
-                    </div>
-                    <div className={c.inputBox}>
-                      <label htmlFor="">
-                        시간당 단가<span className={c.necessary}>*</span>
-                      </label>
-                      <div className={c.unitCost}>
-                        <input type="text" />원 / 시간
-                      </div>
-                    </div>
-                  </div>
-                  <div className={c.inputContent}>
-                    <div className={c.inputBox}>
-                      <label htmlFor="">
-                        과세 여부<span className={c.necessary}>*</span>
-                      </label>
-                      <div className={c.taxBtn}>
-                        <button className={c.tax}>
-                          <Clock size={12} color="#ffffff" />
-                          과세
-                        </button>
-                        <button className={c.taxFree}>
-                          <Calendar size={12} color="#6b7280" />
-                          비과세
-                        </button>
-                      </div>
-                    </div>
-                    <div className={c.inputBox}>
-                      <label htmlFor="">수당 코드</label>
-                      <div className={c.autoReflect}>
-                        근태 데이터 연동
-                        <label className={c.switch}>
-                          <input
-                            type="checkbox"
-                            checked={linkIsOn}
-                            onChange={onLinkToggle}
-                            className={c.checkbox}
-                          />
-                          <span className={c.slider}></span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-                <div className={c.line}></div>
-
-                <div className={c.settingInputBox}>
-                  <div className={c.inputTitle}>
-                    <span></span>
-                    <p>적용 직급 범위</p>
+              <div className={c.table}>
+                <div className={c.tableTitleBox}>
+                  <div className={c.tableTitle}>
+                    <img src="/images/Clock.png" alt="" />
+                    이번달 야근수당 지급 현황 (2025.07)
                   </div>
-                  <div className={c.applyRank}>
-                    <button className={c.executive}>
-                      <span></span>임원
-                    </button>
-                    <button className={c.rank}>
-                      <span></span>부장
-                    </button>
-                    <button className={c.rank}>
-                      <span></span>차장
-                    </button>
-                    <button className={c.rank}>
-                      <span></span>과장
-                    </button>
-                    <button className={c.rank}>
-                      <span></span>대리
-                    </button>
-                    <button className={c.rank}>
-                      <span></span>사원
+                  <div className={c.tableSearch}>
+                    <select name="" id="">
+                      <option value="전체">전체</option>
+                      <option value="2025.07">2025.07</option>
+                      <option value="2025.08">2025.08</option>
+                      <option value="2025.09">2025.09</option>
+                      <option value="2025.10">2025.10</option>
+                    </select>
+                    <div className={c.tableLenght}>{5}명 지급</div>
+                    <button className={c.addBtn}>
+                      <Plus size={11} color="#ffffff" />
+                      지급추가
                     </button>
                   </div>
                 </div>
-
-                <div className={c.line}></div>
-
-                <div className={c.settingInputBox}>
-                  <div className={c.inputTitle}>
-                    <span></span>
-                    <p>한도 및 조건 설정</p>
-                  </div>
-                  <div className={c.limit}>
-                    <div className={c.inputBox}>
-                      <label htmlFor="">월 최대 시간</label>
-                      <div className={c.unitCost}>
-                        <input type="text" />
-                        시간
-                      </div>
-                    </div>
-                    <div className={c.inputBox}>
-                      <label htmlFor="">최소 인정 시간</label>
-                      <div className={c.unitCost}>
-                        <input type="text" />
-                        시간
-                      </div>
-                    </div>
-                    <div className={c.inputBox}>
-                      <label htmlFor="">계산 단위</label>
-                      <div className={c.cal}>
-                        <select name="" id="">
-                          <option value="30분 단위">30분 단위</option>
-                          <option value="30분 단위">30분 단위</option>
-                          <option value="30분 단위">30분 단위</option>
-                          <option value="30분 단위">30분 단위</option>
-                          <option value="30분 단위">30분 단위</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={c.line}></div>
+                <Table
+                  columns={[
+                    "성명",
+                    "부서",
+                    "직급",
+                    "야근시간",
+                    "단가 (원/h)",
+                    "지급액 (원)",
+                    "과세구분",
+                    "처리상태",
+                    "관리",
+                  ]}
+                />
               </div>
             </div>
           </div>

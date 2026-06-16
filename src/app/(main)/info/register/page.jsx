@@ -93,7 +93,7 @@ export default function Page() {
             downloadBtnText="PDF 다운로드"
             addBtnImg="/images/Plus.png"
             addBtnText="신규등록"
-            onNewRegisterClick={openModal}
+            onAddClick={openModal}
           />
 
           <div className={c.searchBox}>

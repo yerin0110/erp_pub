@@ -1,117 +1,146 @@
-.wrap{
-    width: 1440px;
-    height: 900px;
-    margin: 0 auto;
-    font-family: 'Noto Sans Kr';
+.wrap {
+  width: 1440px;
+  height: 900px;
+  margin: 0 auto;
+  font-family: "Noto Sans Kr";
 }
 
-.empTable{
-    width: 100%;
-    background-color: white;
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: 7px;
-    overflow: hidden;
-    table-layout: fixed;
-    font-size: 13px;
-    color: #374151;
+.empTable {
+  width: 100%;
+  background-color: white;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 7px;
+  overflow: hidden;
+  table-layout: fixed;
+  font-size: 13px;
+  color: #374151;
 }
 
-.empTable th, .empTable td{
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #e5e7eb;
+.empTable th,
+.empTable td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.empTable th{
-    background-color: #f1f5f9;
-    font-size: 12px;
+.empTable th {
+  background-color: #f1f5f9;
+  font-size: 12px;
 }
 
-.empTable th:nth-child(1){
-    width: 50px;
-    color: #6b7280;
+.empTable th:nth-child(1) {
+  width: 50px;
+  color: #6b7280;
 }
-.empTable th:nth-child(2){
-    width: 90px;
-    color: black;
-    font-weight: 900;
+.empTable th:nth-child(2) {
+  width: 90px;
+  color: black;
+  font-weight: 900;
 }
-.empTable th:nth-child(3){ width: 100px; }
-.empTable th:nth-child(4){ width: 110px; }
-.empTable th:nth-child(5){ width: 80px; }
-.empTable th:nth-child(6){ width: 120px; }
-.empTable th:nth-child(7){ width: 150px; }
-.empTable th:nth-child(8){ width: auto; }
-.empTable th:nth-child(9){ width: 90px; }
-.empTable th:nth-child(10){ width: 80px; }
-
-.statusActive, .statusLeave{
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 20px;
+.empTable th:nth-child(3) {
+  width: 100px;
 }
-
-.statusActive{
-    background-color: #dcfce7;
-    color: #16a34a;
-    font-size: 11px;
-    font-weight: 900;
+.empTable th:nth-child(4) {
+  width: 110px;
 }
-
-.statusLeave{
-    background-color: #f8f4b5;
-    color: #d97706;
-    font-size: 12px;
+.empTable th:nth-child(5) {
+  width: 80px;
+}
+.empTable th:nth-child(6) {
+  width: 120px;
+}
+.empTable th:nth-child(7) {
+  width: 150px;
+}
+.empTable th:nth-child(8) {
+  width: auto;
+}
+.empTable th:nth-child(9) {
+  width: 90px;
+}
+.empTable th:nth-child(10) {
+  width: 80px;
 }
 
-.editBtn{
-    background-color: #eff6ff;
-    padding: 5px 7px;
-    border-radius: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #2563eb;
-    cursor: pointer;
+.statusActive,
+.statusLeave {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 20px;
 }
 
-.empTable tfoot td{
-    border: 1px solid #e5e7eb;
-    border-top: none;
-    border-bottom-left-radius: 7px;
-    border-bottom-right-radius: 7px;
-    box-sizing: border-box;
+.statusActive {
+  background-color: #dcfce7;
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 900;
 }
 
-.tableFooterInner{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+.statusLeave {
+  background-color: #f8f4b5;
+  color: #d97706;
+  font-size: 12px;
 }
 
-.totalCount{
-    font-size: 13px;
+.editBtn {
+  background-color: #eff6ff;
+  padding: 5px 7px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #2563eb;
+  cursor: pointer;
 }
 
-.pageChange{
-    display: flex;
-    gap: 5px;
-    font-size: 12px;
-    border-radius: 5px;
-    margin-left: auto;
+.empTable tfoot td {
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  box-sizing: border-box;
 }
 
-.pageBtn{
-    border: 1px solid #e5e7eb;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #6b7280;
+.tableFooterInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
 }
 
-.activePage{
-    background-color: #1b3a6b;
-    color: white;
-    font-weight: 900;
+.totalCount {
+  font-size: 13px;
+}
+
+.pageChange {
+  display: flex;
+  gap: 5px;
+  font-size: 12px;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+.pageBtn {
+  border: 1px solid #e5e7eb;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.activePage {
+  background-color: #1b3a6b;
+  color: white;
+  font-weight: 900;
+}
+
+.detailBtn {
+  height: 23px;
+  padding: 0 10px;
+  background-color: #f1f5f9;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
 }

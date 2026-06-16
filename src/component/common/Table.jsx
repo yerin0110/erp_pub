@@ -4,7 +4,12 @@ import { useEffect, useState } from "react";
 import baseApi from "@/api/baseApi";
 import c from "./Table.module.css";
 
-export default function Table({ columns, employees = [], tableList = [] }) {
+export default function Table({
+  columns,
+  employees = [],
+  tableList = [],
+  onDetailClick,
+}) {
   console.log("tableList >> ", tableList);
   return (
     <>
@@ -65,7 +70,9 @@ export default function Table({ columns, employees = [], tableList = [] }) {
                 <span className={c.statusActive}>검토중</span>
               </td>
               <td>
-                <button className={c.editBtn}>수정</button>
+                <button className={c.detailBtn} onClick={onDetailClick}>
+                  상세
+                </button>
               </td>
             </tr>
           ))}

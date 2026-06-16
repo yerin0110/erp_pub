@@ -1,43 +1,43 @@
-.stateCard{
-    width: 100%;
-    height: 85px;
-    border-radius: 8px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.stateCard {
+  width: 100%;
+  height: 85px;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.stateCard span{
-    font-size: 12px;
-    font-weight: 500;
+.stateCard span {
+  font-size: 12px;
+  font-weight: 400;
 }
 
-.stateCard p{
-    font-size: 18px;
-    font-weight: 700;
-    display: flex;
-    gap: 6px;
-    justify-content: center;
+.stateCard p {
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  gap: 6px;
+  justify-content: center;
 }
 
-.text span{
-    width: 75px;
-    height: 20px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 900;
-    margin-top: 4px;
+.text span {
+  width: 75px;
+  height: 20px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  margin-top: 4px;
 }
 
-.subBox div{
-    width: 80px;
-    border-radius: 999px;
-    margin: 0 auto;
+.subBox div {
+  width: 80px;
+  border-radius: 999px;
+  margin: 0 auto;
 }
 
-.subBox p{ 
-    font-size: 11px;
-    font-weight: 900;
-    margin-top: 4px;
+.subBox p {
+  font-size: 11px;
+  font-weight: 900;
+  margin-top: 4px;
 }

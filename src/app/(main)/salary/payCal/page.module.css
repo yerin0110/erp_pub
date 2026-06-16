@@ -1,18 +1,367 @@
-.wrap{
-    width: 1440px;
-    height: 900px;
-    margin: 0 auto;
-    font-family: 'Noto Sans KR';
+.wrap {
+  width: 1440px;
+  height: 900px;
+  margin: 0 auto;
+  font-family: "Noto Sans KR";
 }
 
-.continer{
-    display: flex; 
-    width: 100%;
-    height: 840px;
+.continer {
+  display: flex;
+  width: 100%;
+  height: 840px;
 }
 
-.main{
-    flex: 1;
-    padding: 20px;
-    background-color: #f1f5f9;
+.main {
+  flex: 1;
+  padding: 20px;
+  background-color: #f1f5f9;
+}
+
+.setting {
+  display: flex;
+  gap: 12px;
+}
+
+.monthSelect {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 14px 20px;
+}
+
+.selectBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectBox,
+.state {
+  gap: 2px;
+}
+
+.monthSelect label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+.inputBoxs,
+.stateBox {
+  display: flex;
+}
+
+.prevBtn,
+.nextBtn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8fafc;
+  border: 1px solid #d1d5d8;
+  cursor: pointer;
+}
+
+.prevBtn {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.nextBtn {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.monthBox {
+  height: 34px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  border-top: 1px solid #d1d5db;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.monthBox input {
+  width: 78px;
+  background-color: white;
+  outline: none;
+}
+
+.monthSelect span {
+  display: block;
+  width: 1px;
+  height: 36px;
+  background-color: #e5e7eb;
+}
+
+.stateBox {
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.state p {
+  height: 23px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.state span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+}
+
+.before {
+  background-color: #fef9c3;
+  color: #ca8a04;
+}
+
+.before span {
+  background-color: #ca8a04;
+}
+
+.decide {
+  background-color: #f1f5f9;
+  color: #6b7280;
+}
+
+.decide span {
+  background-color: #9ca3af;
+}
+
+.condition {
+  flex: 1;
+}
+
+.conditionTitleBox {
+  height: 42px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #f8fafc;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 10px 16px;
+}
+
+.conditionTitle,
+.basic {
+  display: flex;
+  align-items: center;
+}
+
+.conditionTitle {
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1b3a6b;
+}
+
+.basic {
+  height: 22px;
+  gap: 4px;
+  background-color: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.conditionType {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 20px 16px;
+  border: 1px solid #e5e7eb;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.type {
+  display: flex;
+  gap: 10px;
+}
+
+.typeName {
+  display: flex;
+  flex-direction: column;
+}
+
+.typeName label {
+  font-size: 12px;
+  font-weight: 900;
+  color: #374151;
+}
+
+.typeName span {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+  cursor: pointer;
+}
+
+/* 기본 체크박스 숨기기 */
+.checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* 배경 슬라이더 (기본 꺼짐 상태: 연한 회색) */
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e5e7eb;
+  border-radius: 999px;
+  transition: background-color 0.2s ease;
+}
+
+/* 칩 (내부 동그라미) 설정 */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/* 켜짐(On) 상태일 때 배경색 변화 */
+.checkbox:checked + .slider {
+  background-color: #1b3a6b;
+}
+
+/* 켜짐(On) 상태일 때 칩 이동 거리 수정 */
+/* 계산식: 전체 너비(34px) - 칩 너비(14px) - 좌측여백(2px) = 우측 끝까지 18px 이동 */
+.checkbox:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.cardBox {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.table {
+  background-color: #f8fafc;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.tableTitleBox {
+  height: 46px;
+  display: flex;
+  justify-content: space-between;
+  padding: 11.5px 20px;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tableTitle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #1b3a6b;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.total {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tableLenght {
+  display: flex;
+  align-items: center;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 900;
+  background-color: #eff6ff;
+  border-radius: 999px;
+  padding: 4px 12px;
+  box-sizing: border-box;
+}
+
+.total span {
+  display: block;
+  width: 1px;
+  height: 14px;
+  background-color: #e5e7eb;
+}
+
+.basicPay,
+.payList,
+.account {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.basicPay span,
+.payList span,
+.account span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.basicPay span {
+  background-color: #dbeafe;
+}
+.payList span {
+  background-color: #fee2e2;
+}
+.account span {
+  background-color: #d1fae5;
+}
+
+.retryBtn {
+  height: 30px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 12px;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 900;
+  color: #2563eb;
+  cursor: pointer;
 }

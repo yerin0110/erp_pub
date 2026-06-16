@@ -8,7 +8,7 @@ export default function PageTitle({
   downloadBtnText,
   addBtnImg,
   addBtnText,
-  onNewRegisterClick,
+  onAddClick,
 }) {
   return (
     <>
@@ -36,7 +36,7 @@ export default function PageTitle({
             <img src={downloadBtnImg} alt="" />
             {downloadBtnText}
           </button>
-          <button className={c.addBtn} onClick={onNewRegisterClick}>
+          <button className={c.addBtn} onClick={onAddClick}>
             <img src={addBtnImg} alt="" />
             {addBtnText}
           </button>
