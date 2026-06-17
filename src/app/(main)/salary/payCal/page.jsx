@@ -212,7 +212,7 @@ export default function Page() {
             <div className={c.tableTitleBox}>
               <div className={c.tableTitle}>
                 <TableIcon size={14} color="#1b3a6b" />
-                2025년 7월 근태현황
+                2025년 7월 급여계산 미리보기
               </div>
               <div className={c.total}>
                 <div className={c.tableLenght}>총 {8}명</div>
