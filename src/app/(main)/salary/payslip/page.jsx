@@ -130,7 +130,7 @@ export default function page() {
             <div className={c.yearBtnBox}>
               <button className={c.yearBtn}>2023</button>
               <button className={c.yearBtn}>2024</button>
-              <button className={c.yearBtn}>2025</button>
+              <button className={`${c.yearBtn} ${c.click}`}>2025</button>
             </div>
           </div>
 
@@ -141,7 +141,7 @@ export default function page() {
                 2025년 월별 급여 수령 이력
               </div>
               <div className={c.total}>
-                <div className={c.tableLenght}>총 {8}명</div>
+                <div className={c.tableLenght}>{7}개월 조회</div>
                 <div className={c.basicPay}>
                   <span></span>지급
                 </div>

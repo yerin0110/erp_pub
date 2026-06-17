@@ -103,9 +103,6 @@
 
 .search {
   margin: 14px 0;
-}
-
-.search {
   height: 62px;
   display: flex;
   justify-content: space-between;
@@ -263,6 +260,7 @@
   background-color: #1b3a6b;
   font-weight: 700;
   color: white;
+  border: none;
 }
 
 .table {

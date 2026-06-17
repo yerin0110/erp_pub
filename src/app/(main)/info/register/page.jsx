@@ -39,9 +39,9 @@ export default function Page() {
     // 의존한 데이터가 getEmployees 내에 또 바뀔 경우 무한루프 돌 가능성 있어서 에러 나옴
     // 지워주셈
 
-    const getEmployees = async () => {
+    /* const getEmployees = async () => {
       // 기존 직원 데이터를 가져오는 로직
-    };
+    }; */
 
     getEmployees();
   }, []);
@@ -49,11 +49,11 @@ export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [addressInfo, setAddressInfo] = useState({});
 
-
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  {/* [다음 주소찾기 API]  2. 다음주소 검색 > 리스트 선택시 발동 */
+  {
+    /* [다음 주소찾기 API]  2. 다음주소 검색 > 리스트 선택시 발동 */
   }
   const openPostcode = () => {
     if (!window || window === undefined) return;
@@ -67,7 +67,53 @@ export default function Page() {
     });
 
     postCode.open();
+  };
 
+  const handleStatusChange = (e) => {
+    setRegisterInfo((prev) => ({
+      ...prev,
+      state: e.target.value,
+    }));
+  };
+
+  const [registerInfo, setRegisterInfo] = useState({
+    name: "",
+    team: "",
+    rank: "",
+    joinDate: "",
+    state: "재직중",
+    phone: "",
+    email: "",
+    emergencyName: "",
+    emergencyRelation: "",
+    emergencyPhone: "",
+  });
+
+  const 사원등록하기 = async () => {
+    const token = localStorage.getItem("accessToken");
+
+    const res = await baseApi.post(
+      "/api/v1/employees/registerEmployee",
+      {
+        name: registerInfo.name,
+        departmentName: registerInfo.team,
+        positionName: registerInfo.rank,
+        hireDate: registerInfo.joinDate,
+        employmentStatus: registerInfo.state,
+        phone: registerInfo.phone,
+        email: registerInfo.email,
+        address: registerInfo.roadAddress,
+        detailedAddress: registerInfo.detailAddress,
+        /* emergencyName: registerInfo.emergencyName,
+        emergencyRelation: registerInfo.emergencyRelation,
+        emergencyPhone: registerInfo.emergencyPhone, */
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
   };
 
   return (
@@ -134,28 +180,31 @@ export default function Page() {
               <div>
                 <span>부서</span>
                 <select name="" id="">
-                  <option value="">인사팀</option>
-                  <option value="">경영지원팀</option>
-                  <option value="">개발팀</option>
-                  <option value="">영업팀</option>
+                  <option value="선택">== 선택 ==</option>
+                  <option value="인사팀">인사팀</option>
+                  <option value="경영지원본부">경영지원본부</option>
+                  <option value="IT본부">IT본부</option>
+                  <option value="영업본부">영업본부</option>
                 </select>
               </div>
 
               <div>
                 <span>직급</span>
                 <select name="" id="">
-                  <option value="">과장</option>
-                  <option value="">팀장</option>
-                  <option value="">대리</option>
-                  <option value="">사원</option>
+                  <option value="선택">== 선택 ==</option>
+                  <option value="과장">과장</option>
+                  <option value="팀장">팀장</option>
+                  <option value="대리">대리</option>
+                  <option value="사원">사원</option>
                 </select>
               </div>
 
               <div>
                 <span>재직상태</span>
                 <select name="" id="">
-                  <option value="">재직중</option>
-                  <option value="">휴직중</option>
+                  <option value="선택">== 선택 ==</option>
+                  <option value="재직중">재직중</option>
+                  <option value="휴직중">휴직중</option>
                 </select>
               </div>
 
@@ -218,26 +267,61 @@ export default function Page() {
                     <label>
                       성명<span className={c.necessary}>*</span>
                     </label>
-                    <input type="text" placeholder="성명" />
+                    <input
+                      type="text"
+                      placeholder="성명"
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            name: e.target.value,
+                          };
+                        });
+                      }}
+                    />
                   </div>
                   <div>
                     <label>
                       부서<span className={c.necessary}>*</span>
                     </label>
-                    <select name="" id="">
+                    <select
+                      name=""
+                      id=""
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            team: e.target.value,
+                          };
+                        });
+                      }}
+                    >
+                      <option value="선택">=== 선택 ===</option>
                       <option value="인사팀">인사팀</option>
-                      <option value="경영지원팀">경영지원팀</option>
-                      <option value="개발팀">개발팀</option>
-                      <option value="영업팀">영업팀</option>
+                      <option value="경영지원본부">경영지원본부</option>
+                      <option value="IT본부">IT본부</option>
+                      <option value="영업본부">영업본부</option>
                     </select>
                   </div>
                   <div>
                     <label>
                       직급<span className={c.necessary}>*</span>
                     </label>
-                    <select name="" id="">
-                      <option value="팀장">팀장</option>
+                    <select
+                      name=""
+                      id=""
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            rank: e.target.value,
+                          };
+                        });
+                      }}
+                    >
+                      <option value="">=== 선택 ===</option>
                       <option value="과장">과장</option>
+                      <option value="팀장">팀장</option>
                       <option value="대리">대리</option>
                       <option value="사원">사원</option>
                     </select>
@@ -246,7 +330,17 @@ export default function Page() {
                     <label>
                       입사일<span className={c.necessary}>*</span>
                     </label>
-                    <input type="date" />
+                    <input
+                      type="date"
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            joinDate: e.target.value,
+                          };
+                        });
+                      }}
+                    />
                   </div>
                   <div>
                     <label>
@@ -254,15 +348,33 @@ export default function Page() {
                     </label>
                     <ul className={c.status}>
                       <li className={c.statusBtn}>
-                        <input type="radio" />
+                        <input
+                          type="radio"
+                          name="employmentStatus"
+                          value="재직중"
+                          checked={registerInfo.state === "재직중"}
+                          onChange={handleStatusChange}
+                        />
                         재직중
                       </li>
                       <li className={c.statusBtn}>
-                        <input type="radio" />
+                        <input
+                          type="radio"
+                          name="employmentStatus"
+                          value="휴직중"
+                          checked={registerInfo.state === "휴직중"}
+                          onChange={handleStatusChange}
+                        />
                         휴직중
                       </li>
                       <li className={c.statusBtn}>
-                        <input type="radio" />
+                        <input
+                          type="radio"
+                          name="employmentStatus"
+                          value="퇴직"
+                          checked={registerInfo.state === "퇴직"}
+                          onChange={handleStatusChange}
+                        />
                         퇴직
                       </li>
                     </ul>
@@ -280,11 +392,33 @@ export default function Page() {
                     <label>
                       휴대폰<span className={c.necessary}>*</span>
                     </label>
-                    <input type="text" placeholder="010-0000-0000" />
+                    <input
+                      type="text"
+                      placeholder="010-0000-0000"
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            phone: e.target.value,
+                          };
+                        });
+                      }}
+                    />
                   </div>
                   <div>
                     <label>이메일</label>
-                    <input type="text" placeholder="example@company.com" />
+                    <input
+                      type="text"
+                      placeholder="example@company.com"
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            email: e.target.value,
+                          };
+                        });
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -309,13 +443,34 @@ export default function Page() {
                   </div>
                   <div>
                     <label>도로명주소</label>
-                    <div className={c.auto}>
+                    <div
+                      className={c.auto}
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            roadAddress: e.target.value,
+                          };
+                        });
+                      }}
+                    >
                       {addressInfo?.roadAddress || "주소검색 후 자동입력"}
                     </div>
                   </div>
                   <div>
-                    <label>도로명주소</label>
-                    <input type="text" placeholder="상세주소를 입력하세요" />
+                    <label>상세주소</label>
+                    <input
+                      type="text"
+                      placeholder="상세주소를 입력하세요"
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            detailAddress: e.target.value,
+                          };
+                        });
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -328,13 +483,33 @@ export default function Page() {
                 <div className={c.emergency}>
                   <div>
                     <label>성명</label>
-                    <input type="text" placeholder="비상연락자 성명" />
+                    <input
+                      type="text"
+                      placeholder="비상연락자 성명"
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            emergencyName: e.target.value,
+                          };
+                        });
+                      }}
+                    />
                   </div>
                   <div>
-                    <label>
-                      관계<span className={c.necessary}>*</span>
-                    </label>
-                    <select name="" id="">
+                    <label>관계</label>
+                    <select
+                      name=""
+                      id=""
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            emergencyRelation: e.target.value,
+                          };
+                        });
+                      }}
+                    >
                       <option value="관계선택">관계선택</option>
                       <option value="부">부</option>
                       <option value="모">모</option>
@@ -344,7 +519,18 @@ export default function Page() {
                   </div>
                   <div>
                     <label>연락처</label>
-                    <input type="text" placeholder="010-0000-0000" />
+                    <input
+                      type="text"
+                      placeholder="010-0000-0000"
+                      onChange={(e) => {
+                        setRegisterInfo((prev) => {
+                          return {
+                            ...prev,
+                            emergencyPhone: e.target.value,
+                          };
+                        });
+                      }}
+                    />
                   </div>
                 </div>
               </div>
@@ -358,7 +544,13 @@ export default function Page() {
                   <X size={14} color="#6b7280" />
                   취소
                 </button>
-                <button className={c.saveBtn}>
+                <button
+                  className={c.saveBtn}
+                  onClick={async () => {
+                    await 사원등록하기();
+                    await closeModal();
+                  }}
+                >
                   <Save size={14} color="#ffffff" />
                   저장
                 </button>
