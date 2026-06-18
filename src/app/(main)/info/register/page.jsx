@@ -106,6 +106,19 @@ export default function Page() {
   const 사원등록하기 = async () => {
     const token = localStorage.getItem("accessToken");
 
+    // 필수항목 미기입 경고창
+    if (
+      !registerInfo.name ||
+      !registerInfo.team ||
+      !registerInfo.rank ||
+      !registerInfo.joinDate ||
+      !registerInfo.state ||
+      !registerInfo.phone
+    ) {
+      alert("필수 항목을 빠짐없이 기입해주십시오");
+      return;
+    }
+
     const res = await baseApi.post(
       "/api/v1/employees/registerEmployee",
       {
@@ -557,7 +570,7 @@ export default function Page() {
                   className={c.saveBtn}
                   onClick={async () => {
                     await 사원등록하기();
-                    await closeModal();
+                    // await closeModal();
                   }}
                 >
                   <Save size={14} color="#ffffff" />

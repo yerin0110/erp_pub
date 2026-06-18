@@ -97,6 +97,35 @@
   border-bottom-right-radius: 6px;
 }
 
+.application {
+  height: 25px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  background-color: #dcfce7;
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.application span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background-color: #16a34a;
+}
+
+.editBox {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
 .yearBtnBox {
   height: 34px;
   display: flex;
@@ -129,4 +158,28 @@
   font-weight: 700;
   color: white;
   border: none;
+}
+
+.cardBox {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.summaryBox {
+  width: 100%;
+  background-color: #1b3a6b;
+  border-radius: 8px;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.summaryTitle {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
 }

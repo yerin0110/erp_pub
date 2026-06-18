@@ -4,7 +4,14 @@ import c from "./page.module.css";
 import Nav from "@/component/common/Nav";
 import Aside from "@/component/common/Aside";
 import PageTitle from "@/component/common/PageTitle";
-import { Building2, ChevronLeft, Calendar, ChevronRight } from "lucide-react";
+import {
+  Building2,
+  ChevronLeft,
+  Calendar,
+  ChevronRight,
+  Clock,
+  Calculator,
+} from "lucide-react";
 
 export default function page() {
   return (
@@ -71,13 +78,34 @@ export default function page() {
                   </button>
                 </div>
               </div>
-              .
+              <div className={c.application}>
+                <span></span>2025년 요율 적용중
+              </div>
+              <div className={c.editBox}>
+                <Clock size={12} color="#9ca3af" />
+                최종수정: 2025.01.01 · 홍길동
+              </div>
             </div>
 
             <div className={c.yearBtnBox}>
               <button className={c.yearBtn}>2023</button>
               <button className={c.yearBtn}>2024</button>
               <button className={`${c.yearBtn} ${c.click}`}>2025</button>
+            </div>
+          </div>
+
+          <div className={c.cardBox}></div>
+
+          <div className={c.summaryBox}>
+            <div className={c.summaryTitle}>
+              <Calculator size={15} color="#60a5fa" />
+              2025년 4대보험 합산 요율 요약
+            </div>
+            <div className={c.sumBox}>
+              <div className={c.sumTitle}>
+                <span>근로자 합계</span>
+                <div className={c.percent1}>8.945%</div>
+              </div>
             </div>
           </div>
         </div>
