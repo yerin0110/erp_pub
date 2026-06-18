@@ -50,7 +50,10 @@ export default function Page() {
   const [addressInfo, setAddressInfo] = useState({});
 
   const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setAddressInfo({});
+  };
 
   {
     /* [다음 주소찾기 API]  2. 다음주소 검색 > 리스트 선택시 발동 */
@@ -113,8 +116,9 @@ export default function Page() {
         employmentStatus: registerInfo.state,
         phone: registerInfo.phone,
         email: registerInfo.email,
-        postCode: registerInfo.postCode,
-        address: registerInfo.roadAddress,
+        postCode: addressInfo.postCode,
+        // address: addressInfo.roadAddress,
+        address: addressInfo.address,
         detailedAddress: registerInfo.detailAddress,
         /* emergencyName: registerInfo.emergencyName,
         emergencyRelation: registerInfo.emergencyRelation,
@@ -126,6 +130,7 @@ export default function Page() {
         },
       },
     );
+    setAddressInfo({});
   };
 
   return (
@@ -448,21 +453,6 @@ export default function Page() {
                         {/* {addressInfo?.zonecode || "우편번호"} */}
                         {addressInfo?.postCode || "우편번호"}
                       </div>
-                      {/* <input
-                        type="text"
-                        className={c.postNum} // ⭐ 클래스 추가
-                        value={registerInfo.postCode || ""}
-                        placeholder="우편번호"
-                        readOnly
-                        onChange={(e) => {
-                          setRegisterInfo((prev) => {
-                            return {
-                              ...prev,
-                              postCode: e.target.value,
-                            };
-                          });
-                        }}
-                      /> */}
                       <button className={c.addressBtn} onClick={openPostcode}>
                         <Search size={13} color="#ffffff" />
                         주소검색
@@ -471,17 +461,7 @@ export default function Page() {
                   </div>
                   <div>
                     <label>도로명주소</label>
-                    <div
-                      className={c.auto}
-                      onChange={(e) => {
-                        setRegisterInfo((prev) => {
-                          return {
-                            ...prev,
-                            roadAddress: e.target.value,
-                          };
-                        });
-                      }}
-                    >
+                    <div className={c.auto}>
                       {/* {addressInfo?.rodaAddress || "주소검색 후 자동입력"} */}
                       {addressInfo?.address || "주소검색 후 자동입력"}
                     </div>
