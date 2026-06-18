@@ -62,13 +62,23 @@ export default function Page() {
       oncomplete(data) {
         // data 안에 많이 있음. 여기서 뽑아서 쓰면됨.
         console.log("선택한 주소 >>>> ", data);
-        setAddressInfo({ ...data });
+
+        const 우편번호 = data?.zonecode;
+        const 주소 = data?.address;
+
+        // setAddressInfo({ ...data });
+        setAddressInfo((prev) => ({
+          ...prev,
+          postCode: 우편번호,
+          address: 주소,
+        }));
       },
     });
 
     postCode.open();
   };
 
+  // radio버튼
   const handleStatusChange = (e) => {
     setRegisterInfo((prev) => ({
       ...prev,
@@ -76,6 +86,7 @@ export default function Page() {
     }));
   };
 
+  // 사원등록하기
   const [registerInfo, setRegisterInfo] = useState({
     name: "",
     team: "",
@@ -102,6 +113,7 @@ export default function Page() {
         employmentStatus: registerInfo.state,
         phone: registerInfo.phone,
         email: registerInfo.email,
+        postCode: registerInfo.postCode,
         address: registerInfo.roadAddress,
         detailedAddress: registerInfo.detailAddress,
         /* emergencyName: registerInfo.emergencyName,
@@ -433,8 +445,24 @@ export default function Page() {
                     <label>우편번호</label>
                     <div className={c.postNumBox}>
                       <div className={c.postNum}>
-                        {addressInfo?.zonecode || "우편번호"}
+                        {/* {addressInfo?.zonecode || "우편번호"} */}
+                        {addressInfo?.postCode || "우편번호"}
                       </div>
+                      {/* <input
+                        type="text"
+                        className={c.postNum} // ⭐ 클래스 추가
+                        value={registerInfo.postCode || ""}
+                        placeholder="우편번호"
+                        readOnly
+                        onChange={(e) => {
+                          setRegisterInfo((prev) => {
+                            return {
+                              ...prev,
+                              postCode: e.target.value,
+                            };
+                          });
+                        }}
+                      /> */}
                       <button className={c.addressBtn} onClick={openPostcode}>
                         <Search size={13} color="#ffffff" />
                         주소검색
@@ -454,7 +482,8 @@ export default function Page() {
                         });
                       }}
                     >
-                      {addressInfo?.roadAddress || "주소검색 후 자동입력"}
+                      {/* {addressInfo?.rodaAddress || "주소검색 후 자동입력"} */}
+                      {addressInfo?.address || "주소검색 후 자동입력"}
                     </div>
                   </div>
                   <div>
