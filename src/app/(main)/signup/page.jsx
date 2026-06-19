@@ -21,35 +21,27 @@ export default function Page() {
   const 회원가입하기 = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const res = await baseApi.post("/api/v1/employees/joinErp", {
-        firstName: signupInfo.firstName,
-        name: signupInfo.name,
-        employeeNo: signupInfo.employeeNo,
-        departmentName: signupInfo.team,
-        positionName: signupInfo.rank,
-        email: signupInfo.email,
-        password: signupInfo.password,
-        checkPassword: signupInfo.passwordCheck,
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
+      const res = await baseApi.post(
+        "/api/v1/employees/joinErp",
+        {
+          firstName: signupInfo.firstName,
+          name: signupInfo.name,
+          employeeNo: signupInfo.employeeNo,
+          departmentName: signupInfo.team,
+          positionName: signupInfo.rank,
+          email: signupInfo.email,
+          password: signupInfo.password,
+          checkPassword: signupInfo.passwordCheck,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
     } catch (e) {
-
     } finally {
-
     }
-    /* {
-      firstName: signupInfo.firstName,
-      name: signupInfo.name,
-      employeeNo: signupInfo.employeeNo,
-      departmentName: signupInfo.team,
-      positionName: signupInfo.rank,
-      email: signupInfo.email,
-      password: signupInfo.password,
-      checkPassword: signupInfo.passwordCheck,
-    } */
   };
 
   return (

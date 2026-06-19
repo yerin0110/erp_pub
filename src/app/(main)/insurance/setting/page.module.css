@@ -166,6 +166,90 @@
   justify-content: space-between;
 }
 
+.longBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.longBoxTitle {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 900;
+  color: #374151;
+}
+
+.percentBox {
+  height: 18px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background-color: #fef9c3;
+  font-size: 11px;
+  font-weight: 700;
+  color: #d97706;
+}
+
+.longBoxTitle span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background-color: #f59e0b;
+}
+
+.percentInput {
+  display: flex;
+  gap: 8px;
+}
+
+.inputBox {
+  display: flex;
+  width: 127px;
+  height: 32px;
+}
+
+.inputBox input {
+  flex: 1;
+  min-width: 0;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-right: none;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #374151;
+  outline: none;
+}
+
+.symbol {
+  width: 34px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: #f1f5f9;
+  border: 1px solid #d1d5db;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.border {
+  background-color: #fffbeb;
+  border-color: #fde68a;
+  font-weight: 900;
+  color: #d97006;
+}
+
+.inputBox input:nth-child(1) {
+  border-color: #fde68a;
+}
+
 .summaryBox {
   width: 100%;
   background-color: #1b3a6b;
@@ -173,6 +257,7 @@
   padding: 14px 20px;
   display: flex;
   justify-content: space-between;
+  margin: 16px 0;
 }
 
 .summaryTitle {
@@ -182,4 +267,125 @@
   font-size: 14px;
   font-weight: 700;
   color: white;
+}
+
+.sumBox {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.sum {
+  display: flex;
+  gap: 17px;
+  align-items: center;
+  background-color: #2d5f9e;
+  border-radius: 8px;
+  padding: 6px 16px;
+}
+
+.sumTitle {
+}
+
+.sumTitle span {
+  font-size: 11px;
+  font-weight: 500;
+  color: #93c5fd;
+}
+
+.percent1,
+.percent2 {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.percent1 {
+  color: white;
+}
+
+.percent2 {
+  color: #fcd34d;
+}
+
+.sum p {
+  font-size: 10px;
+  color: #93c5fd;
+}
+
+.table {
+  background-color: #f8fafc;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.tableTitleBox {
+  height: 46px;
+  display: flex;
+  justify-content: space-between;
+  padding: 11.5px 20px;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tableTitle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #1b3a6b;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.total {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tableLenght {
+  display: flex;
+  align-items: center;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 900;
+  background-color: #eff6ff;
+  border-radius: 999px;
+  padding: 4px 12px;
+  box-sizing: border-box;
+}
+
+.total span {
+  display: block;
+  width: 1px;
+  height: 14px;
+  background-color: #e5e7eb;
+}
+
+.basicPay,
+.payList,
+.account {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.basicPay span,
+.payList span,
+.account span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.basicPay span {
+  background-color: #dbeafe;
+}
+.payList span {
+  background-color: #fee2e2;
+}
+.account span {
+  background-color: #d1fae5;
 }

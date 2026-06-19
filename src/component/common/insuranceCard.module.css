@@ -1,0 +1,163 @@
+.card {
+  width: 290px;
+  height: fit-content;
+}
+
+.cardHeader {
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 16px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+}
+
+.cardTitle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.cardTitle span {
+  display: block;
+  width: 28px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 20%);
+  border-radius: 6px;
+}
+
+.percentBox {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background-color: white;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.cardContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  padding: 14px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.info {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.percentInput {
+  display: flex;
+  gap: 8px;
+}
+
+.worker,
+.business {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #374151;
+}
+
+.textBox {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.worker span,
+.business span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+}
+
+.business span {
+  background-color: #7c3aed;
+}
+
+.inputBox {
+  display: flex;
+  width: 127px;
+  height: 36px;
+}
+
+.inputBox input {
+  flex: 1;
+  min-width: 0;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-right: none;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #374151;
+  outline: none;
+}
+
+.symbol {
+  width: 34px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: #f1f5f9;
+  border: 1px solid #d1d5db;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+.conversion {
+  background-color: #fcfafc;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 10px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.totalBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.totalText {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.totalPercent {
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.extraContent {
+  display: block;
+  width: 100%;
+}

@@ -4,7 +4,7 @@ import c from "./page.module.css";
 import Nav from "@/component/common/Nav";
 import Aside from "@/component/common/Aside";
 import PageTitle from "@/component/common/PageTitle";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import baseApi from "@/api/baseApi";
 import Table from "@/component/common/Table";
 import {
@@ -19,8 +19,12 @@ import {
   Heart,
   X,
 } from "lucide-react";
+import { toast } from "sonner";
+import axios from "axios";
 
 export default function Page() {
+  const fileUploaderRef = useRef(null);
+
   const [applyInfo, setApplyInfo] = useState();
 
   // 경조사 조회
@@ -37,6 +41,28 @@ export default function Page() {
   // const [place, setPlace] = useState("");
   // const [bank, setBank] = useState("");
   // const [account, setAccount] = useState("");
+
+  // useEffect(() => {
+  //   toast("토스트 테스트", { position: "top-center" });
+  // });
+
+  const fileUpload = async (fileList) => {
+    const url = "http://localhost:33000/api/v1/files/upload";
+
+    const token = localStorage.getItem("accessToken");
+
+    const 파일 = fileList[0];
+
+    const formData = new FormData();
+    formData.append("file", 파일);
+    formData.append("refType", "1");
+
+    await axios.post(url, formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
 
   const 경조사비리스트조회 = async () => {
     const token = localStorage.getItem("accessToken");
@@ -572,7 +598,22 @@ export default function Page() {
                       <p>청첩장·출생증명서 등 관련 서류를 첨부해 주세요</p>
                       <span>PDF, JPG, PNG · 최대 10MB · 파일 3개까지</span>
                     </div>
-                    <button className={c.uploadBtn}>
+
+                    <input
+                      type="file"
+                      hidden
+                      ref={fileUploaderRef}
+                      onChange={(e) => {
+                        // API 백엔드에 파일 전송
+                        fileUpload(e.target.files);
+                      }}
+                    />
+                    <button
+                      className={c.uploadBtn}
+                      onClick={() => {
+                        fileUploaderRef.current.click();
+                      }}
+                    >
                       <img src="/images/Upload.png" alt="" />
                       파일 선택
                     </button>
