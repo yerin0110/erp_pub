@@ -1,4 +1,6 @@
+import { useState } from "react";
 import c from "./PageTitle.module.css";
+import { Download } from "lucide-react";
 
 export default function PageTitle({
   location = [],
@@ -10,6 +12,10 @@ export default function PageTitle({
   addBtnText,
   onAddClick,
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       <div className={c.section}>
@@ -32,7 +38,7 @@ export default function PageTitle({
           <p className={c.subTitle}>{subTitle}</p>
         </div>
         <div className={c.btnBox}>
-          <button className={c.downloadBtn}>
+          <button className={c.downloadBtn} onClick={openModal}>
             <img src={downloadBtnImg} alt="" />
             {downloadBtnText}
           </button>
@@ -42,6 +48,32 @@ export default function PageTitle({
           </button>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className={c.modalView}>
+          <div className={c.modalContent}>
+            <div className={c.imgBox}>
+              <Download size={24} color="#3b82f6" />
+            </div>
+            <div className={c.downloadText}>
+              PDF 다운로드
+              <div className={c.notice}>
+                선택한 데이터를 PDF 파일로 다운로드합니다.
+                <br />
+                계속 진행하시겠습니까?
+              </div>
+            </div>
+          </div>
+          <div className={c.modalFooter}>
+            <div className={c.buttonBox}>
+              <button className={c.cancelBtn} onClick={closeModal}>
+                취소
+              </button>
+              <button className={c.okBtn}>확인</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

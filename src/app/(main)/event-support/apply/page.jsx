@@ -9,14 +9,23 @@ import baseApi from "@/api/baseApi";
 import Table from "@/component/common/Table";
 import {
   Baby,
+  Banknote,
   CakeSlice,
   Calendar,
   Check,
+  Clock,
+  CreditCard,
+  Download,
   Ellipsis,
+  FileImage,
+  FileText,
   Flower2,
   Gift,
   Hash,
   Heart,
+  MapPin,
+  MessageSquareText,
+  User,
   X,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -782,13 +791,30 @@ export default function Page() {
                     <tr>
                       <th>경조구분</th>
                       <td>
-                        <span>본인결혼</span>경조비 지급 규정 3조 1항
+                        <span className={c.detailType}>본인결혼</span>
+                        <div className={c.rule}>경조비 지급 규정 3조 1항</div>
                       </td>
                     </tr>
                     <tr>
                       <th>대상자/관계</th>
                       <td>
-                        <span>이</span>
+                        <span className={c.firstName}>이</span>
+                        <p className={c.detailName}>이영희</p>
+                        <div className={c.detailRelation}>본인</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>경조일</th>
+                      <td>
+                        <Calendar size={13} color="#9ca3af" />
+                        2025년 7월 20일 (일)
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>경조 장소</th>
+                      <td>
+                        <MapPin size={13} color="#9ca3af" />
+                        더케이서울호텔 그랜드블룸
                       </td>
                     </tr>
                   </tbody>
@@ -799,13 +825,96 @@ export default function Page() {
                   <span></span>지급 정보
                 </div>
                 <table>
-                  <tr>
-                    <th>지급금액</th>
-                    <td>
-                      <span>500,000원</span>(오십만원정)
-                    </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <th>지급금액</th>
+                      <td>
+                        <Banknote size={13} color="#1b3a6b" />
+                        <span className={c.amontMoney}>500,000원</span>
+                        <div className={c.rule}>(오십만원정)</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>지급계좌</th>
+                      <td>
+                        <CreditCard size={13} color="#9ca3af" />
+                        국민은행 12****-34 (이영희)
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>예상 지급일</th>
+                      <td>
+                        <Clock size={13} color="#9ca3af" />
+                        승인 후 3영업일 이내
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
+              </div>
+              <div className={c.detailInfo}>
+                <div className={c.detailTitle}>
+                  <span></span>첨부 서류
+                </div>
+                <div className={c.detailAttach}>
+                  <div className={c.fileType}>
+                    <div className={`${c.imgBox} ${c.pdf}`}>
+                      <FileText size={14} color="#2563eb" />
+                    </div>
+                    <div className={c.detailFile}>
+                      결혼확인서_이영희_20250701.pdf
+                      <span>PDF · 245 KB · 2025.07.01 업로드</span>
+                    </div>
+                  </div>
+                  <button className={c.downloadBtn}>
+                    <Download size={15} color="#9ca3af" />
+                  </button>
+                </div>
+                <div className={c.detailAttach}>
+                  <div className={c.fileType}>
+                    <div className={`${c.imgBox} ${c.jpg}`}>
+                      <FileImage size={14} color="#dc2626" />
+                    </div>
+                    <div className={c.detailFile}>
+                      청첩장_스캔본.jpg
+                      <span>JPG · 1.2 MB · 2025.07.01 업로드</span>
+                    </div>
+                  </div>
+                  <button className={c.downloadBtn}>
+                    <Download size={15} color="#9ca3af" />
+                  </button>
+                </div>
+              </div>
+              <div className={c.detailInfo}>
+                <div className={`${c.detailTitle} ${c.reviewTitle}`}>
+                  <span className={c.review}></span>검토 의견
+                </div>
+                <div className={c.reviewBox}>
+                  <div className={c.reviewText}>
+                    <MessageSquareText size={14} color="#d97706" />
+                    서류 확인 중입니다. 추가 서류 제출이 필요할 수 있습니다.
+                  </div>
+                  <div className={c.reviewer}>
+                    <User size={11} color="#d97706" />
+                    검토자: 김인사 (인사팀장) · 2025.07.02
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={c.modalFooter}>
+            <div className={c.footerText}>
+              <Clock size={12} color="#9ca3af" />
+              최종 수정: 2025.07.02 · 인사팀
+            </div>
+            <div className={c.buttonBox}>
+              <div className={c.applyCancelBtn}>
+                <X size={13} color="#dc2626" />
+                신청취소
+              </div>
+              <div className={c.applyCloseBtn} onClick={closeModal}>
+                <X size={13} color="#ffffff" />
+                닫기
               </div>
             </div>
           </div>
