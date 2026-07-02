@@ -3,8 +3,9 @@
 import c from "./page.module.css";
 import Nav from "@/component/common/Nav";
 import Aside from "@/component/common/Aside";
-import Table from "@/component/common/Table";
 import PageTitle from "@/component/common/PageTitle";
+import Table from "@/component/common/Table";
+import TableFooter from "@/component/TableFooter";
 import { useEffect, useState } from "react";
 import baseApi from "@/api/baseApi";
 import { Save, Search, UserPlus, X } from "lucide-react";
@@ -185,11 +186,16 @@ export default function Page() {
             location={["인사관리", "인사정보", "인사정보등록"]}
             title="인사정보등록"
             subTitle="직원의 인사정보를 등록하고 관리합니다."
-            downloadBtnImg="/images/Download.png"
-            downloadBtnText="PDF 다운로드"
-            addBtnImg="/images/Plus.png"
-            addBtnText="신규등록"
-            onAddClick={openModal}
+            buttons={[
+              {
+                img: "/images/Download.png",
+                text: "PDF 다운로드",
+              },
+              {
+                img: "/images/Plus.png",
+                text: "신규등록",
+              },
+            ]}
           />
 
           <div className={c.searchBox}>
@@ -266,8 +272,10 @@ export default function Page() {
               "관리",
             ]}
           />
+          <TableFooter totalCount={employees.length} />
         </div>
       </div>
+
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 z-50">
           <div className={c.modalView}>

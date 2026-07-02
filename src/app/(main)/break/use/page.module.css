@@ -1,237 +1,253 @@
-.wrap{
-    width: 1440px;
-    height: 900px;
-    margin: 0 auto;
-    font-family: 'Noto Sans KR';
+.wrap {
+  width: 1440px;
+  height: 900px;
+  margin: 0 auto;
+  font-family: "Noto Sans KR";
 }
 
-.continer{
-    display: flex; 
-    width: 100%;
-    height: 840px;
+.continer {
+  display: flex;
+  width: 100%;
+  height: 840px;
 }
 
-.main{
-    flex: 1;
-    padding: 20px;
-    background-color: #f1f5f9;
+.main {
+  flex: 1;
+  padding: 20px;
+  background-color: #f1f5f9;
 }
 
-.state{
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    margin-bottom: 16px;
+.state {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
-.search{
-    height: 62px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 14px 20px;
-    box-sizing: border-box;
-    margin-bottom: 16px;
+.search {
+  height: 62px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 14px 20px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
 }
 
-.searchBox{
-    height: 34px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
+.searchBox {
+  height: 34px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
-.dateBox, .teamBox, .nameSearch, .searchBtnBox{
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    font-size: 13px;
-    color: #374151;
+.dateBox,
+.teamBox,
+.nameSearch,
+.searchBtnBox {
+  height: 34px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  color: #374151;
 }
 
-.dateBox span, .teamBox span{
-    font-weight: 900;
+.dateBox span,
+.teamBox span {
+  font-weight: 900;
 }
 
-.dateBox div{
-    height: 34px;
-    display: flex;
+.dateBox div {
+  height: 34px;
+  display: flex;
 }
 
-.beforeBtn, .nextBtn{
-    display: flex;
-    align-items: center;
-    background-color: #f8fafc;
-    border: 1px solid #d1d5db;
-    padding: 10px;
-    box-sizing: border-box;
+.beforeBtn,
+.nextBtn {
+  display: flex;
+  align-items: center;
+  background-color: #f8fafc;
+  border: 1px solid #d1d5db;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
-.beforeBtn{
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
+.beforeBtn {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
 }
 
-.dateInput{
-    width: 110px;
-    display: flex;
-    gap: 8px;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    border-top: 1px solid #d1d5db;
-    border-bottom: 1px solid #d1d5db;
+.dateInput {
+  width: 110px;
+  display: flex;
+  gap: 8px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  border-top: 1px solid #d1d5db;
+  border-bottom: 1px solid #d1d5db;
 }
 
-.dateInput input{
-    width: 100%;
-    font-size: 14px;
-    font-weight: 700;
-    color: #111827;
-    outline: none;
+.dateInput input {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  outline: none;
 }
 
-.nextBtn{
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
+.nextBtn {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
-.teamBox select{
-    width: 160px;
-    height: 100%;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    padding: 0 12px;
-    box-sizing: border-box;
+.teamBox select {
+  width: 160px;
+  height: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0 12px;
+  box-sizing: border-box;
 }
 
-.nameSearch{
-    height: 34px;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    text-align: center;
-    border: 1px solid #d1d5db;
-    border-radius: 7px;
-    padding: 5px 10px;
+.nameSearch {
+  height: 34px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  padding: 5px 10px;
 }
 
-.nameSearch input{
-    width: 63px;
-    outline: none;
+.nameSearch input {
+  width: 63px;
+  outline: none;
 }
 
-.searchBtnBox{
-    display: flex;
-    gap: 20px;
+.searchBtnBox {
+  display: flex;
+  gap: 20px;
 }
 
-.searchBtn, .resetBtn{
-    height: 34px;
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    text-align: center;
-    border-radius: 7px;
-    cursor: pointer;
+.searchBtn,
+.resetBtn {
+  height: 34px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  text-align: center;
+  border-radius: 7px;
+  cursor: pointer;
 }
 
-.searchBtn{
-    background-color: #1b3a6b;
-    color: white;
-    padding: 9px 20px;
+.searchBtn {
+  background-color: #1b3a6b;
+  color: white;
+  padding: 9px 20px;
 }
 
-.resetBtn{
-    border: 1px solid #d1d5db;
-    color: #6b7280;
-    padding: 9px 16px;
+.resetBtn {
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+  padding: 9px 16px;
 }
 
-.notice{
-    height: 27px;
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    padding: 6px 12px;
-    background-color: #fff1f2;
-    border: 1px solid #fecaca;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 900;
-    color: #e11d48;
+.notice {
+  height: 27px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: #fff1f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #e11d48;
 }
 
-.table{ 
-    background-color: #f8fafc;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+.table {
+  background-color: #f8fafc;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-.tableTitleBox{
-    height: 46px;
-    display: flex;
-    justify-content: space-between;
-    padding: 11.5px 20px;
-    align-items: center;
-    border-bottom: 1px solid #e5e7eb;
+.tableTitleBox {
+  height: 46px;
+  display: flex;
+  justify-content: space-between;
+  padding: 11.5px 20px;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.tableTitle{
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    color: #1b3a6b;
-    font-size: 14px;
-    font-weight: 700;
+.tableTitle {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #1b3a6b;
+  font-size: 14px;
+  font-weight: 700;
 }
 
-.total{
-    display: flex;
-    gap: 12px;
-    align-items: center;
+.total {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
-.tableLenght{
-    display: flex;
-    align-items: center;
-    color: #2563eb;
-    font-size: 12px;
-    font-weight: 900;
-    background-color: #eff6ff;
-    border-radius: 999px;
-    padding: 4px 12px;
-    box-sizing: border-box;
+.tableLenght {
+  display: flex;
+  align-items: center;
+  color: #2563eb;
+  font-size: 12px;
+  font-weight: 900;
+  background-color: #eff6ff;
+  border-radius: 999px;
+  padding: 4px 12px;
+  box-sizing: border-box;
 }
 
-.total span{
-    display: block;
-    width: 1px;
-    height: 14px;
-    background-color: #e5e7eb;
+.total span {
+  display: block;
+  width: 1px;
+  height: 14px;
+  background-color: #e5e7eb;
 }
 
-.useDays, .remainDays, .low3days{
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    font-size: 12px;
-    font-weight: 500;
-    color: #374151;
+.useDays,
+.remainDays,
+.low3days {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
 }
 
-.useDays span, .remainDays span, .low3days span{
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
+.useDays span,
+.remainDays span,
+.low3days span {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
 }
 
-.useDays span{ background-color: #dbeafe; }
-.remainDays span{ background-color: #bbf7d0; }
-.low3days span{ background-color: #fecaca; }
-
+.useDays span {
+  background-color: #dbeafe;
+}
+.remainDays span {
+  background-color: #bbf7d0;
+}
+.low3days span {
+  background-color: #fecaca;
+}
 
 /* .table thead{
     background-color: #f1f5f9;

@@ -19,6 +19,7 @@ export default function StateCard({
   decideColor,
   decideTextColor,
   decide,
+  subBoxTextBorder,
 }) {
   return (
     <div
@@ -48,8 +49,17 @@ export default function StateCard({
       </p>
       <div className={c.subBox}>
         <span style={{ color: subColor }}>{subcontent}</span>
-        <div style={{ backgroundColor: subBoxColor }}>
-          <p style={{ color: subBoxTextColor }}>
+        <div
+          style={{
+            backgroundColor: subBoxColor,
+            border: `1px solid ${subBoxTextBorder}`,
+          }}
+        >
+          <p
+            style={{
+              color: subBoxTextColor,
+            }}
+          >
             {user} {rank}
           </p>
         </div>

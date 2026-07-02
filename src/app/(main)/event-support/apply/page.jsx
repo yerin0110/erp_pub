@@ -30,6 +30,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import axios from "axios";
+import { Spinner } from "@/components/ui/spinner";
+import TableFooter from "@/component/TableFooter";
 
 export default function Page() {
   const fileUploaderRef = useRef(null);
@@ -55,22 +57,36 @@ export default function Page() {
   //   toast("토스트 테스트", { position: "top-center" });
   // });
 
+  // 파일 업로드
+  const [uploadedFileInfo, setUploadedFileInfo] = useState({});
+
+  const [uploadedFileId, setUploadedFileId] = useState("");
+
   const fileUpload = async (fileList) => {
     const url = "http://localhost:33000/api/v1/files/upload";
 
     const token = localStorage.getItem("accessToken");
 
     const 파일 = fileList[0];
+    const 파일명 = 파일?.name;
+    const 사이즈 = 파일?.size;
+
+    setUploadedFileInfo({
+      name: 파일명,
+      size: 사이즈,
+    });
 
     const formData = new FormData();
     formData.append("file", 파일);
     formData.append("refType", "1");
 
-    await axios.post(url, formData, {
+    const res = await axios.post(url, formData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+
+    setUploadedFileId(res.data.data);
   };
 
   const 경조사비리스트조회 = async () => {
@@ -214,6 +230,7 @@ export default function Page() {
         accountHolder: eventTargetInfo.accountHolder,
         approvalStatus: "확인",
         memo: "메모",
+        fileIdList: [uploadedFileId],
       },
       {
         headers: {
@@ -230,6 +247,32 @@ export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const [eventDetailInfo, setEventDetailInfo] = useState();
+
+  const goDownloadFile = async () => {
+    const token = localStorage.getItem("accessToken");
+
+    const res = await axios.get(
+      `http://localhost:33000/api/v1/files/${eventDetailInfo?.savedFileId}/download`,
+      {
+        responseType: "blob",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+
+    const url = window.URL.createObjectURL(res?.data);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = eventDetailInfo?.savedFileName; // 원본 파일명
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+  };
 
   return (
     <div className={c.wrap}>
@@ -271,11 +314,17 @@ export default function Page() {
             location={["인사관리", "경조비관리", "경조비신청"]}
             title="경조비신청"
             subTitle="경조사 발생 시 경조비를 신청하고 지급 현황을 관리합니다."
-            downloadBtnImg="/images/Download.png"
-            downloadBtnText="PDF 다운로드"
-            addBtnImg="/images/Plus.png"
-            addBtnText="신규신청"
-            onAddClick={openApply}
+            buttons={[
+              {
+                img: "/images/Download.png",
+                text: "PDF 다운로드",
+              },
+              {
+                img: "/images/Plus.png",
+                text: "신규신청",
+                onClick: openApply,
+              },
+            ]}
           />
 
           {isApplyOpen && (
@@ -485,9 +534,9 @@ export default function Page() {
                       >
                         <option value="선택">== 선택 ==</option>
                         <option value="본인">본인</option>
-                        <option value="본인인가">본인</option>
-                        <option value="본인일지도">본인</option>
-                        <option value="본인일거임">본인</option>
+                        <option value="부모">부모</option>
+                        <option value="자녀">자녀</option>
+                        <option value="조부모">조부모</option>
                       </select>
                     </div>
                     <div className={c.applyInfo}>
@@ -627,19 +676,26 @@ export default function Page() {
                       파일 선택
                     </button>
                   </div>
-                  <div className={c.attachFile}>
-                    <div className={c.file}>
-                      <img src="/images/File Text-2.png" alt="" />
-                      <div className={c.fileName}>
-                        <p>청첩장_이영희.pdf</p>
-                        <span>238 KB · 업로드 완료</span>
+                  {uploadedFileInfo?.name && (
+                    <div className={c.attachFile}>
+                      <div className={c.file}>
+                        <img src="/images/File Text-2.png" alt="" />
+                        <div className={c.fileName}>
+                          <p>{uploadedFileInfo?.name}</p>
+                          <span>{uploadedFileInfo?.size} KB · 업로드 완료</span>
+                        </div>
+                      </div>
+                      <div
+                        className={c.delBtn}
+                        onClick={() => {
+                          setUploadedFileInfo({});
+                        }}
+                      >
+                        <img src="/images/X-red.png" alt="" />
+                        삭제
                       </div>
                     </div>
-                    <div className={c.delBtn}>
-                      <img src="/images/X-red.png" alt="" />
-                      취소
-                    </div>
-                  </div>
+                  )}
                   <div className={c.note}>
                     <div className={c.noteTitle}>비고</div>
                     <textarea
@@ -693,6 +749,7 @@ export default function Page() {
               </div>
             </div>
             <Table
+              setEventDetailInfo={setEventDetailInfo}
               tableList={eventAppliedList || []}
               columns={[
                 "NO",
@@ -708,168 +765,192 @@ export default function Page() {
               ]}
               onDetailClick={openModal}
             />
+            <div className={c.tableFooter}></div>
+            {/* <TableFooter totalCount={eventAppliedList.length} /> */}
           </div>
         </div>
       </div>
 
       {isModalOpen && (
-        <div className={c.modalView}>
-          <div className={c.titleBox}>
-            <div className={c.modalTitle}>
-              <Gift size={17} color="#60a5fa" />
-              <div>
-                <p>경조비 신청 상세</p>
-                <span>Welfare Benefit Detail</span>
-              </div>
-            </div>
-            <div className={c.btnBox}>
-              <div className={c.status}>검토중</div>
-              <div className={c.closeBtn} onClick={closeModal}>
-                <X size={14} color="#ffffff" />
-              </div>
-            </div>
-          </div>
-
-          <div className={c.detailBox}>
-            <div className={c.statusBox}>
-              <div className={c.apply}>
-                <div className={c.applyNum}>
-                  <Hash size={12} color="#9ca3af" />
-                  신청번호: WEL-2025-07-001
-                </div>
-                <div className={c.applyDate}>
-                  <Calendar size={16} color="#9ca3af" />
-                  신청일: 2025.07.01
+        <div className="fixed inset-0 bg-black/50 z-50">
+          <div className={c.modalView}>
+            <div className={c.titleBox}>
+              <div className={c.modalTitle}>
+                <Gift size={17} color="#60a5fa" />
+                <div>
+                  <p>경조비 신청 상세</p>
+                  <span>Welfare Benefit Detail</span>
                 </div>
               </div>
-              <div className={c.state}>
-                <div>
-                  <Check
-                    size={11}
-                    color="#ffffff"
-                    style={{
-                      backgroundColor: "#1b3a6b",
-                      width: "20px",
-                      height: "20px",
-                      padding: "4.5px",
-                      borderRadius: "999px",
-                    }}
-                  />
-                  신청완료
-                </div>
-                <span></span>
-                <div>
-                  <div className={c.cricle}>
-                    <div className={c.miniCricle}></div>
-                  </div>
-                  검토중
-                </div>
-                <span></span>
-                <div>
-                  <div className={c.cricleBasic}>
-                    <div className={c.miniCricleBasic}></div>
-                  </div>
-                  승인
-                </div>
-                <span></span>
-                <div>
-                  <div className={c.cricleBasic}>
-                    <div className={c.miniCricleBasic}></div>
-                  </div>
-                  지급완료
+              <div className={c.btnBox}>
+                <div className={c.status}>검토중</div>
+                <div className={c.closeBtn} onClick={closeModal}>
+                  <X size={14} color="#ffffff" />
                 </div>
               </div>
             </div>
 
-            <div className={c.detail}>
-              <div className={c.detailInfo}>
-                <div className={c.detailTitle}>
-                  <span></span>경조정보
-                </div>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>경조구분</th>
-                      <td>
-                        <span className={c.detailType}>본인결혼</span>
-                        <div className={c.rule}>경조비 지급 규정 3조 1항</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>대상자/관계</th>
-                      <td>
-                        <span className={c.firstName}>이</span>
-                        <p className={c.detailName}>이영희</p>
-                        <div className={c.detailRelation}>본인</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>경조일</th>
-                      <td>
-                        <Calendar size={13} color="#9ca3af" />
-                        2025년 7월 20일 (일)
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>경조 장소</th>
-                      <td>
-                        <MapPin size={13} color="#9ca3af" />
-                        더케이서울호텔 그랜드블룸
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div className={c.detailInfo}>
-                <div className={c.detailTitle}>
-                  <span></span>지급 정보
-                </div>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>지급금액</th>
-                      <td>
-                        <Banknote size={13} color="#1b3a6b" />
-                        <span className={c.amontMoney}>500,000원</span>
-                        <div className={c.rule}>(오십만원정)</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>지급계좌</th>
-                      <td>
-                        <CreditCard size={13} color="#9ca3af" />
-                        국민은행 12****-34 (이영희)
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>예상 지급일</th>
-                      <td>
-                        <Clock size={13} color="#9ca3af" />
-                        승인 후 3영업일 이내
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div className={c.detailInfo}>
-                <div className={c.detailTitle}>
-                  <span></span>첨부 서류
-                </div>
-                <div className={c.detailAttach}>
-                  <div className={c.fileType}>
-                    <div className={`${c.imgBox} ${c.pdf}`}>
-                      <FileText size={14} color="#2563eb" />
-                    </div>
-                    <div className={c.detailFile}>
-                      결혼확인서_이영희_20250701.pdf
-                      <span>PDF · 245 KB · 2025.07.01 업로드</span>
-                    </div>
+            <div className={c.detailBox}>
+              <div className={c.statusBox}>
+                <div className={c.apply}>
+                  <div className={c.applyNum}>
+                    <Hash size={12} color="#9ca3af" />
+                    신청번호: {""}
+                    <p>support-{eventDetailInfo?.EmployeeEventSupportId}</p>
                   </div>
-                  <button className={c.downloadBtn}>
-                    <Download size={15} color="#9ca3af" />
-                  </button>
+                  <div className={c.applyDate}>
+                    <Calendar size={16} color="#9ca3af" />
+                    신청일: {eventDetailInfo?.applicationDate}
+                  </div>
                 </div>
-                <div className={c.detailAttach}>
+                <div className={c.state}>
+                  <div>
+                    <Check
+                      size={11}
+                      color="#ffffff"
+                      style={{
+                        backgroundColor: "#1b3a6b",
+                        width: "20px",
+                        height: "20px",
+                        padding: "4.5px",
+                        borderRadius: "999px",
+                      }}
+                    />
+                    신청완료
+                  </div>
+                  <span></span>
+                  <div>
+                    <div className={c.cricle}>
+                      <div className={c.miniCricle}></div>
+                    </div>
+                    검토중
+                  </div>
+                  <span></span>
+                  <div>
+                    <div className={c.cricleBasic}>
+                      <div className={c.miniCricleBasic}></div>
+                    </div>
+                    승인
+                  </div>
+                  <span></span>
+                  <div>
+                    <div className={c.cricleBasic}>
+                      <div className={c.miniCricleBasic}></div>
+                    </div>
+                    지급완료
+                  </div>
+                </div>
+              </div>
+
+              <div className={c.detail}>
+                <div className={c.detailInfo}>
+                  <div className={c.detailTitle}>
+                    <span></span>경조정보
+                  </div>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>경조구분</th>
+                        <td>
+                          <span className={c.detailType}>
+                            {eventDetailInfo?.eventType}
+                          </span>
+                          <div className={c.rule}>경조비 지급 규정 3조 1항</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>대상자/관계</th>
+                        <td>
+                          <span className={c.firstName}>
+                            {eventDetailInfo?.targetName.slice(0, 1)}
+                          </span>
+                          <p className={c.detailName}>
+                            {eventDetailInfo?.targetName}
+                          </p>
+                          <div className={c.detailRelation}>본인</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>경조일</th>
+                        <td>
+                          <Calendar size={13} color="#9ca3af" />
+                          {eventDetailInfo?.eventDate}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>경조 장소</th>
+                        <td>
+                          <MapPin size={13} color="#9ca3af" />
+                          {eventDetailInfo?.eventLocation}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div className={c.detailInfo}>
+                  <div className={c.detailTitle}>
+                    <span></span>지급 정보
+                  </div>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>지급금액</th>
+                        <td>
+                          <Banknote size={13} color="#1b3a6b" />
+                          <span className={c.amontMoney}>
+                            {eventDetailInfo?.requestedAmount}원
+                          </span>
+                          <div className={c.rule}>(오십만원정)</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>지급계좌</th>
+                        <td>
+                          <CreditCard size={13} color="#9ca3af" />
+                          {eventDetailInfo?.bankName}{" "}
+                          {eventDetailInfo?.accountNumber}
+                          <span>({eventDetailInfo?.accountHolder})</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>예상 지급일</th>
+                        <td>
+                          <Clock size={13} color="#9ca3af" />
+                          승인 후 3영업일 이내
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                {eventDetailInfo?.savedFileName && (
+                  <div className={c.detailInfo}>
+                    <div className={c.detailTitle}>
+                      <span></span>첨부 서류
+                    </div>
+                    <div className={c.detailAttach}>
+                      <div className={c.fileType}>
+                        <div className={`${c.imgBox} ${c.pdf}`}>
+                          <FileText size={14} color="#2563eb" />
+                        </div>
+                        <div className={c.detailFile}>
+                          {eventDetailInfo?.savedFileName}
+                          <span>
+                            {eventDetailInfo?.savedFileExt} ·{" "}
+                            {eventDetailInfo?.savedFileSize} KB ·{" "}
+                            {eventDetailInfo?.applicationDate} 업로드
+                          </span>
+                        </div>
+                      </div>
+                      <button
+                        className={c.downloadBtn}
+                        onClick={() => {
+                          goDownloadFile();
+                        }}
+                      >
+                        <Download size={15} color="#9ca3af" />
+                      </button>
+                    </div>
+                    {/* <div className={c.detailAttach}>
                   <div className={c.fileType}>
                     <div className={`${c.imgBox} ${c.jpg}`}>
                       <FileImage size={14} color="#dc2626" />
@@ -882,39 +963,41 @@ export default function Page() {
                   <button className={c.downloadBtn}>
                     <Download size={15} color="#9ca3af" />
                   </button>
-                </div>
-              </div>
-              <div className={c.detailInfo}>
-                <div className={`${c.detailTitle} ${c.reviewTitle}`}>
-                  <span className={c.review}></span>검토 의견
-                </div>
-                <div className={c.reviewBox}>
-                  <div className={c.reviewText}>
-                    <MessageSquareText size={14} color="#d97706" />
-                    서류 확인 중입니다. 추가 서류 제출이 필요할 수 있습니다.
+                </div> */}
                   </div>
-                  <div className={c.reviewer}>
-                    <User size={11} color="#d97706" />
-                    검토자: 김인사 (인사팀장) · 2025.07.02
+                )}
+                <div className={c.detailInfo}>
+                  <div className={`${c.detailTitle} ${c.reviewTitle}`}>
+                    <span className={c.review}></span>검토 의견
+                  </div>
+                  <div className={c.reviewBox}>
+                    <div className={c.reviewText}>
+                      <MessageSquareText size={14} color="#d97706" />
+                      서류 확인 중입니다. 추가 서류 제출이 필요할 수 있습니다.
+                    </div>
+                    <div className={c.reviewer}>
+                      <User size={11} color="#d97706" />
+                      검토자: 김인사 (인사팀장) · 2025.07.02
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className={c.modalFooter}>
-            <div className={c.footerText}>
-              <Clock size={12} color="#9ca3af" />
-              최종 수정: 2025.07.02 · 인사팀
-            </div>
-            <div className={c.buttonBox}>
-              <div className={c.applyCancelBtn}>
-                <X size={13} color="#dc2626" />
-                신청취소
+            <div className={c.modalFooter}>
+              <div className={c.footerText}>
+                <Clock size={12} color="#9ca3af" />
+                최종 수정: 2025.07.02 · 인사팀
               </div>
-              <div className={c.applyCloseBtn} onClick={closeModal}>
-                <X size={13} color="#ffffff" />
-                닫기
+              <div className={c.buttonBox}>
+                <div className={c.applyCancelBtn}>
+                  <X size={13} color="#dc2626" />
+                  신청취소
+                </div>
+                <div className={c.applyCloseBtn} onClick={closeModal}>
+                  <X size={13} color="#ffffff" />
+                  닫기
+                </div>
               </div>
             </div>
           </div>

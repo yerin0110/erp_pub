@@ -61,10 +61,16 @@ export default function page() {
             location={["급여관리", "급여조회"]}
             title="급여조회"
             subTitle="연도별 급여 수령 내역 및 월별 명세서를 조회합니다."
-            downloadBtnImg="/images/Download.png"
-            downloadBtnText="PDF 다운로드"
-            addBtnImg="/images/Printer.png"
-            addBtnText="전체 명세서 출력"
+            buttons={[
+              {
+                img: "/images/Download.png",
+                text: "PDF 다운로드",
+              },
+              {
+                img: "/images/Plus.png",
+                text: "전체 명세서 출력",
+              },
+            ]}
           />
 
           <div className={c.graph}>

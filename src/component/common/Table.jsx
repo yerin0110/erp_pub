@@ -3,14 +3,36 @@
 import { useEffect, useState } from "react";
 import baseApi from "@/api/baseApi";
 import c from "./Table.module.css";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function Table({
   columns,
   employees = [],
   tableList = [],
   onDetailClick,
+  setEventDetailInfo,
 }) {
+  const [isLoading, setIsLoading] = useState();
+
   console.log("tableList >> ", tableList);
+
+  const 경조비상세조회 = async (id) => {
+    setIsLoading(true);
+    const token = localStorage.getItem("accessToken");
+
+    const res = await baseApi.get(`/api/v1/support/detail/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    setEventDetailInfo(res?.data?.data);
+
+    setIsLoading(false);
+
+    onDetailClick();
+  };
+
   return (
     <>
       <table className={c.empTable}>
@@ -70,30 +92,26 @@ export default function Table({
                 <span className={c.statusActive}>검토중</span>
               </td>
               <td>
-                <button className={c.detailBtn} onClick={onDetailClick}>
+                <button
+                  className={c.detailBtn}
+                  onClick={() => {
+                    console.log(item?.EmployeeEventSupportId);
+
+                    경조비상세조회(item?.EmployeeEventSupportId);
+                  }}
+                >
                   상세
                 </button>
               </td>
             </tr>
           ))}
         </tbody>
-        <tfoot>
-          <tr className={c.tableFooter}>
-            <td colSpan={10}>
-              <div className={c.tableFooterInner}>
-                <div className={c.totalCount}>총 {employees.length}건</div>
-                <div className={c.pageChange}>
-                  <button className={c.pageBtn}>&lt;</button>
-                  <button className={`${c.pageBtn} ${c.activePage}`}>1</button>
-                  <button className={c.pageBtn}>2</button>
-                  <button className={c.pageBtn}>3</button>
-                  <button className={c.pageBtn}>&gt;</button>
-                </div>
-                <div className={c.emptySpace}></div>
-              </div>
-            </td>
-          </tr>
-        </tfoot>
+
+        {isLoading && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+            <Spinner className="size-8" />
+          </div>
+        )}
       </table>
     </>
   );

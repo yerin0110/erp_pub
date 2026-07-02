@@ -14,6 +14,8 @@ import {
   Plus,
   Sigma,
   Info,
+  Minus,
+  X,
 } from "lucide-react";
 import Table from "@/component/common/Table";
 import InsuranceCard from "@/component/common/insuranceCard";
@@ -60,10 +62,21 @@ export default function page() {
             location={["급여관리", "4대보험관리", "4대보험요율표설정"]}
             title="4대보험요율표설정"
             subTitle="연도별 4대보험 요율을 설정하고 직원별 예상 보험료를 시뮬레이션합니다."
-            downloadBtnImg="/images/Download.png"
-            downloadBtnText="PDF 다운로드"
-            addBtnImg="/images/Save.png"
-            addBtnText="요율 저장"
+            buttons={[
+              {
+                img: "/images/Download.png",
+                text: "전년도 복사",
+              },
+              {
+                img: "/images/Edit.png",
+                text: "기본값",
+                textColor: "#374151",
+              },
+              {
+                img: "/images/Plus.png",
+                text: "요율 저장",
+              },
+            ]}
           />
 
           <div className={c.search}>
@@ -101,7 +114,7 @@ export default function page() {
 
           <div className={c.cardBox}>
             <InsuranceCard
-              bg="linear-gradient(0deg, #2563eb 0%, #1b3a6b 100%)"
+              bg="linear-gradient(70deg, #2563eb 0%, #1b3a6b 100%)"
               title="국민연금"
               totalPercent="9.0%"
               tpColor="#1b3a6b"
@@ -119,7 +132,7 @@ export default function page() {
               totalText="합산 부담률"
             />
             <InsuranceCard
-              bg="linear-gradient(0deg, #14b8a6 0%, #0f766e 100%)"
+              bg="linear-gradient(70deg, #14b8a6 0%, #0f766e 100%)"
               title="건강보험"
               totalPercent="7.09%"
               tpColor="#0f766e"
@@ -144,9 +157,10 @@ export default function page() {
                 </div>
                 <div className={c.percentInput}>
                   <div className={c.inputBox}>
-                    <input type="text" />
+                    <input type="text" className={c.inputBorder} />
                     <div className={`${c.symbol} ${c.border}`}>%</div>
                   </div>
+                  <X size={15} color="#9ca3af" />
                   <div className={c.inputBox}>
                     <input type="text" />
                     <div className={c.symbol}>%</div>
@@ -155,7 +169,7 @@ export default function page() {
               </div>
             </InsuranceCard>
             <InsuranceCard
-              bg="linear-gradient(0deg, #d97706 0%, #92400e 100%)"
+              bg="linear-gradient(70deg, #d97706 0%, #92400e 100%)"
               title="고용보험"
               totalPercent="2.05%"
               tpColor="#92400e"
@@ -172,46 +186,53 @@ export default function page() {
               tbBg="#fffbeb"
               totalText="합산 부담률"
             />
-            {/* <div className={c.card}>
+            <div className={c.card}>
               <div className={c.cardHeader}>
                 <div className={c.cardTitle}>
-                  <span></span>건강보홈
+                  <span></span>산재보험
                 </div>
-                <div className={c.percentBox}>7.09%</div>
+                <div className={c.cardPercentBox}>업종별</div>
               </div>
               <div className={c.cardContent}>
-                <div className={c.info}>
-                  <Info size={11} color="#14b8a6" />
-                  보수월액 기준 · 상한 110,332,800원 / 하한 279,360원
+                <div className={c.cardInfo}>
+                  <Info size={11} color="#dc2626" />
+                  전액 사업자 부담 · 업종별 요율 상이
                 </div>
-                <div className={c.percentInput}>
-                  <div className={c.worker}>
-                    <span></span>근로자
-                    <div className={c.inputBox}>
+                <div className={c.cardPercentInput}>
+                  <div className={c.cardWorker}>
+                    <div className={c.textBox}>
+                      <span></span>근로자 부담
+                    </div>
+                    <div className={c.na}>
+                      <Minus size={13} color="#d1d5db" />
+                      해당없음 (근로자 부담 없음)
+                    </div>
+                  </div>
+                  <div className={c.cardBusiness}>
+                    <div className={c.textBox}>
+                      <span></span>사업자 (업종별 적용)
+                    </div>
+                    <div className={c.cardInputBox}>
                       <input type="text" />
-                      <div className={c.symbol}>%</div>
+                      <div className={c.cardSymbol}>%</div>
                     </div>
                     <div className={c.conversion}>예: 3,500,000원 기준</div>
                   </div>
-                  <div className={c.business}>
-                    <span></span>사업자
-                    <div className={c.inputBox}>
-                      <input type="text" />
-                      <div className={c.symbol}>%</div>
-                    </div>
-                    <div className={c.conversion}>예: 3,500,000원 기준</div>
-                  </div>
                 </div>
-                <div className={c.longBox}>장기요양보험 (건강보험료의 %)</div>
+                <div className={c.companyType}>
+                  <Building2 size={11} color="#9ca3af" />
+                  현재 업종:
+                  <span>IT서비스업 (1.43%)</span>
+                </div>
                 <div className={c.totalBox}>
                   <div className={c.totalText}>
-                    <Sigma size={11} color="#1d4ed8" />
-                    합산 부담률
+                    <Sigma size={11} color="#dc2626" />
+                    사업자 전액 부담
                   </div>
-                  <div className={c.totalPercent}>9.0%</div>
+                  <div className={c.totalPercent}>1.43%</div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
 
           <div className={c.summaryBox}>

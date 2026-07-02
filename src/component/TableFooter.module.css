@@ -1,0 +1,39 @@
+.tableFooterInner {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 0 16px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.totalCount {
+  font-size: 13px;
+}
+
+.pageChange {
+  display: flex;
+  gap: 5px;
+  font-size: 12px;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+.pageBtn {
+  border: 1px solid #e5e7eb;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.activePage {
+  background-color: #1b3a6b;
+  color: white;
+  font-weight: 900;
+}

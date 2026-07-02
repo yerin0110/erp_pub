@@ -80,10 +80,16 @@ export default function Page({ isOn: externalIsOn, handleToggle }) {
             location={["급여관리", "기본수당외수당관리"]}
             title="기본수당외수당관리"
             subTitle="기본급 외 수당 종류를 정의하고 직원별 지급 내역을 관리합니다."
-            downloadBtnImg="/images/Download.png"
-            downloadBtnText="PDF 다운로드"
-            addBtnImg="/images/Plus.png"
-            addBtnText="수당 추가"
+            buttons={[
+              {
+                img: "/images/Download.png",
+                text: "PDF 다운로드",
+              },
+              {
+                img: "/images/Plus.png",
+                text: "수당 추가",
+              },
+            ]}
           />
 
           <div className={c.state}>

@@ -404,14 +404,14 @@
 }
 
 .table {
-  background-color: #e5e7eb;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
 }
 
 .tableTitleBox {
   height: 46px;
   display: flex;
+  background-color: #e5e7eb;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   justify-content: space-between;
   padding: 11.5px 20px;
   align-items: center;
@@ -458,6 +458,15 @@
   border-radius: 999px;
   padding: 4px 12px;
   box-sizing: border-box;
+}
+
+.tableFooter {
+  height: 46px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-top: none;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .modalView {

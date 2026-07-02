@@ -60,10 +60,22 @@ export default function Page() {
             location={["급여관리", "급여계산"]}
             title="급여계산"
             subTitle="계산기준월을 선택하고 조건을 설정한 후 전 직원 급여를 자동 계산합니다."
-            downloadBtnImg="/images/Download.png"
-            downloadBtnText="PDF 다운로드"
-            addBtnImg="/images/Save.png"
-            addBtnText="급여확정"
+            buttons={[
+              {
+                img: "/images/Download.png",
+                text: "PDF 다운로드",
+              },
+              {
+                img: "/images/Edit.png",
+                text: "전직원 일괄계산",
+                bgColor: "#2563eb",
+                textColor: "#ffffff",
+              },
+              {
+                img: "/images/Plus.png",
+                text: "급여확정",
+              },
+            ]}
           />
 
           <div className={c.setting}>
