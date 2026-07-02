@@ -23,9 +23,11 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import baseApi from "@/api/baseApi";
 
 export default function Page() {
   const [isOn, setIsOn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleHandler = () => {
     setIsOn(!isOn);
@@ -106,6 +108,7 @@ export default function Page() {
     if (selectedTab === "퇴근") {
       퇴근처리하기();
     } else if (selectedTab === "출근") {
+      console.log(">>>");
       출근처리하기();
     }
   };
@@ -383,9 +386,16 @@ export default function Page() {
                       <th>
                         <SquareCheck size={16} color="#1b3a6b" />
                       </th>
-                      <th>사원번호</th> <th>성명</th> <th>부서</th>
-                      <th>직급</th> <th>근태유형</th> <th>출근시간</th>
-                      <th>퇴근시간</th> <th>OT</th> <th>비고</th> <th>관리</th>
+                      <th>사원번호</th>
+                      <th>성명</th>
+                      <th>부서</th>
+                      <th>직급</th>
+                      <th>근태유형</th>
+                      <th>출근시간</th>
+                      <th>퇴근시간</th>
+                      <th>OT</th>
+                      <th>비고</th>
+                      <th>관리</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -393,14 +403,19 @@ export default function Page() {
                       <td>
                         <input type="checkbox" />
                       </td>
-                      <td>EMP-001</td> <td>김철수</td> <td>인사팀</td>
-                      <td>팀장</td>{" "}
+                      <td>EMP-001</td>
+                      <td>김철수</td>
+                      <td>인사팀</td>
+                      <td>팀장</td>
                       <td>
                         <div>
                           <span></span>출근
                         </div>
                       </td>
-                      <td>09:02</td> <td>18:05</td> <td>-</td> <td>-</td>
+                      <td>09:02</td>
+                      <td>18:05</td>
+                      <td>-</td>
+                      <td>-</td>
                       <td>
                         <button className={c.editBtn}>수정</button>
                         <button className={c.delBtn}>삭제</button>
