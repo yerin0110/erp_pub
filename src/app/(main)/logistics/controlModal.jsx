@@ -38,6 +38,38 @@ import baseApi from "@/api/baseApi";
 export default function DispatchRequestDialog({ open, setOpen }) {
   // const [open, setOpen] = useState(false);
 
+  const [formData, setFormData] = useState({
+    vehicleType: "",
+    dispatchDateTime: new Date().toISOString().slice(0, 19),
+
+    dispatchManager: "",
+
+    departureLocation: "",
+    departureLat: 37.5012, // 위도
+    departureLng: 127.0396, // 경도
+    departureArrivalTime: "",
+    departureMangerName: "",
+    departureMangerPhone: "",
+
+    arrivalLocation: "",
+    arrivalLat: 35.1796, // 위도
+    arrivalLng: 129.0756, // 경도
+    arrivalTime: "",
+    arrivalMangerName: "",
+    arrivalMangerPhone: "",
+  });
+
+  const [cargoList, setCargoList] = useState([
+    {
+      cargoName: "",
+      quantity: "",
+      weight: "",
+      width: "",
+      depth: "",
+      height: "",
+    },
+  ]);
+
   const goDispatchCargo = async () => {
     try {
       const param = {

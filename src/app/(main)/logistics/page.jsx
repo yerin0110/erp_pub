@@ -93,6 +93,31 @@ function StatusBadge({ status }) {
 }
 
 export default function Page() {
+  const mapRef = useRef(null);
+
+  const [open, setOpen] = useState(false);
+
+  const initMap = () => {
+    console.log("window.kakao", window.kakao);
+    if (!mapRef.current) return;
+    if (!window.kakao?.maps) return;
+
+    window.kakao.maps.load(async () => {
+      console.log(window.kakao?.maps);
+      console.log(window.kakao?.maps?.LatLng);
+
+      const center = new window.kakao.maps.LatLng(37.402, 127.108);
+      const map = new window.kakao.maps.Map(mapRef.current, {
+        center,
+        level: 5,
+      });
+      new window.kakao.maps.Marker({
+        map,
+        position: center,
+      });
+    });
+  };
+
   return (
     <div className="h-screen min-w-[1280px] overflow-hidden bg-[#0d1930] text-white">
       <Script
