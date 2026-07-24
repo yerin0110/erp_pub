@@ -5,7 +5,7 @@ import Nav from "@/component/common/Nav";
 import Aside from "@/component/common/Aside";
 import PageTitle from "@/component/common/PageTitle";
 import Table from "@/component/common/Table";
-import TableFooter from "@/component/TableFooter";
+import TableFooter from "@/component/common/TableFooter";
 import { useEffect, useState } from "react";
 import baseApi from "@/api/baseApi";
 import { Save, Search, UserPlus, X } from "lucide-react";
@@ -194,6 +194,7 @@ export default function Page() {
               {
                 img: "/images/Plus.png",
                 text: "신규등록",
+                onClick: () => setIsModalOpen(true),
               },
             ]}
           />

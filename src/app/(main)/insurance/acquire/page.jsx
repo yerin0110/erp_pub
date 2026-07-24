@@ -5,10 +5,23 @@ import Nav from "@/component/common/Nav";
 import Aside from "@/component/common/Aside";
 import PageTitle from "@/component/common/PageTitle";
 import StateCard from "@/component/common/StateCard";
-import { Printer, RotateCcw, Search, TableIcon } from "lucide-react";
+import {
+  FileText,
+  Printer,
+  RotateCcw,
+  Search,
+  TableIcon,
+  X,
+} from "lucide-react";
 import Table from "@/component/common/Table";
+import { useState } from "react";
 
-export default function page() {
+export default function Page() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={c.wrap}>
       <Nav />
@@ -75,7 +88,7 @@ export default function page() {
             <StateCard
               title="이달 취득"
               value="3명"
-              bg="linear-gradient(135deg, #2563eb 0%, #1b3a6b 100%);"
+              bg="linear-gradient(135deg, #2563eb 0%, #1b3a6b 100%)"
               titleColor="#93c5fd"
               valueColor="white"
               subBoxColor="#dbeafe"
@@ -203,32 +216,67 @@ export default function page() {
                 <div className={c.selectAll}>
                   <input type="checkbox" /> 전체선택
                 </div>
-                <div className={c.printBtn}>
+                <button className={c.printBtn} onClick={setIsModalOpen}>
                   <Printer size={11} color="#2563eb" />
                   선택 신고서출력
-                </div>
+                </button>
               </div>
             </div>
 
-            {/* <Table
-              columns={[
-                "사원번호",
-                "성명",
-                "부서",
-                "직급",
-                "입사일",
-                "근속연수",
-                "기본일수",
-                "가산일수",
-                "이월일수",
-                "총 부여일수",
-                "사용일수",
-                "잔여일수",
-                "상태",
-              ]}
-            /> */}
+            <div className={c.acquireTable}>
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                      <input type="checkbox" />
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
           </div>
         </div>
+
+        {isModalOpen && (
+          <div className="fixed inset-0 bg-black/50 z-50">
+            <div className={c.modalView}>
+              <div className={c.modalTitle}>
+                <div className={c.modalTitleBox}>
+                  <div className={c.imgBox}>
+                    <FileText size={16} color="#60a5fa" />
+                  </div>
+                  <div className={c.modalTitleContent}>
+                    <p>4대보험 취득신고서 출력</p>
+                    <span>
+                      Health & Employment Insurance Acquisition Report
+                    </span>
+                  </div>
+                </div>
+                <div className={c.btnBox}>
+                  <div className={c.modalState}>
+                    <span></span>미신고 · D-5
+                  </div>
+                  <div className={c.closeBtn} onClick={closeModal}>
+                    <X size={16} color="#ffffff" />
+                  </div>
+                </div>
+              </div>
+
+              <div className={c.user}></div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

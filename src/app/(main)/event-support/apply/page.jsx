@@ -31,7 +31,7 @@ import {
 import { toast } from "sonner";
 import axios from "axios";
 import { Spinner } from "@/components/ui/spinner";
-import TableFooter from "@/component/TableFooter";
+import TableFooter from "@/component/common/TableFooter";
 
 export default function Page() {
   const fileUploaderRef = useRef(null);

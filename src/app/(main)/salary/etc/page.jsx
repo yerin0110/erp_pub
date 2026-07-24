@@ -10,16 +10,27 @@ import {
   BadgeCheck,
   Bookmark,
   Calendar,
+  Check,
   Clock,
+  Eye,
+  FileText,
   Info,
   Layers,
+  Lock,
   MoonStar,
+  Paperclip,
   Plus,
+  ReceiptText,
   Save,
+  Search,
+  ShieldCheck,
+  Sigma,
   Star,
   Trash2,
   TrendingUp,
+  Upload,
   Users,
+  UsersRound,
   X,
 } from "lucide-react";
 import PayCard from "@/component/common/PayCard";
@@ -38,6 +49,11 @@ export default function Page({ isOn: externalIsOn, handleToggle }) {
 
   // 근태 데이터 연동 스위치 토글 함수 (추가)
   const onLinkToggle = () => setLinkIsOn(!linkIsOn);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className={c.wrap}>
@@ -329,19 +345,19 @@ export default function Page({ isOn: externalIsOn, handleToggle }) {
                       <button className={c.executive}>
                         <span></span>임원
                       </button>
-                      <button className={c.rank}>
+                      <button className={c.rankType}>
                         <span></span>부장
                       </button>
-                      <button className={c.rank}>
+                      <button className={c.rankType}>
                         <span></span>차장
                       </button>
-                      <button className={c.rank}>
+                      <button className={c.rankType}>
                         <span></span>과장
                       </button>
-                      <button className={c.rank}>
+                      <button className={c.rankType}>
                         <span></span>대리
                       </button>
-                      <button className={c.rank}>
+                      <button className={c.rankType}>
                         <span></span>사원
                       </button>
                     </div>
@@ -422,28 +438,340 @@ export default function Page({ isOn: externalIsOn, handleToggle }) {
                       <option value="2025.10">2025.10</option>
                     </select>
                     <div className={c.tableLenght}>{5}명 지급</div>
-                    <button className={c.addBtn}>
+                    <button className={c.addBtn} onClick={setIsModalOpen}>
                       <Plus size={11} color="#ffffff" />
                       지급추가
                     </button>
                   </div>
                 </div>
-                <Table
-                  columns={[
-                    "성명",
-                    "부서",
-                    "직급",
-                    "야근시간",
-                    "단가 (원/h)",
-                    "지급액 (원)",
-                    "과세구분",
-                    "처리상태",
-                    "관리",
-                  ]}
-                />
+
+                <table className={c.overtimePayTable}>
+                  <thead>
+                    <tr>
+                      <th className={c.name}>성명</th>
+                      <th className={c.team}>부서</th>
+                      <th className={c.rank}>직급</th>
+                      <th className={c.overtime}>야근시간</th>
+                      <th className={c.price}>단가 (원/h)</th>
+                      <th className={c.pay}>지급액 (원)</th>
+                      <th className={c.taxType}>과세구분</th>
+                      <th className={c.status}>처리상태</th>
+                      <th className={c.manage}>관리</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>김철수</td>
+                      <td>인사팀</td>
+                      <td>팀장</td>
+                      <td>25h</td>
+                      <td>10,000</td>
+                      <td>250,000</td>
+                      <td>
+                        <span className={c.taxBox}>과세</span>
+                      </td>
+                      <td>
+                        <span className={c.decideBox}>확정</span>
+                      </td>
+                      <td>
+                        <div className={c.tableBtnBox}>
+                          <button className={c.tableEditBtn}>수정</button>
+                          <button className={c.tableDelBtn}>삭제</button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colSpan={4} className={c.total}>
+                        <div className={c.totalBox}>
+                          <Sigma size={13} color="#1b3a6b" />
+                          합계
+                        </div>
+                      </td>
+                      <td className={c.sumTime}>1,170h</td>
+                      <td className={c.sumPay}>1,170,000</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                  </tfoot>
+                </table>
               </div>
             </div>
           </div>
+
+          {isModalOpen && (
+            <div className="fixed inset-0 bg-black/50 z-50">
+              <div className={c.modalView}>
+                <div className={c.modalTitle}>
+                  <div className={c.modalTitleBox}>
+                    <div className={c.imgBox}>
+                      <Star size={16} color="#fcd34d" />
+                    </div>
+                    <div className={c.modalTitleContent}>
+                      <p>특별성과수당 지급등록</p>
+                      <span>Special Performance Allowance</span>
+                    </div>
+                  </div>
+                  <div className={c.btnBox}>
+                    <div className={c.modalState}>2025년 7월분</div>
+                    <div className={c.closeBtn} onClick={closeModal}>
+                      <X size={16} color="#ffffff" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className={c.stepBox}>
+                  <div className={c.step}>
+                    <div className={c.stepNum}>1</div>
+                    지급 기본정보
+                  </div>
+                  <span className={c.completion}></span>
+                  <div className={c.step}>
+                    <div className={c.stepNum}>2</div>
+                    지급 대상 선택
+                  </div>
+                  <span className={c.before}></span>
+                  <div className={c.beforeStep}>
+                    <div className={c.beforeStepNum}>6</div>
+                    첨부파일
+                  </div>
+                </div>
+
+                <div className={c.modalContent}>
+                  <div className={c.content}>
+                    <label htmlFor="">
+                      <div></div>지급 기본정보
+                    </label>
+                    <div className={c.basicInfoBox}>
+                      <div className={c.basicInfo}>
+                        <label htmlFor="">
+                          지급월<span className={c.necessary}>*</span>
+                        </label>
+                        <div className={c.modalInfoBox}>
+                          2025년 7월
+                          <Calendar size={13} color="#9ca3af" />
+                        </div>
+                      </div>
+                      <div className={c.basicInfo}>
+                        <label htmlFor="">수당 유형</label>
+                        <div className={`${c.modalInfoBox} ${c.lockBox}`}>
+                          특별성과수당
+                          <Lock size={13} color="#9ca3af" />
+                        </div>
+                      </div>
+                      <div className={c.basicInfo}>
+                        <label htmlFor="">
+                          지급 금액<span className={c.necessary}>*</span>
+                        </label>
+                        <div className={c.modalPayInfoBox}>
+                          <div className={c.modalPrice}>500,000</div>
+                          <div className={c.wonBox}>원</div>
+                        </div>
+                        <div className={c.modalPayInfoText}>
+                          <Info size={11} color="#9ca3af" />
+                          일괄 동일 금액 지급 · 개별 설정은 직원 목록에서 변경
+                        </div>
+                      </div>
+                      <div className={c.basicInfo}>
+                        <label htmlFor="">
+                          과세 여부<span className={c.necessary}>*</span>
+                        </label>
+                        <div className={c.modalTaxBtnBox}>
+                          <button className={c.modalTaxBtn}>
+                            <ReceiptText size={13} color="#ffffff" />
+                            과세
+                          </button>
+                          <button className={c.modalTaxFreeBtn}>
+                            <ShieldCheck size={13} color="#6b7280" />
+                            비과세
+                          </button>
+                        </div>
+                        <div className={c.noticeBox}>
+                          <span></span>과세 선택 시 소득세가 자동 공제됩니다
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={c.modalContent}>
+                  <div className={c.modalTableBox}>
+                    <div className={c.modalTableTitle}>
+                      <label htmlFor="">
+                        <div></div>지급 대상 직원 선택
+                      </label>
+                      <div className={c.choiceBox}>
+                        <div className={c.choicePerson}>
+                          <Users size={11} color="#ffffff" />
+                          3명 선택됨
+                        </div>
+                        <div className={c.allChocie}>
+                          <input type="checkbox" />
+                          전체선택
+                        </div>
+                      </div>
+                    </div>
+                    <div className={c.modalTableSearch}>
+                      <select name="" id="">
+                        <option value="전체부서">전체 부서</option>
+                        <option value="전체부서">전체 부서</option>
+                        <option value="전체부서">전체 부서</option>
+                        <option value="전체부서">전체 부서</option>
+                        <option value="전체부서">전체 부서</option>
+                      </select>
+                      <div className={c.searhBox}>
+                        <Search size={12} color="#9ca3af" />
+                        <input type="text" placeholder="사원명 검색" />
+                      </div>
+                    </div>
+                    <div className={c.modalTable}>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>
+                              <input type="checkbox" />
+                            </th>
+                            <th>성명</th>
+                            <th>사원번호</th>
+                            <th>부서</th>
+                            <th>직급</th>
+                            <th>개별 지급금액 (원)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className={c.choice}>
+                            <td>
+                              <input type="checkbox" className={c.choiceBtn} />
+                            </td>
+                            <td className={c.modalTableName}>
+                              <span>김</span>김철수
+                            </td>
+                            <td>EMP-001</td>
+                            <td>인사팀</td>
+                            <td>
+                              <span className={c.modalRank}>팀장</span>
+                            </td>
+                            <td>
+                              <div className={c.eachPay}>500,000</div>
+                            </td>
+                          </tr>
+                          <tr className={c.notChoice}>
+                            <td>
+                              <input type="checkbox" className={c.choiceBtn} />
+                            </td>
+                            <td className={c.modalTableName}>
+                              <span>박</span>박민준
+                            </td>
+                            <td>EMP-003</td>
+                            <td>개발팀</td>
+                            <td>
+                              <span className={c.modalRank}>대리</span>
+                            </td>
+                            <td className={c.notChiceBox}>미선택</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div className={c.tableTotal}>
+                        <div className={c.tableTotalChoice}>
+                          전체 5명 중 3명 선택
+                        </div>
+                        <div className={c.totalPayBox}>
+                          총 지급예정액
+                          <div className={c.totalPay}>1,700,000원</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={c.modalContent}>
+                  <div className={c.content}>
+                    <div className={c.contentTitle}>
+                      <label htmlFor="">
+                        <div></div>지급 기본정보
+                      </label>
+                      선택사항
+                    </div>
+                    <div className={c.fileBox}>
+                      <div className={c.fileTextBox}>
+                        <Upload size={20} color="#9ca3af" />
+                        <div className={c.fileText}>
+                          결제문서 · 지급증빙 파일을 첨부하세요
+                          <span>PDF, JPG, PNG · 최대 10MB · 파일 3개까지</span>
+                        </div>
+                      </div>
+                      <button className={c.fileBtn}>
+                        <Paperclip size={12} color="#374151" />
+                        파일 선택
+                      </button>
+                    </div>
+                    <div className={c.attechFileBox}>
+                      <div className={c.uploadBox}>
+                        <div className={c.fileImg}>
+                          <FileText size={14} color="#2563eb" />
+                        </div>
+                        <div className={c.attechFileTextBox}>
+                          성과수당_결재문서_2025Q2.pdf
+                          <div className={c.fileUpload}>
+                            1.2MB <span></span>
+                            <div className={c.uploadCheck}>
+                              <Check size={10} color="#16a34a" />
+                              업로드 완료
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button className={c.uploadDelBtn}>
+                        <X size={11} color="#ef4444" />
+                        삭제
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={c.saveInfo}>
+                  <Info size={14} color="#d97706" />
+                  <div className={c.saveInfoText}>
+                    저장 전 확인사항
+                    <span>
+                      저장 후 급여계산 시 해당 수다잉 자동 반영됩니다. 확정 전
+                      급여담당자 검토를 권장합니다.
+                    </span>
+                  </div>
+                </div>
+
+                <div className={c.modalFooter}>
+                  <div className={c.modalInfo}>
+                    <div className={c.necessaryList}>
+                      <span className={c.necessary}>*</span>
+                      필수 입력 항목
+                    </div>
+                    <span></span>
+                    <div className={c.summaryBox}>
+                      <UsersRound size={12} color="#2563eb" />
+                      3명 · 총 1,700,000원
+                    </div>
+                  </div>
+                  <div className={c.btnBox}>
+                    <button className={c.modalResetBtn}>
+                      <Eye size={13} color="#374151" />
+                      미리보기
+                    </button>
+                    <button className={c.cancelBtn} onClick={closeModal}>
+                      <X size={13} color="#6b7280" />
+                      취소
+                    </button>
+                    <button className={c.saveBtn}>
+                      <Save size={13} color="#ffffff" />
+                      저장하기
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

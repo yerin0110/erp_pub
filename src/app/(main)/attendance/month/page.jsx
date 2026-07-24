@@ -5,8 +5,52 @@ import Nav from "@/component/common/Nav";
 import Aside from "@/component/common/Aside";
 import PageTitle from "@/component/common/PageTitle";
 import { Calendar, Search, Table } from "lucide-react";
+import { useEffect, useState } from "react";
+import baseApi from "@/api/baseApi";
 
 export default function Page() {
+  const [monthlyList, setMonthlyList] = useState([]);
+  const [selectedDepartmentName, setSelectedDepartmentName] = useState("");
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const getMonthlyList = async () => {
+    try {
+      setIsLoading(true);
+
+      const now = new Date();
+      const year = now.getFullYear();
+      const month =
+        now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1; // 10미만인경우 앞에 0 붙임
+      const day = now.getDate() < 10 ? `0${now.getDate()}` : now.getDate(); // 10미만인경우 앞에 0 붙임
+
+      const findDate = `${year}${month}${day}`;
+
+      const params = {
+        findDate: findDate,
+      };
+
+      // 전체부서 아닌 경우) 다른 부서 선택한 경우 추가하여 조회한다.
+      if (selectedDepartmentName) {
+        params.departmentName = selectedDepartmentName;
+      }
+
+      const res = await baseApi.get("/api/v1/attendances/monthly", {
+        params,
+      });
+
+      setMonthlyList(res.data.data);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getMonthlyList();
+  }, []);
+
   return (
     <div className={c.wrap}>
       <Nav />
@@ -66,18 +110,22 @@ export default function Page() {
                 <button className={c.beforeBtn}>&lt;</button>
                 <div className={c.dateInput}>
                   <Calendar size={13} color="#1b3a6b" />
-                  <input type="text" />
+                  2026년 7월
+                  {/* <input type="text" /> */}
                 </div>
                 <button className={c.nextBtn}>&gt;</button>
               </div>
               <div className={c.teamBox}>
                 <span>부서</span>
-                <select name="" id="">
-                  <option value="전체부서">전체부서</option>
+                <select
+                  value={selectedDepartmentName}
+                  onChange={(e) => setSelectedDepartmentName(e.target.value)}
+                >
+                  <option value="">전체부서</option>
                   <option value="인사팀">인사팀</option>
-                  <option value="경영지원팀">경영지원팀</option>
-                  <option value="개발팀">개발팀</option>
-                  <option value="영업팀">영업팀</option>
+                  <option value="경영지원본부">경영지원본부</option>
+                  <option value="IT본부">IT본부</option>
+                  <option value="ERP개발팀">ERP개발팀</option>
                 </select>
               </div>
               <button className={c.searchBtn}>
@@ -147,7 +195,7 @@ export default function Page() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                {/* <tr>
                   <td className={c.name}>김철수</td>
                   <td className={c.team}>인사팀</td>
                   <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
@@ -178,7 +226,25 @@ export default function Page() {
                   <td className={c.dayoff}>2</td>
                   <td className={c.absence}>0</td>
                   <td></td>
-                </tr>
+                </tr> */}
+                {monthlyList.map((item, idx) => (
+                  <tr key={idx}>
+                    <td className={c.name}>{item?.name}</td>
+                    <td className={c.team}>{item?.departmentName}</td>
+                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
+                    <td>출</td>
+                    <td className={c.work}>20</td>
+                    <td className={c.late}>1</td>
+                    <td className={c.dayoff}>1</td>
+                    <td className={c.absence}>0</td>
+                    <td></td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

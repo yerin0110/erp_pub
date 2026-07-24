@@ -252,3 +252,93 @@
   color: #2563eb;
   cursor: pointer;
 }
+
+/* 모달 */
+.modalView {
+  width: 580px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modalTitle {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1b3a6b;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.modalTitleBox,
+.btnBox {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.imgBox {
+  width: 32px;
+  height: 32px;
+  background-color: #2d5f9e;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.modalTitleContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalTitleContent p {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+
+.modalTitleContent span {
+  font-size: 10px;
+  color: #60a5fa;
+}
+
+.btnBox {
+  gap: 8px;
+}
+
+.modalState {
+  height: 20px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  background-color: #dc2626;
+  border-radius: 999px;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: white;
+}
+
+.modalState span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 999px;
+}
+
+.closeBtn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2d5f9e;
+  border-radius: 6px;
+  cursor: pointer;
+}

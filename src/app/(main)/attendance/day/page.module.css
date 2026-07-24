@@ -48,6 +48,7 @@
   border: 1px solid #d1d5db;
   padding: 10px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .beforeBtn {
@@ -56,21 +57,17 @@
 }
 
 .dateInput {
-  width: 183px;
+  width: 192px;
   display: flex;
   gap: 8px;
+  align-items: center;
   padding: 10px 20px;
   box-sizing: border-box;
   border-top: 1px solid #d1d5db;
   border-bottom: 1px solid #d1d5db;
-}
-
-.dateInput input {
-  width: 122px;
   font-size: 14px;
   font-weight: 700;
   color: #111827;
-  outline: none;
 }
 
 .nextBtn {
@@ -336,33 +333,84 @@
 }
 
 .type1 {
-  font-weight: 900;
-  color: white;
-  background-color: #1b3a6b;
+  border: 1px solid #d1d5db;
+  color: #9ca3af;
 }
 .type2 {
   border: 1px solid #fed7aa;
+  color: #ea580c;
 }
 .type3 {
   border: 1px solid #d1d5db;
+  color: #6b7280;
 }
 .type4 {
   border: 1px solid #fecaca;
+  color: #e11d48;
 }
 .type5 {
   border: 1px solid #bbf7d0;
+  color: #16a34a;
 }
 .type6 {
   border: 1px solid #bae6fd;
+  color: #0284c7;
 }
 .type7 {
   border: 1px solid #ddd6fe;
+  color: #7c3aed;
 }
-.type8 {
-  border: 1px solid #d1d5db;
+
+.active1 {
+  background-color: #1b3a6b;
+  font-weight: 900 !important;
+  color: white;
 }
-.type9 {
-  border: 1px solid #d1d5db;
+
+.active2 {
+  background-color: #fff8ed;
+  border: 1px solid #ea580c;
+  font-weight: 900 !important;
+}
+
+.active3 {
+  background-color: #fafafb;
+  border: 1px solid #374151;
+  font-weight: 900 !important;
+  color: #374151;
+}
+
+.active5 {
+  background-color: #f0fdf4;
+  border: 1px solid #16a34a;
+  font-weight: 900 !important;
+}
+
+.active7 {
+  background-color: #f6f0ff;
+  border-color: #7c3aed;
+}
+
+.lateInfo,
+.leaveEarlyInfo {
+  height: 35px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.lateInfo {
+  background-color: #fff7ed;
+  color: #ea580c;
+}
+
+.leaveEarlyInfo {
+  background-color: #f8fafc;
+  color: #6b7280;
 }
 
 .time {
@@ -376,14 +424,22 @@
   flex-direction: column;
 }
 
-.timeBox input {
+.workTime,
+.lateTime,
+.leaveEarlyTime {
   width: 150px;
   height: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
-  border: 1px solid #d1d5db;
   border-radius: 6px;
   padding: 10px 12px;
   font-size: 13px;
+}
+
+.workTime {
+  border: 1px solid #d1d5db;
   font-weight: 500;
 }
 
@@ -469,6 +525,265 @@
   color: #16a34a;
 }
 
+.late,
+.leaveEarly {
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.late {
+  background-color: #fff7ed;
+  color: #ea580c;
+}
+
+.timeBox label,
+.officialLeaveType label {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.lateTime {
+  border: 1px solid #ea580c;
+  font-weight: 700;
+  color: #ea580c;
+}
+
+.lateReason,
+.officialLeaveType {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lateReason select,
+.officialLeaveType select {
+  height: 36px;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.leaveEarly {
+  background-color: #f1f5f9;
+  color: #374151;
+}
+
+.leaveEarlyTime {
+  border: 1px solid #374151;
+}
+
+.leaveEarlyTime input,
+.officialLeavePeriod input,
+.vacationPeriod input {
+  width: 100%;
+  outline: none;
+}
+
+.leaveEarlyTime input {
+  font-weight: 700;
+  color: #374151;
+}
+
+.officialLeavePeriod,
+.vacationPeriod {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.officialLeavePeriod input,
+.vacationPeriod input {
+  height: 36px;
+  background-color: white;
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.officialLeavePeriod input {
+  border: 1px solid #d1d5db;
+  color: #111827;
+}
+
+.totalPeriod,
+.minusPeriod {
+  width: fit-content;
+  height: 27px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.totalPeriod {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.necessaryText {
+  font-size: 12px;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.evidential {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 14px;
+  background-color: #f8fafc;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+}
+
+.document,
+.docBtn {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.document,
+.docPulsBtn {
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.docDelBtn,
+.docPulsBtn {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.docDelBtn {
+  color: #ef4444;
+}
+
+.docPulsBtn {
+  height: 28px;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+.vactionSate {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  background-color: #f0fdf4;
+  border-radius: 8px;
+}
+
+.stateTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.state {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #15803d;
+}
+
+.standard {
+  font-size: 11px;
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.days {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.daysBox {
+  text-align: center;
+}
+
+.totalDays,
+.useDays,
+.remainDays,
+.applyDays {
+  font-size: 15px;
+}
+
+.totalDays,
+.useDays {
+  color: #111827;
+}
+
+.remainDays,
+.daysText2 {
+  color: #16a34a;
+}
+
+.applyDays,
+.daysText3 {
+  color: #3b82e6;
+}
+
+.daysText,
+.daysText2,
+.daysText3 {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.daysText {
+  color: #9ca3af;
+}
+
+.line {
+  width: 1px;
+  height: 28px;
+  background-color: #d1fae5;
+}
+
+.vacationPeriod input {
+  border: 1px solid #16a34a;
+}
+
+.totalMinusPeriod {
+  display: flex;
+  justify-content: space-between;
+}
+
+.minusPeriod {
+  background-color: #f0fdf4;
+  color: #16a34a;
+}
+
+.remainDaysInfo {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 400;
+  color: #9ca3af;
+}
+
 .note textarea {
   width: 100%;
   height: 54px;
@@ -487,7 +802,7 @@
 
 .resetBtn,
 .saveBtn {
-  width: 85px;
+  /* width: 85px; */
   height: 36px;
   display: flex;
   gap: 5px;
@@ -631,6 +946,9 @@
   font-size: 12px;
   color: #374151;
 }
+.workTable td {
+  border-bottom: 1px solid #e5e7eb;
+}
 
 .workTable td:nth-child(3) {
   font-weight: 900;
@@ -679,4 +997,58 @@
 .delBtn {
   background-color: #fff1f2;
   color: #e11d48;
+}
+
+.workTable tfoot {
+  height: 44px;
+  background-color: #f0f7ff;
+}
+
+.workTable tfoot td {
+  border-bottom: 1px solid #bfdbfe;
+}
+
+.sum,
+.inquire,
+.averageTime,
+.sumTime {
+  border-left: 1px solid #bfdbfe;
+}
+
+.sumTime {
+  border-right: 1px solid #bfdbfe;
+}
+
+.sum {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1b3a6b;
+  text-align: right;
+  padding: 0 12px;
+}
+
+.inquire {
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.averageTime,
+.sumTime {
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  color: #9ca3af !important;
+}
+
+.averageTime p,
+.sumTime p {
+  font-size: 12px;
+  font-weight: 700;
+}
+.averageTime p {
+  color: #1b3a6b;
+}
+
+.sumTime p {
+  color: #7c3aed;
 }

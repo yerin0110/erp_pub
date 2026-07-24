@@ -5,10 +5,30 @@ import Nav from "@/component/common/Nav";
 import Aside from "@/component/common/Aside";
 import PageTitle from "@/component/common/PageTitle";
 import Table from "@/component/common/Table";
-import TableFooter from "@/component/TableFooter";
-import { IdCard, Printer, Upload, User, X } from "lucide-react";
+import TableFooter from "@/component/common/TableFooter";
+import {
+  Award,
+  ChevronRight,
+  Clock,
+  GraduationCap,
+  IdCard,
+  Printer,
+  Upload,
+  User,
+  X,
+} from "lucide-react";
+import { useState } from "react";
 
-export default function page() {
+export default function Page() {
+  // const typeClass = {
+  //   승진: c.promotion,
+  //   전보: c.transfer,
+  //   신규입사: c.newHire,
+  // };
+
+  const [activeMenu, setActiveMenu] = useState("발령이력");
+  const menus = ["발령이력", "근태요약", "급여이력", "자격증/학력"];
+
   return (
     <div className={c.wrap}>
       <Nav />
@@ -358,39 +378,210 @@ export default function page() {
 
           <div className={c.menu}>
             <ul className={c.menuList}>
-              <li className={c.choice}>발령이력</li>
+              {menus.map((menu) => (
+                <li
+                  key={menu}
+                  className={activeMenu === menu ? c.choice : ""}
+                  onClick={() => setActiveMenu(menu)}
+                >
+                  {menu}
+                </li>
+              ))}
+              {/* <li className={c.choice}>발령이력</li>
               <li>근태요약</li>
               <li>급여이력</li>
-              <li>자격증/학력</li>
+              <li>자격증/학력</li> */}
             </ul>
           </div>
 
           <div className={c.cardContent}>
-            <div className={c.appointList}>
-              <div className={c.cardTitle}>
-                <span></span>발령 이력
+            {activeMenu === "발령이력" && (
+              <div className={c.appointList}>
+                <div className={c.cardTitle}>
+                  <div className={c.title}>
+                    <span></span>발령 이력
+                  </div>
+                  <div className={c.totalAppoint}>총 3건</div>
+                </div>
+                <table className={c.appointTable}>
+                  <thead>
+                    <tr>
+                      <th>발령일</th>
+                      <th>발령유형</th>
+                      <th>발령전 부서/직급</th>
+                      <th>발령후 부서/직급</th>
+                      <th>발령번호</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className={c.appointDate}>2025.07.01</td>
+                      <td className={c.appointType}>
+                        <span className={c.promotion}>승진</span>
+                      </td>
+                      <td className={c.appointBefore}>경영지원팀 · 과장</td>
+                      <td className={c.appointAfter}>인사팀 · 차장</td>
+                      <td className={c.appointNumber}>APT-2025-003</td>
+                    </tr>
+                    <tr>
+                      <td className={c.appointDate}>2022.01.03</td>
+                      <td className={c.appointType}>
+                        <span className={c.transfer}>전보</span>
+                      </td>
+                      <td className={c.appointBefore}>총무팀 · 대리</td>
+                      <td className={c.appointAfter}>경영지원팀 · 과장</td>
+                      <td className={c.appointNumber}>APT-2022-001</td>
+                    </tr>
+                    <tr>
+                      <td className={c.appointDate}>2018.07.15</td>
+                      <td className={c.appointType}>
+                        <span className={c.newHire}>신규입사</span>
+                      </td>
+                      <td className={c.appointBefore}></td>
+                      <td className={c.newHireAppoint}>총무팀 · 사원</td>
+                      <td className={c.appointNumber}>APT-2018-012</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <table className={c.appointTable}>
-                <thead>
-                  <tr>
-                    <th>발령일</th>
-                    <th>발령유형</th>
-                    <th>발령전 부서/직급</th>
-                    <th>발령후 부서/직급</th>
-                    <th>발령번호</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>2025.07.01</td>
-                    <td>승진</td>
-                    <td>경영지원팀 · 과장</td>
-                    <td>인사팀 · 차장</td>
-                    <td>APT-2025-003</td>
-                  </tr>
-                </tbody>
-              </table>
+            )}
+
+            {/* <div className={c.line}></div> */}
+
+            {activeMenu === "근태요약" && (
+              <div className={c.attendance}>
+                <div className={c.cardTitle}>
+                  <div className={c.title}>
+                    <span></span>올해 근태 요약 (2025년)
+                  </div>
+                  기준일: 2025.07.01
+                </div>
+                <div className={c.attendanceCardList}>
+                  <div className={`${c.attendanceCard} ${c.work}`}>
+                    124
+                    <span>출근일수</span>
+                  </div>
+                  <div className={`${c.attendanceCard} ${c.late}`}>
+                    2<span>지각</span>
+                  </div>
+                  <div className={`${c.attendanceCard} ${c.vacationUse}`}>
+                    8<span>연차사용</span>
+                  </div>
+                  <div className={`${c.attendanceCard} ${c.vacationRemain}`}>
+                    7<span>잔여연차</span>
+                  </div>
+                  <div className={`${c.attendanceCard} ${c.businessTrip}`}>
+                    3<span>출장</span>
+                  </div>
+                  <div className={`${c.attendanceCard} ${c.absence}`}>
+                    0<span>결근</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* <div className={c.line}></div> */}
+
+            {activeMenu === "급여이력" && (
+              <div className={c.payList}>
+                <div className={c.cardTitle}>
+                  <div className={c.title}>
+                    <span></span>최근 급여 이력
+                  </div>
+                  <button className={c.allShow}>
+                    전체보기
+                    <ChevronRight size={12} color="#9ca3af" />
+                  </button>
+                </div>
+                <table className={c.payTable}>
+                  <thead>
+                    <tr>
+                      <th>지급연월</th>
+                      <th>기본급</th>
+                      <th>수당합계</th>
+                      <th>공제합계</th>
+                      <th>실지급액</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className={c.payYear}>2025.06</td>
+                      <td className={c.basicPay}>4,200,000</td>
+                      <td>620,000</td>
+                      <td className={c.deduction}>432,000</td>
+                      <td className={c.realPay}>4,388,000</td>
+                    </tr>
+                    <tr>
+                      <td className={c.payYear}>2025.05</td>
+                      <td>4,200,000</td>
+                      <td>520,000</td>
+                      <td className={c.deduction}>432,000</td>
+                      <td className={c.realPay}>4,288,000</td>
+                    </tr>
+                    <tr>
+                      <td className={c.payYear}>2025.04</td>
+                      <td>4,200,000</td>
+                      <td>420,000</td>
+                      <td className={c.deduction}>432,000</td>
+                      <td className={c.realPay}>4,188,000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {/* <div className={c.line}></div> */}
+
+            {activeMenu === "자격증/학력" && (
+              <div className={c.licenseList}>
+                <div className={c.cardTitle}>
+                  <div className={c.title}>
+                    <span></span>자격증 / 학력
+                  </div>
+                </div>
+                <div className={c.licenseBox}>
+                  <div className={c.licenseType}>
+                    <div className={c.licenseTitle}>
+                      <Award size={13} color="#f59e0b" />
+                      자격증
+                    </div>
+                    <div className={c.license1}>
+                      정보처리기사
+                      <span>한국산업인력공단 · 2016.08</span>
+                    </div>
+                    <div className={c.license1}>
+                      컴퓨터활용능력 1급
+                      <span>대한상공회의소 · 2014.05</span>
+                    </div>
+                  </div>
+                  <div className={c.licenseType}>
+                    <div className={c.licenseTitle}>
+                      <GraduationCap size={13} color="#3b82f6" />
+                      학력
+                    </div>
+                    <div className={c.license2}>
+                      정보처리기사
+                      <span>한국산업인력공단 · 2016.08</span>
+                    </div>
+                    <div className={c.license2}>
+                      컴퓨터활용능력 1급
+                      <span>대한상공회의소 · 2014.05</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className={c.modalFooter}>
+            <div className={c.footerText}>
+              <Clock size={12} color="#9ca3af" />
+              최종 수정: 2025.07.01 · 홍길동 (인사팀)
             </div>
+            <button className={c.cancelBtn}>
+              <X size={14} color="#ffffff" />
+              취소
+            </button>
           </div>
         </div>
       </div>

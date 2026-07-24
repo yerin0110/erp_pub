@@ -1,8 +1,13 @@
+"use client";
+
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import c from "./Nav.module.css";
 import { Key } from "lucide-react";
 
 export default function Nav() {
+  const pathname = usePathname();
   const [navInfo, setNavInfo] = useState();
 
   useEffect(() => {
@@ -18,6 +23,15 @@ export default function Nav() {
     });
   }, []);
 
+  const isInfoGroup =
+    pathname.startsWith("/info") ||
+    pathname.startsWith("/event-support") ||
+    pathname.startsWith("/certificate");
+  const isAttendanceGroup =
+    pathname.startsWith("/attendance") || pathname.startsWith("/break");
+  const isSalaryGroup =
+    pathname.startsWith("/salary") || pathname.startsWith("/insurance");
+
   return (
     <nav className={c.topBar}>
       <div className={c.topBarL}>
@@ -26,10 +40,16 @@ export default function Nav() {
           <p>인사관리시스템</p>
         </div>
         <ul className={c.topMenu}>
-          <li>인사관리</li>
-          <li>근태관리</li>
-          <li>급여관리</li>
-          <li>일용직관리</li>
+          <li className={isInfoGroup ? c.action : ""}>
+            <Link href="/info/register">인사관리</Link>
+          </li>
+          <li className={isAttendanceGroup ? c.action : ""}>
+            <Link href="/attendance/day">근태관리</Link>
+          </li>
+          <li className={isSalaryGroup ? c.action : ""}>
+            <Link href="/salary/basic">급여관리</Link>
+          </li>
+          <li className={pathname === "/" ? c.action : ""}>일용직관리</li>
         </ul>
       </div>
       <div className={c.topBarR}>
@@ -41,7 +61,13 @@ export default function Nav() {
           <span className={c.line2}></span>
           <li className={c.team}>{navInfo?.departmentName}</li>
         </ul>
-        <img src="/images/Log out.png" alt="" />
+        <Link href="/login">
+          <img
+            src="/images/Log out.png"
+            alt="로그아웃"
+            style={{ cursor: "pointer" }}
+          />
+        </Link>
       </div>
     </nav>
   );
