@@ -7,9 +7,9 @@ import c from "./Aside.module.css";
 const routeMap = {
   일일근태등록: "/attendance/day",
   월근태현황: "/attendance/month",
-  출장신청: "/break/apply",
-  출장정산: "/break/cal",
-  출장사용현황: "/break/days",
+  휴가일수설정: "/break/days",
+  휴가일수계산: "/break/cal",
+  휴가일수신청: "/break/apply",
   인사정보등록: "/info/register",
   인사발령등록: "/info/appointment",
   경조비신청: "/event-support/apply",

@@ -134,7 +134,7 @@
 
 .total,
 .work,
-.late,
+.workLate,
 .absence,
 .dayoff {
   width: fit-content;
@@ -163,7 +163,7 @@
   background-color: #eff6ff;
 }
 
-.late {
+.workLate {
   color: #ea580c;
   background-color: #fff7ed;
 }
@@ -184,7 +184,7 @@
 .work span {
   background-color: #1b4eb8;
 }
-.late span {
+.workLate span {
   background-color: #ea580c;
 }
 .absence span {
@@ -955,28 +955,89 @@
   color: #111827;
 }
 
-.workTable div {
+.statusWork,
+.statusLate,
+.statusLeave,
+.statusEarlyLeave,
+.statusoutWork,
+.notRegistered {
   width: fit-content;
   display: flex;
   gap: 4px;
   align-items: center;
   text-align: center;
   padding: 3px 10px;
-  background-color: #f0f7ff;
   align-items: center;
   text-align: center;
   font-weight: 900;
-  color: #2563eb;
   border-radius: 999px;
   margin: 0 auto;
 }
 
-.workTable span {
+.statusWork span,
+.statusLate span,
+.statusLeave span,
+.statusEarlyLeave span,
+.statusoutWork span,
+.notRegistered span {
   display: block;
   width: 6px;
   height: 6px;
   border-radius: 999px;
+}
+
+.statusWork {
+  background-color: #f0f7ff;
+  color: #2563eb;
+}
+
+.statusWork span {
   background-color: #2563eb;
+}
+
+.statusLate {
+  background-color: #fff7ed;
+  color: #ea580c;
+}
+
+.statusLate span {
+  background-color: #ea580c;
+}
+
+.statusLeave {
+  background-color: #f0fdf4;
+  color: #16a34a;
+}
+
+.statusLeave span {
+  background-color: #16a34a;
+}
+
+.statusEarlyLeave {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.statusEarlyLeave span {
+  background-color: #0284c7;
+}
+
+.statusoutWork {
+  background-color: #f5f3ff;
+  color: #7c3aed;
+}
+
+.statusoutWork span {
+  background-color: #7c3aed;
+}
+
+.notRegistered {
+  background-color: #fef9c3;
+  color: #ca8a04;
+}
+
+.notRegistered span {
+  background-color: #ca8a04;
 }
 
 .editBtn,

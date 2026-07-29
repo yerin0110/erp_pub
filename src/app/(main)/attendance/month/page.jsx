@@ -10,21 +10,60 @@ import baseApi from "@/api/baseApi";
 
 export default function Page() {
   const [monthlyList, setMonthlyList] = useState([]);
+
   const [selectedDepartmentName, setSelectedDepartmentName] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const formatDate = (date) => {
+    return `${date.getFullYear()}년 ${date.getMonth() + 1}월`;
+  };
+
+  const prevDate = () => {
+    const date = new Date(selectedDate);
+    date.setMonth(date.getMonth() - 1);
+    setSelectedDate(date);
+  };
+
+  const nextDate = () => {
+    const date = new Date(selectedDate);
+    date.setMonth(date.getMonth() + 1);
+    setSelectedDate(date);
+  };
+
+  const daysInMonth = new Date(
+    selectedDate.getFullYear(),
+    selectedDate.getMonth() + 1,
+    0,
+  ).getDate();
+
+  const isWeekend = (day) => {
+    const date = new Date(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      day,
+    );
+
+    const week = date.getDay(); // 0: 일요일, 6: 토요일
+
+    return week === 0 || week === 6;
+  };
 
   const getMonthlyList = async () => {
     try {
       setIsLoading(true);
 
-      const now = new Date();
+      const token = localStorage.getItem("accessToken");
+
+      const now = selectedDate;
       const year = now.getFullYear();
       const month =
         now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1; // 10미만인경우 앞에 0 붙임
       const day = now.getDate() < 10 ? `0${now.getDate()}` : now.getDate(); // 10미만인경우 앞에 0 붙임
 
-      const findDate = `${year}${month}${day}`;
+      const findDate = `${year}-${month}-${day}`;
 
       const params = {
         findDate: findDate,
@@ -36,6 +75,9 @@ export default function Page() {
       }
 
       const res = await baseApi.get("/api/v1/attendances/monthly", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         params,
       });
 
@@ -49,7 +91,15 @@ export default function Page() {
 
   useEffect(() => {
     getMonthlyList();
-  }, []);
+  }, [selectedDate]);
+
+  useEffect(() => {
+    getMonthlyList();
+  }, [selectedDepartmentName]);
+
+  useEffect(() => {
+    console.log(monthlyList);
+  }, [monthlyList]);
 
   return (
     <div className={c.wrap}>
@@ -107,13 +157,17 @@ export default function Page() {
           <div className={c.search}>
             <div className={c.searchBox}>
               <div className={c.dateBox}>
-                <button className={c.beforeBtn}>&lt;</button>
+                <button className={c.beforeBtn} onClick={prevDate}>
+                  &lt;
+                </button>
                 <div className={c.dateInput}>
                   <Calendar size={13} color="#1b3a6b" />
-                  2026년 7월
-                  {/* <input type="text" /> */}
+                  {formatDate(selectedDate)}
+                  {/* 2026년 7월 */}
                 </div>
-                <button className={c.nextBtn}>&gt;</button>
+                <button className={c.nextBtn} onClick={nextDate}>
+                  &gt;
+                </button>
               </div>
               <div className={c.teamBox}>
                 <span>부서</span>
@@ -180,13 +234,14 @@ export default function Page() {
                 <tr>
                   <th className={c.thName}>성명</th>
                   <th className={c.thTeam}>부서</th>
-                  <th>1</th> <th>2</th> <th>3</th> <th>4</th> <th>5</th>
-                  <th>6</th> <th>7</th> <th>8</th> <th>9</th> <th>10</th>
-                  <th>11</th> <th>12</th> <th>13</th> <th>14</th> <th>15</th>
-                  <th>16</th> <th>17</th> <th>18</th> <th>19</th> <th>20</th>
-                  <th>21</th> <th>22</th> <th>23</th> <th>24</th> <th>25</th>
-                  <th>26</th> <th>27</th> <th>28</th> <th>29</th> <th>30</th>
-                  <th>31</th>
+                  {[...Array(daysInMonth)].map((_, index) => (
+                    <th
+                      key={index}
+                      className={isWeekend(index + 1) ? c.weekend : ""}
+                    >
+                      {index + 1}
+                    </th>
+                  ))}
                   <th className={c.thWork}>출근</th>
                   <th className={c.thLate}>지각</th>
                   <th className={c.thDayoff}>연차</th>
@@ -231,17 +286,18 @@ export default function Page() {
                   <tr key={idx}>
                     <td className={c.name}>{item?.name}</td>
                     <td className={c.team}>{item?.departmentName}</td>
-                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
-                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
-                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
-                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
-                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
-                    <td>출</td> <td>출</td> <td>출</td> <td>출</td> <td>출</td>
-                    <td>출</td>
-                    <td className={c.work}>20</td>
-                    <td className={c.late}>1</td>
-                    <td className={c.dayoff}>1</td>
-                    <td className={c.absence}>0</td>
+                    {item.days.map((day, index) => (
+                      <td
+                        key={index}
+                        className={isWeekend(index + 1) ? c.weekend : ""}
+                      >
+                        {day.slice(0, 1)}
+                      </td>
+                    ))}
+                    <td className={c.work}></td>
+                    <td className={c.late}></td>
+                    <td className={c.dayoff}></td>
+                    <td className={c.absence}></td>
                     <td></td>
                   </tr>
                 ))}

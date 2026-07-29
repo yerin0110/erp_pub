@@ -40,6 +40,29 @@ export default function Page() {
     setIsOn(!isOn);
   };
 
+  // 날짜 조회하기
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+	const formatDate = (date) => {
+		const week = ["일", "월", "화", "수", "목", "금", "토"];
+
+		return `${date.getFullYear()}년 ${
+			date.getMonth() + 1
+		}월 ${date.getDate()}일 (${week[date.getDay()]})`;
+	};
+
+  const prevDate = () => {
+		const date = new Date(selectedDate);
+		date.setDate(date.getDate() - 1);
+		setSelectedDate(date);
+	};
+
+	const nextDate = () => {
+		const date = new Date(selectedDate);
+		date.setDate(date.getDate() + 1);
+		setSelectedDate(date);
+	};
+
   const [isLoading, setIsLoading] = useState(false);
 
   // 아 이게 없네.. 조회 리스트
@@ -57,7 +80,7 @@ export default function Page() {
       const token = localStorage.getItem("accessToken");
 
       // YYYYMMDD 형식
-      const now = new Date();
+      const now = selectedDate;
       const year = now.getFullYear();
       const month =
         now.getMonth() + 1 < 10 ? `0${now.getMonth() + 1}` : now.getMonth() + 1; // 10미만인경우 앞에 0 붙임
@@ -95,6 +118,10 @@ export default function Page() {
       setIsLoading(false);
     }
   };
+
+	useEffect(() => {
+    getAttendanceDaily();
+  }, [selectedDate]);
 
   useEffect(() => {
     getAttendanceDaily();
@@ -301,6 +328,28 @@ export default function Page() {
     }
   };
 
+	const getStatusClass = (status) => {
+		switch (status) {
+			case "출근", "퇴근":
+				return c.statusWork;
+
+			case "지각":
+				return c.statusLate;
+
+			case "연차":
+				return c.statusLeave;
+			
+			case "반차":
+				return c.statusEarlyLeave;
+
+			case "출장":
+				return c.statusoutWork;
+
+			default:
+				return c.notRegistered;
+		}
+	};
+
   return (
     <div className={c.wrap}>
       <Nav />
@@ -357,12 +406,13 @@ export default function Page() {
           <div className={c.search}>
             <div className={c.searchBox}>
               <div className={c.dateBox}>
-                <button className={c.beforeBtn}>&lt;</button>
+                <button className={c.beforeBtn} onClick={prevDate}>&lt;</button>
                 <div className={c.dateInput}>
                   <Calendar size={13} color="#1b3a6b" />
-                  2026년 7월 9일 (목)
+									{formatDate(selectedDate)}
+                  {/* 2026년 7월 9일 (목) */}
                 </div>
-                <button className={c.nextBtn}>&gt;</button>
+                <button className={c.nextBtn} onClick={nextDate}>&gt;</button>
               </div>
               <div className={c.today}>
                 <CalendarCheck size={13} color="#2563eb" />
@@ -401,7 +451,7 @@ export default function Page() {
                 <span></span>
                 출근 18
               </div>
-              <div className={c.late}>
+              <div className={c.workLate}>
                 <span></span>
                 지각 2
               </div>
@@ -847,7 +897,7 @@ export default function Page() {
                         <td>{item?.departmentName}</td>
                         <td>{item?.positionName}</td>
                         <td>
-                          <div>
+                          <div className={getStatusClass(item?.attendanceStatusCode)}>
                             <span></span>
                             {item?.attendanceStatusCode
                               ? item?.attendanceStatusCode
@@ -878,7 +928,7 @@ export default function Page() {
                       <td colSpan={4} className={c.sum}>
                         합계
                       </td>
-                      <td className={c.inquire}>6명 조회</td>
+                      <td className={c.inquire}>{attendanceList.length}명 조회</td>
                       <td className={c.averageTime}>
                         평균<p>09:05</p>
                       </td>

@@ -48,6 +48,7 @@
   border: 1px solid #d1d5db;
   padding: 10px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .beforeBtn {
@@ -248,23 +249,8 @@
   font-weight: 900;
 }
 
-.workTable th:nth-child(9),
-.workTable th:nth-child(10),
-.workTable th:nth-child(16),
-.workTable th:nth-child(17),
-.workTable th:nth-child(23),
-.workTable th:nth-child(24),
-.workTable th:nth-child(30),
-.workTable th:nth-child(31),
-.workTable td:nth-child(9),
-.workTable td:nth-child(10),
-.workTable td:nth-child(16),
-.workTable td:nth-child(17),
-.workTable td:nth-child(23),
-.workTable td:nth-child(24),
-.workTable td:nth-child(30),
-.workTable td:nth-child(31) {
-  background-color: #e8edf2;
+.weekend {
+  background-color: #e8edf2 !important;
   color: #94a3b8;
 }
 
